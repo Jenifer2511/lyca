@@ -103,7 +103,7 @@ export function Marquee({ items, reverse = false, speed=40 }: { items: string[];
     el.addEventListener('pointerdown',pointerDown);window.addEventListener('pointermove',pointerMove,{passive:true});window.addEventListener('pointerup',pointerUp);el.addEventListener('pointercancel',pointerUp)
     return()=>{io.disconnect();el.removeEventListener('pointerdown',pointerDown);window.removeEventListener('pointermove',pointerMove);window.removeEventListener('pointerup',pointerUp);el.removeEventListener('pointercancel',pointerUp)}
   },[])
-  const row = items.map((t, n) => <span key={n} className="marquee__item">{t}<i aria-hidden="true">✦</i></span>)
+  const row = items.map((t, n) => <span key={n} className="marquee__item title-6">{t}<i aria-hidden="true">✦</i></span>)
   return <div ref={ref} style={{["--marquee-speed" as string]:`${speed}s`}} className={`marquee${reverse ? " marquee--reverse" : ""}`} aria-label={items.join(", ")}>
     <div className="marquee__track" aria-hidden="true">{row}{row}{row}</div>
     <i className="marquee__fade marquee__fade--l" aria-hidden="true"/><i className="marquee__fade marquee__fade--r" aria-hidden="true"/>
