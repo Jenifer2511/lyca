@@ -1,6 +1,7 @@
 import { landingImages } from "./landingData"
 import { IngredientPhoto } from "./ingredientPhoto"
 import { IngredientAtelier } from "./ingredientAtelier"
+import { IngredientSpotlight } from "./ingredientSpotlight"
 import { useMemo, useState, type FormEvent } from "react"
 import { Link, useSearchParams } from "react-router"
 import {
@@ -9,14 +10,12 @@ import {
   Search, ShieldCheck, Sparkles, X,
 } from "lucide-react"
 import { ButtonLink, FinalCta, OfficeCard, PageHero, SectionHeading, Stat } from "./components"
-import { Kinetic, Marquee, CountUp } from "../premium"
+import { Kinetic, CountUp } from "../premium"
 import { InwardHero } from "./cinematic"
 import { categories, images, offices } from "./data"
 
 const enquiryUrl = (category: string, product?: string) =>
   `/enquiry?category=${encodeURIComponent(category)}${product ? `&product=${encodeURIComponent(product)}` : ""}`
-
-const ticker = ["Fruit concentrates", "Cocoa powder", "Coconut products", "Milk powders", "Coffee extracts", "Fruit preparations", "Tomato paste", "Food colours", "Chilli purees", "Specialty powders"]
 
 const process = [
   { n: "01", title: "Share your brief", copy: "Tell us the product, application, specification and target market." },
@@ -29,10 +28,7 @@ export function HomePage() {
   return <>
     <InwardHero />
 
-    <section className="ticker-band" aria-label="Ingredient highlights">
-      <Marquee items={ticker} />
-      <Marquee items={[...ticker].reverse()} reverse />
-    </section>
+    <IngredientSpotlight />
 
     <section id="discover" className="discovery section">
       <div className="discovery-top reveal"><p className="eyebrow">01 / A WORLD OF INGREDIENTS</p><span className="micro-label">SOURCED WITH PURPOSE. CONNECTED BY LYCA.</span></div>

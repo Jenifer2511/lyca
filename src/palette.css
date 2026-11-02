@@ -20,14 +20,6 @@ body{background:var(--bg);color:var(--ink)}
 .film-pagination button{background:#080c1570;color:#fefefc;border-color:#fefefc50}
 .film-card__shade{background:#080c15}
 .brand-statement{background:#080c1530}
-.ticker-band{background:#1f1f1f;border:0;padding:24px 0}
-.ticker-band .marquee+.marquee{margin-top:16px}
-.ticker-band .title-6{font-size:48px;line-height:1;font-weight:500;gap:24px;padding-right:24px}
-.ticker-band .marquee__item,.ticker-band .marquee--reverse .marquee__item{color:var(--muted);-webkit-text-stroke:0}
-.ticker-band .marquee__item i{color:var(--lavender-mid)}
-.ticker-band .marquee__fade{display:none}
-@media(max-width:1020px){.ticker-band .title-6{font-size:36px;line-height:40px}}
-@media(max-width:700px){.ticker-band .title-6{font-size:24px;line-height:32px}}
 .enquiry-form,.office-card,.values-grid article,.network-summary,.cta-section,.process-card,.industry-card{background:linear-gradient(125deg,#242039eb,#080c15e8);border-color:#fefefc30}
 .product-toolbar{background:#171528ed}
 .form-grid input:not([type=checkbox]),.form-grid textarea,.form-grid select{background:#080c15cc;color:#fefefc;border-color:#fefefc50}

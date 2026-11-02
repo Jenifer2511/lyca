@@ -1,0 +1,34 @@
+.ingredient-spotlight{display:grid;grid-template-columns:1fr 1.2fr;align-items:center;gap:64px;padding-block:80px;overflow:hidden;color:var(--ink)}
+.ingredient-spotlight .heading-2{font-size:48px;line-height:1;font-weight:600;letter-spacing:-.04em;margin:0 0 24px;max-width:680px}
+.ingredient-spotlight .body-3{font-size:16px;line-height:24px;font-weight:400;max-width:360px;margin:0 0 24px;color:var(--muted)}
+.ingredient-spotlight .button-sm{font-size:14px;line-height:20px;font-weight:600}
+.ingredient-spotlight .title-1{font-size:20px;line-height:28px;font-weight:500;margin:0;letter-spacing:-.02em}
+.ingredient-spotlight__link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--ink);transition:opacity .3s var(--ease-film)}
+.ingredient-spotlight__controls{display:flex;align-items:center;gap:8px;margin-top:24px}
+.ingredient-spotlight__controls button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:#ffffff12;color:var(--ink);transition:transform .16s var(--ease-film),opacity .3s var(--ease-film),background .3s var(--ease-film)}
+.ingredient-spotlight__controls button:active{transform:scale(.96)}
+.ingredient-spotlight__choices{display:flex}
+.ingredient-spotlight__choices button{width:32px;border-radius:0;background:none}
+.ingredient-spotlight__choices button span{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.35;transition:opacity .3s var(--ease-film),transform .3s var(--ease-film)}
+.ingredient-spotlight__choices button[aria-pressed=true] span{opacity:1;transform:scale(1.5)}
+.ingredient-spotlight__controls .ingredient-spotlight__play{margin-left:8px;background:none}
+.ingredient-spotlight button:focus-visible,.ingredient-spotlight__link:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.ingredient-spotlight__deck{position:relative;height:400px;min-width:0;isolation:isolate}
+.ingredient-spotlight__card{position:absolute;inset:24px 56px 24px 24px;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#181818;opacity:0;transform:translate3d(16px,24px,0) scale(.9);transition:transform .6s var(--ease-film),opacity .5s var(--ease-film);pointer-events:none}
+.ingredient-spotlight__card[data-position=active]{z-index:3;opacity:1;transform:translate3d(0,0,0) rotate(-3deg);pointer-events:auto}
+.ingredient-spotlight__card[data-position=next]{z-index:2;opacity:.7;transform:translate3d(48px,-16px,0) rotate(6deg) scale(.92)}
+.ingredient-spotlight__card[data-position=previous]{z-index:1;opacity:.35;transform:translate3d(-24px,16px,0) rotate(-8deg) scale(.92)}
+.ingredient-spotlight__card-link{display:flex;flex-direction:column;height:100%;min-height:0}
+.ingredient-spotlight__card-link:focus-visible{outline:2px solid var(--ink);outline-offset:-4px;border-radius:inherit}
+.ingredient-spotlight__photo{flex:1;min-height:0;overflow:hidden}
+.ingredient-spotlight__photo img{width:100%;height:100%;object-fit:cover;object-position:center 48%;transform:scale(1)}
+.ingredient-spotlight__card[data-position=active] img{animation:ingredient-spotlight-zoom 6s var(--ease-soft) both;animation-play-state:paused}
+.ingredient-spotlight[data-running=true] .ingredient-spotlight__card[data-position=active] img{animation-play-state:running}
+@keyframes ingredient-spotlight-zoom{to{transform:scale(1.06)}}
+.ingredient-spotlight__caption{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;color:#fffdfd;background:#181818}
+.ingredient-spotlight[data-instant=true] .ingredient-spotlight__card{transition:none}
+.ingredient-spotlight[data-instant=true] .ingredient-spotlight__photo img{animation:none}
+@media(hover:hover) and (pointer:fine){.ingredient-spotlight__controls>button:hover{background:#ffffff24}.ingredient-spotlight__choices button:hover span{opacity:1;transform:scale(1.5)}.ingredient-spotlight__link:hover{opacity:.7}}
+@media(max-width:1020px){.ingredient-spotlight{gap:24px;padding-block:64px}.ingredient-spotlight .heading-2{font-size:36px;line-height:40px}.ingredient-spotlight__deck{height:360px}.ingredient-spotlight__card{inset:24px 48px 24px 16px}.ingredient-spotlight__caption{padding:16px}.ingredient-spotlight .title-1{font-size:18px;line-height:28px}}
+@media(max-width:700px){.ingredient-spotlight{grid-template-columns:1fr;gap:24px;padding-block:48px}.ingredient-spotlight__copy{max-width:100%}.ingredient-spotlight .heading-2{font-size:36px;line-height:40px}.ingredient-spotlight__deck{height:320px;grid-row:2}.ingredient-spotlight__card{inset:16px 40px 24px 16px}.ingredient-spotlight__controls{gap:4px}.ingredient-spotlight__choices button{width:28px}.ingredient-spotlight__card[data-position=next]{transform:translate3d(32px,-8px,0) rotate(6deg) scale(.92)}.ingredient-spotlight__card[data-position=previous]{transform:translate3d(-12px,12px,0) rotate(-8deg) scale(.92)}}
+@media(prefers-reduced-motion:reduce){.ingredient-spotlight__card{transform:none!important;transition:opacity .2s var(--ease-film)}.ingredient-spotlight__card:not([data-position=active]){opacity:0}.ingredient-spotlight__photo img{transform:none!important;animation:none!important}.ingredient-spotlight__controls button,.ingredient-spotlight__choices button span{transition:opacity .2s var(--ease-film)}.ingredient-spotlight__controls button:active{transform:none}}
