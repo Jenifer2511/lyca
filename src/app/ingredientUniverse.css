@@ -1,0 +1,31 @@
+.ingredient-universe{--ingredient-focus-size:24px;--ingredient-focus-leading:32px;padding-block:64px;color:var(--ink)}
+.ingredient-universe__field{position:relative;height:440px;isolation:isolate;overflow:hidden}
+.ingredient-universe__centre{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:min(480px,58%);text-align:center;pointer-events:none;z-index:1}
+.ingredient-universe .heading-1{font:600 72px/1 Manrope,sans-serif;letter-spacing:-.065em;white-space:pre-line;margin:0 0 16px;text-wrap:balance}
+.ingredient-universe .body-5{font-size:14px;line-height:20px;font-weight:500;color:var(--muted);margin:0}
+.ingredient-universe .title-6{font-size:30px;line-height:36px;font-weight:500}
+.ingredient-universe .title-7{font-size:24px;line-height:32px;font-weight:500}
+.ingredient-universe .title-1{font-size:20px;line-height:28px;font-weight:500}
+.ingredient-universe .button-sm{font-size:14px;line-height:20px;font-weight:600}
+.ingredient-universe .caption-2{font-size:14px;line-height:20px;font-weight:400}
+.ingredient-universe__node{position:absolute;top:0;left:0;z-index:2;max-width:192px;text-align:center;transition:transform 1.1s var(--ease-film),opacity .4s var(--ease-film);pointer-events:none}
+.ingredient-universe__node[data-shown=true]{pointer-events:auto}
+.ingredient-universe__drift{display:block;position:relative;min-width:0;pointer-events:none;animation:ingredient-universe-drift 11s var(--ease-soft) infinite alternate;animation-play-state:paused}
+.ingredient-universe[data-running=true] .ingredient-universe__drift{animation-play-state:running}
+.ingredient-universe__node:focus-within .ingredient-universe__drift{animation-play-state:paused}
+.ingredient-universe__ingredient{display:inline-flex;align-items:center;justify-content:center;gap:4px;position:relative;min-height:44px;max-width:100%;padding:12px;color:var(--muted);text-wrap:balance;border-radius:4px;transition:opacity .3s var(--ease-film)}
+.ingredient-universe:not([data-family=all]) .ingredient-universe__ingredient{font-size:var(--ingredient-focus-size);line-height:var(--ingredient-focus-leading)}
+.ingredient-universe__arrow{position:absolute;right:-8px;top:50%;transform:translate(-4px,-50%);opacity:0;transition:opacity .3s var(--ease-film),transform .3s var(--ease-film);font-size:14px}
+.ingredient-universe__families{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding-top:24px}
+.ingredient-universe__families button{min-height:44px;padding:8px 12px;background:none;color:var(--muted);border:0;border-radius:6px;transition:color .3s var(--ease-film),background .3s var(--ease-film)}
+.ingredient-universe__families button[aria-pressed=true]{background:#ffffff1a;color:var(--ink)}
+.ingredient-universe__footer{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:24px;margin-top:24px}
+.ingredient-universe__collection{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink)}
+.ingredient-universe__motion{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px;background:none;border:0;color:var(--muted)}
+.ingredient-universe button:focus-visible,.ingredient-universe a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.ingredient-universe[data-instant=true] .ingredient-universe__node{transition:none}
+@keyframes ingredient-universe-drift{from{transform:translate3d(-10px,12px,0)}to{transform:translate3d(10px,-12px,0)}}
+@media(hover:hover) and (pointer:fine){.ingredient-universe__node:hover .ingredient-universe__drift{animation-play-state:paused}.ingredient-universe__ingredient:hover{color:var(--ink)}.ingredient-universe__ingredient:hover .ingredient-universe__arrow{opacity:1;transform:translate(0,-50%)}.ingredient-universe__families button:hover{background:#ffffff12;color:var(--ink)}.ingredient-universe__collection:hover,.ingredient-universe__motion:hover{opacity:.7}}
+@media(max-width:1020px){.ingredient-universe{--ingredient-focus-size:20px;--ingredient-focus-leading:28px;padding-block:48px}.ingredient-universe .heading-1{font-size:60px}.ingredient-universe__field{height:480px}.ingredient-universe__node{max-width:176px}.ingredient-universe .ingredient-universe__ingredient{font-size:18px;line-height:28px}}
+@media(max-width:700px){.ingredient-universe{--ingredient-focus-size:18px;--ingredient-focus-leading:28px;padding-block:32px}.ingredient-universe__field{height:500px}.ingredient-universe__centre{width:calc(100% - 80px)}.ingredient-universe .heading-1{font-size:48px}.ingredient-universe .body-5{font-size:12px;line-height:16px}.ingredient-universe__node{max-width:136px}.ingredient-universe .ingredient-universe__ingredient{font-size:14px;line-height:20px}.ingredient-universe[data-family=fruit-preparations] .heading-1{font-size:36px;line-height:40px}.ingredient-universe__families{gap:4px;padding-top:16px}.ingredient-universe__families button{font-size:12px;line-height:16px}.ingredient-universe__footer{gap:8px;margin-top:16px}.ingredient-universe__motion{font-size:12px;line-height:16px}}
+@media(prefers-reduced-motion:reduce){.ingredient-universe__drift{animation:none!important}.ingredient-universe__node{transition:opacity .2s var(--ease-film)}.ingredient-universe__arrow{transition:none}}

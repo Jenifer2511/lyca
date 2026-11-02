@@ -1,7 +1,7 @@
 import { landingImages } from "./landingData"
 import { IngredientPhoto } from "./ingredientPhoto"
 import { IngredientAtelier } from "./ingredientAtelier"
-import { IngredientSpotlight } from "./ingredientSpotlight"
+import { IngredientUniverse } from "./ingredientUniverse"
 import { useMemo, useState, type FormEvent } from "react"
 import { Link, useSearchParams } from "react-router"
 import {
@@ -28,7 +28,7 @@ export function HomePage() {
   return <>
     <InwardHero />
 
-    <IngredientSpotlight />
+    <IngredientUniverse />
 
     <section id="discover" className="discovery section">
       <div className="discovery-top reveal"><p className="eyebrow">01 / A WORLD OF INGREDIENTS</p><span className="micro-label">SOURCED WITH PURPOSE. CONNECTED BY LYCA.</span></div>
