@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { Link } from "react-router"
-import { ArrowUpRight, Pause, Play } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { categories } from "./data"
 import { useReducedMotion } from "./cinematic"
 import "./ingredientUniverse.css"
@@ -36,10 +36,11 @@ const families = [
   ] },
 ]
 
-const scattered = [[.12,.08],[.38,.09],[.64,.08],[.88,.1],[.2,.28],[.8,.28],[.1,.52],[.9,.52],[.2,.75],[.8,.75],[.12,.93],[.37,.91],[.63,.93],[.88,.92]]
-const compact = [[.22,.08],[.76,.16],[.2,.27],[.78,.73],[.22,.85],[.76,.94],[.78,.3]]
+const scattered = [[.14,.3],[.44,.1],[.8,.21],[.9,.54],[.72,.84],[.36,.88],[.1,.65]]
+const compact = [[.22,.08],[.78,.1],[.16,.3],[.82,.76],[.18,.73],[.5,.92],[.84,.3]]
 const gathered = [[.2,.23],[.8,.23],[.18,.78],[.82,.78]]
 const gatheredCompact = [[.23,.15],[.77,.23],[.23,.78],[.77,.86]]
+const bubbleSizes = [136, 120, 112, 144, 128, 112, 128]
 
 export function IngredientUniverse() {
   const root = useRef<HTMLElement>(null)
@@ -49,10 +50,10 @@ export function IngredientUniverse() {
   const [size, setSize] = useState({ width: 0, height: 0 })
   const [visible, setVisible] = useState(false)
   const [pageVisible, setPageVisible] = useState(() => !document.hidden)
-  const [paused, setPaused] = useState(false)
   const [instant, setInstant] = useState(false)
   const small = size.width < 800
-  const running = visible && pageVisible && !paused && !reduce
+  const phone = size.width < 500
+  const running = visible && pageVisible && !reduce
 
   useLayoutEffect(() => {
     const element = field.current
@@ -85,21 +86,21 @@ export function IngredientUniverse() {
         <p className="body-5">{active === null ? "Find what comes next." : "An ingredient for your next idea."}</p>
       </div>
       {families.flatMap((family, familyIndex) => family.items.map(([label, product], itemIndex) => {
-        const shown = size.width > 0 && (active === null ? itemIndex < (small ? 1 : 2) : active === familyIndex)
-        const scatteredPoint = small ? compact[familyIndex] : scattered[familyIndex * 2 + itemIndex % 2]
+        const shown = size.width > 0 && (active === null ? itemIndex === 0 : active === familyIndex)
+        const scatteredPoint = small ? compact[familyIndex] : scattered[familyIndex]
         const point = active === familyIndex ? (small ? gatheredCompact : gathered)[itemIndex] : scatteredPoint
-        const margin = small ? 68 : 96
+        const diameter = phone ? (active === familyIndex ? 104 : 88) : small ? (active === familyIndex ? 128 : 112) : (active === familyIndex ? 144 : bubbleSizes[familyIndex])
+        const margin = diameter / 2 + (phone ? 16 : 28)
         let x = Math.max(margin, Math.min(size.width - margin, point[0] * size.width))
-        const verticalMargin = small ? 40 : 56
-        const y = Math.max(verticalMargin, Math.min(size.height - verticalMargin, point[1] * size.height))
+        const y = Math.max(margin, Math.min(size.height - margin, point[1] * size.height))
         if (active !== null && active !== familyIndex) x += point[0] < .5 ? -40 : 40
         return <div key={`${familyIndex}-${product}`} className="ingredient-universe__node" aria-hidden={!shown}
           data-shown={shown} data-family={categories[familyIndex].id}
-          style={{ transform: `translate3d(${x}px,${y}px,0) translate(-50%,-50%) scale(${shown ? 1 : .85})`, opacity: shown ? 1 : 0 }}>
-          <Link className={`ingredient-universe__ingredient ${["title-6", "title-7", "title-1"][familyIndex % 3]}`} tabIndex={shown ? 0 : -1}
+          style={{ width: diameter, height: diameter, transform: `translate3d(${x}px,${y}px,0) translate(-50%,-50%) scale(${shown ? 1 : .85})`, opacity: shown ? 1 : 0 }}>
+          <Link className="ingredient-universe__ingredient title-3" tabIndex={shown ? 0 : -1}
             aria-label={`Enquire about ${label}`} to={`/enquiry?category=${encodeURIComponent(categories[familyIndex].title)}&product=${encodeURIComponent(product)}`}>
-            <span className="ingredient-universe__drift" style={{ animationDuration: `${9 + familyIndex % 3 * 2}s`, animationDelay: `${-familyIndex - itemIndex * 1.7}s` }}>
-              {label}<span className="ingredient-universe__arrow" aria-hidden="true">↗</span>
+            <span className="ingredient-universe__drift ingredient-universe__bubble" style={{ animationDuration: `${18 + familyIndex % 3 * 4}s`, animationDelay: `${-familyIndex * 2.3 - itemIndex * 1.7}s` }}>
+              <span className="ingredient-universe__label">{label}<span className="ingredient-universe__arrow" aria-hidden="true">↗</span></span>
             </span>
           </Link>
         </div>
@@ -114,8 +115,6 @@ export function IngredientUniverse() {
       <Link className="ingredient-universe__collection button-sm" to={active === null ? "/products" : `/products#${categories[active].id}`}>
         {active === null ? "Explore the full portfolio" : `Explore ${families[active].label.toLowerCase()}`}<ArrowUpRight size={18} aria-hidden="true" />
       </Link>
-      {!reduce && <button className="ingredient-universe__motion caption-2" type="button"
-        onClick={() => setPaused(value => !value)}>{paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}{paused ? "Resume motion" : "Pause motion"}</button>}
     </div>
   </section>
 }
