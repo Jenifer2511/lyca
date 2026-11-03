@@ -1,25 +1,25 @@
 /* A calm, readable Innovation page within LYCA's existing purple identity. */
-.innovation-page{--innovation-purple:#5a1f82;--innovation-heading:#351448;--innovation-text:#514a58;--innovation-ground:#fff;--innovation-soft:#f6f5f8;color:var(--innovation-text);background:var(--innovation-ground);font-family:Manrope,sans-serif}
+.innovation-page{--innovation-purple:var(--purple,#5a1f82);--innovation-heading:var(--ink,#fffdfd);--innovation-text:var(--muted,#eee2f5);color:var(--innovation-text);background:transparent;font-family:Manrope,sans-serif}
 .innovation-container{width:min(1200px,calc(100% - 80px));margin-inline:auto}
 .innovation-page h1,.innovation-page h2,.innovation-page h3{font-family:inherit;font-weight:500;color:var(--innovation-heading);margin:0;letter-spacing:-.04em;text-wrap:balance;animation:none}
 .innovation-page h1{font-size:72px;line-height:1}
 .innovation-page h2{font-size:36px;line-height:40px}
 .innovation-page h3{font-size:20px;line-height:28px;letter-spacing:-.02em}
 .innovation-page p{font-size:16px;line-height:28px;text-wrap:pretty;margin:0}
-.innovation-page a:focus-visible{outline:2px solid var(--innovation-purple);outline-offset:5px}
+.innovation-page a:focus-visible{outline:2px solid var(--innovation-heading);outline-offset:5px}
 .innovation-intro{display:grid;grid-template-columns:.95fr 1.05fr;align-items:center;gap:64px;padding-block:192px 96px}
 .innovation-intro-copy{max-width:680px}
 .innovation-page .innovation-tagline{font-size:30px;line-height:36px;letter-spacing:-.03em;color:var(--innovation-heading);margin-top:32px}
 .innovation-page .innovation-intro-body{max-width:520px;margin-top:24px}
-.innovation-button{display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:48px;padding:12px 20px;background:var(--innovation-purple);color:#fff;font-size:14px;line-height:20px;font-weight:600;border-radius:4px;margin-top:32px;transition:background-color .2s cubic-bezier(.22,1,.36,1)}
-.innovation-button:active{background:#351448}
+.innovation-button{display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:48px;padding:12px 20px;background:var(--innovation-heading);color:var(--innovation-purple);font-size:14px;line-height:20px;font-weight:600;border-radius:4px;margin-top:32px;transition:background-color .2s cubic-bezier(.22,1,.36,1)}
+.innovation-button:active{background:#dfcce9}
 .innovation-button svg{flex:none}
 .innovation-photo{margin:0;min-width:0}
 .innovation-photo img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;border-radius:0;transform:none;animation:none;filter:none}
 .innovation-photo figcaption{font-size:14px;line-height:20px;margin-top:16px;color:var(--innovation-text)}
 .innovation-intro-photo img{aspect-ratio:auto}
 .innovation-two-column{display:grid;grid-template-columns:.8fr 1.2fr;gap:96px;align-items:start}
-.innovation-perspective{padding-block:80px;background:var(--innovation-soft)}
+.innovation-perspective{padding-block:80px}
 .innovation-prose{max-width:640px}
 .innovation-prose p+p{margin-top:24px}
 .innovation-approach{padding-block:96px}
@@ -28,8 +28,8 @@
 .innovation-approach-list article p{margin-top:12px;max-width:620px}
 .innovation-research{padding-bottom:96px}
 .innovation-research-heading>p{max-width:480px;margin-top:24px}
-.innovation-page .innovation-image-note{font-size:12px;line-height:20px;margin-top:24px;color:#6d6475}
-.innovation-next{padding-block:80px;background:var(--innovation-soft)}
+.innovation-page .innovation-image-note{font-size:12px;line-height:20px;margin-top:24px;color:var(--innovation-text)}
+.innovation-next{padding-block:80px}
 .innovation-next-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:96px;align-items:center}
 .innovation-testing-photo{max-width:400px}
 .innovation-next-copy{max-width:640px}
@@ -37,21 +37,21 @@
 .innovation-next-topics{display:grid;gap:32px;margin-top:40px}
 .innovation-next-topics p{margin-top:8px}
 .innovation-vision{padding-block:96px}
-.innovation-contact{background:var(--innovation-soft);padding-block:80px}
+.innovation-contact{padding-block:80px}
 .innovation-contact-inner{display:flex;justify-content:space-between;align-items:center;gap:64px}
 .innovation-contact-inner>div{max-width:680px}
 .innovation-contact p{margin-top:24px;max-width:600px}
 .innovation-development-photo{flex:0 0 234px;max-width:234px}
 /* Route-scoped site chrome keeps the rest of the website's visual system intact. */
-body:has(.innovation-page) .site-atmosphere,body:has(.innovation-page) .fx-aurora,body:has(.innovation-page) .fx-dust,body:has(.innovation-page) .fx-grain,body:has(.innovation-page) .fx-vignette,body:has(.innovation-page) .fx-cursor-glow,body:has(.innovation-page) .fx-cursor-ring,body:has(.innovation-page) .fx-progress,body:has(.innovation-page) .film-light-leak,body:has(.innovation-page) .film-bars,body:has(.innovation-page) .transition-lens,body:has(.innovation-page) .title-card{display:none!important}
+body:has(.innovation-page) .fx-aurora,body:has(.innovation-page) .fx-dust,body:has(.innovation-page) .fx-grain,body:has(.innovation-page) .fx-vignette,body:has(.innovation-page) .fx-cursor-glow,body:has(.innovation-page) .fx-cursor-ring,body:has(.innovation-page) .fx-progress,body:has(.innovation-page) .film-light-leak,body:has(.innovation-page) .film-bars,body:has(.innovation-page) .transition-lens,body:has(.innovation-page) .title-card{display:none!important}
 body:has(.innovation-page) a,body:has(.innovation-page) button{cursor:pointer}
 body:has(.innovation-page) .site-header,body:has(.innovation-page) .site-header.is-scrolled{background:#5a1f82;border:0;border-radius:4px;box-shadow:none;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 body:has(.innovation-page) .header-cta{background:#fff;color:#5a1f82;border:0;border-radius:4px;box-shadow:none}
 body:has(.innovation-page) .header-cta::before{display:none}
 body:has(.innovation-page) .mobile-nav{background:#5a1f82;border:0;border-radius:4px;box-shadow:none}
-body:has(.innovation-page) .footer{background:#481765;border:0}
+body:has(.innovation-page) .footer{border:0}
 body:has(.innovation-page) .footer h2 em{font:inherit;color:inherit;letter-spacing:inherit}
-@media(hover:hover){.innovation-button:hover{background:#40175e}}
+@media(hover:hover){.innovation-button:hover{background:#eee2f5}}
 @media(max-width:1020px){
  .innovation-container{width:calc(100% - 64px)}
  .innovation-page h1{font-size:60px}
