@@ -90,17 +90,17 @@ export function InnovationPage(){
       const spiral=hero.querySelector<HTMLElement>(".iv-spiral")!
       let previousSize=0
       sequence(hero,(p,w,h)=>{
-        const size=w<700?190:300
+        const mobile=w<700,size=mobile?160:Math.min(300,w*.26)
         if(previousSize!==size){tiles.forEach(tile=>{tile.style.width=size+"px";tile.style.height=size+"px"});previousSize=size}
         const t=clamp((p-.43)/.43),m=t*t*(3-2*t)
         const unit=Math.min(w*.86,1080)/23
-        spiral.style.maskImage=p<.16?(w<700?"linear-gradient(180deg,transparent 0%,transparent 46%,#000 68%)":"linear-gradient(90deg,transparent 0%,transparent 43%,#000 66%)"):"none"
+        spiral.style.maskImage=p<.16?(mobile?"linear-gradient(180deg,transparent 0%,transparent 38%,#000 50%)":"linear-gradient(90deg,transparent 0%,transparent 43%,#000 66%)"):"none"
         tiles.forEach((tile,i)=>{
           const a=i*.64-p*8.5,r=(40+i*22)*(1-p*.57)
-          const sx=w*(.76-.26*clamp(p*2.8))+Math.cos(a)*r
+          const sx=w*((mobile?.56:.76)-(mobile?.06:.26)*clamp(p*2.8))+Math.cos(a)*r
           const sy=h*(w<700?.73:.57)+Math.sin(a)*r*.64
           const tx=w/2+(pixels[i].x-11)*unit,ty=h*.46+(pixels[i].y-3)*unit
-          const scale=(i===0?1.5:.78+.15*Math.cos(a))*(1-m)+unit/size*.92*m
+          const scale=(i===0?(mobile?1.25:1.5):.78+.15*Math.cos(a))*(1-m)+unit/size*.92*m
           const z=(-i*18+Math.sin(a)*65+(i===0?160:0))*(1-m)
           tile.style.transform=`translate3d(${sx+(tx-sx)*m}px,${sy+(ty-sy)*m}px,${z}px) translate(-50%,-50%) rotateX(${Math.sin(a)*15*(1-m)}deg) rotateY(${Math.cos(a)*25*(1-m)}deg) rotateZ(${Math.sin(a)*9*(1-m)}deg) scale(${scale})`
           tile.style.opacity=String((i<5?1:clamp((p-.06)/.18))*(1-clamp((p-.86)/.1)))
@@ -120,26 +120,35 @@ export function InnovationPage(){
       const manifestoPictures=Array.from(manifesto.querySelectorAll<HTMLElement>(".iv-manifesto-photo"))
       sequence(manifesto,(p,w)=>{
         reveal(manifesto,p)
-        manifestoPictures.forEach((image,i)=>{image.style.transform=`translate3d(${(i===0?-1:1)*p*w*.08}px,${(1-p)*70}px,0) rotate(${(i===0?-1:1)*(5+p*8)}deg)`;image.style.opacity=String(.65+.35*p)})
+        manifestoPictures.forEach((image,i)=>{image.style.transform=`translate3d(${(i===0?-1:1)*(1-p)*w*.018}px,${(1-p)*50}px,0) rotate(${(i===0?-1:1)*(3+p*3)}deg)`;image.style.opacity=String(.65+.35*p)})
       })
 
       root.querySelectorAll<HTMLElement>(".iv-pillar").forEach((section,index)=>{
         const plates=Array.from(section.querySelectorAll<HTMLElement>(".iv-plate"))
-        sequence(section,(p,w)=>{
+        const filmstrip=section.querySelector<HTMLElement>(".iv-art")!
+        const photoRatios=[1.5,1440/2063,1440/1024]
+        let stripWidths:number[]=[],stripTravel=0,previousWidth=0,previousHeight=0
+        sequence(section,(p,w,h)=>{
           reveal(section,p)
           const mobile=w<700
+          if(index===3&&(w!==previousWidth||h!==previousHeight)){
+            const height=filmstrip.clientHeight,width=filmstrip.clientWidth
+            previousWidth=w;previousHeight=h
+            stripWidths=photoRatios.map(ratio=>Math.min(height*ratio,width))
+            plates.forEach((plate,i)=>{plate.style.width=stripWidths[i]+"px"})
+            stripTravel=Math.max(0,stripWidths.reduce((sum,width)=>sum+width,0)+48-width)
+          }
           plates.forEach((plate,i)=>{
             if(index===0){
               const fan=(i-1)*(mobile?22:54)*clamp(p/.6)
               plate.style.transform=`perspective(1100px) translate3d(${fan}px,${(1-clamp(p/.6))*70}px,${-i*35}px) rotateY(${(1-p)*(i-1)*24}deg) rotateZ(${(i-1)*(3+p*8)}deg) scale(${.88+.12*clamp(p/.6)})`
             }else if(index===1){
-              plate.style.transform=`scale(${1.2-p*.2}) translate3d(${p*2}%,0,0)`
+              plate.style.transform=`perspective(1200px) rotateY(${(1-p)*-10}deg) scale(${.94+p*.06})`
             }else if(index===2){
               plate.style.transform=`perspective(1000px) translate3d(0,${(i===0?1:-1)*(1-p)*90}px,${-(1-p)*140}px) rotateY(${(i===0?1:-1)*(1-p)*24}deg) rotateZ(${(i===0?-1:1)*(3+p*3)}deg)`
             }else if(index===3){
-              const tileWidth=mobile?w*.72:w*.44
-              plate.style.width=tileWidth+"px"
-              plate.style.transform=`translate3d(${i*(tileWidth+24)-p*(mobile?w*1.45:w*.58)}px,${Math.sin(i+p)*16}px,0) rotateY(${(1-p)*7}deg)`
+              const x=stripWidths.slice(0,i).reduce((sum,width)=>sum+width,0)+i*24
+              plate.style.transform=`translate3d(${x-p*stripTravel}px,${Math.sin(i+p)*16}px,0) rotateY(${(1-p)*7}deg)`
             }else{
               plate.style.transform=`perspective(1200px) translate3d(0,${(1-p)*60}px,0) rotateY(${(1-p)*-18}deg) rotateZ(${-5+p*5}deg) scale(${.92+p*.08})`
             }
@@ -158,7 +167,7 @@ export function InnovationPage(){
             const step=p*2,d=Math.abs(i-step)
             frame.style.transform="none"
             frame.style.opacity="1"
-            actionImages[i].style.transform=`perspective(1000px) translate3d(${(i-step)*w*.55}px,${d*18}px,${-d*130}px) rotateY(${(i-step)*15}deg)`
+            actionImages[i].style.transform=`perspective(1000px) translate3d(${(i-step)*w*.16}px,${d*18}px,${-d*130}px) rotateY(${(i-step)*15}deg) scale(${.94-d*.14})`
             actionImages[i].style.opacity=String(clamp(1-d*1.5))
             const caption=frame.querySelector<HTMLElement>("figcaption")
             if(caption)caption.style.visibility=i===Math.round(step)?"visible":"hidden"
@@ -229,7 +238,6 @@ export function InnovationPage(){
         <div className="iv-art" aria-hidden={index===4?undefined:true}>
           {pillar.images.map((image,i)=><div key={image} className="iv-plate" data-choice={index===4?application===i:undefined} aria-hidden={index===4?application!==i:undefined}><IngredientPhoto src={`/images/${image}.webp`} alt={pillar.alts[i]} loading="lazy" sizes={index===1?"100vw":"(max-width:700px) 90vw, 60vw"}/></div>)}
         </div>
-        {index===1&&<div className="iv-photo-scrim" aria-hidden="true"/>}
         <div className="iv-scene-copy">
           <p className="iv-topic" data-iv-copy>{pillar.topic}</p>
           <Words text={pillar.title}/>
