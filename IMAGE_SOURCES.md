@@ -11,3 +11,7 @@ Photography supplied with the original project, served locally for reliable load
 - berries: https://images.unsplash.com/photo-1530259152377-3a014e1092e0?auto=format&fit=crop&w=1400&q=82
 - powder: https://images.unsplash.com/photo-1699210260087-347545f89de6?auto=format&fit=crop&w=1400&q=82
 - colors: https://images.unsplash.com/photo-1736763888171-56c289fe05bd?auto=format&fit=crop&w=1400&q=82
+
+## Innovation research imagery
+
+The four photographs on the minimal Innovation page were supplied by the user in `WhatsApp Unknown 2026-11-03 at 12.41.36.zip`. Original image bytes and proportions are preserved, including the stock watermark on the testing photograph. The images illustrate research and ingredient development; they are not identified as verified LYCA premises or evidence of certification. Exact archive filenames are recorded in `IMAGE-SOURCES.json`.

@@ -124,5 +124,37 @@
     "source_page": "https://www.pexels.com/photo/5923061/",
     "original_url": "https://images.pexels.com/photos/5923061/pexels-photo-5923061.jpeg",
     "license": "https://www.pexels.com/license/"
+  },
+  {
+    "asset": "/images/innovation/quality-evaluation.jpg",
+    "description": "Dairy ingredient quality evaluation",
+    "provider": "User supplied",
+    "source_archive": "WhatsApp Unknown 2026-11-03 at 12.41.36.zip",
+    "original_filename": "WhatsApp Image 2026-11-03 at 12.23.57.jpeg",
+    "notes": "Original bytes preserved. Illustrative research imagery; not verified as LYCA facilities. No licence or certification claim is made."
+  },
+  {
+    "asset": "/images/innovation/ingredient-development.jpg",
+    "description": "Ingredient development samples",
+    "provider": "User supplied",
+    "source_archive": "WhatsApp Unknown 2026-11-03 at 12.41.36.zip",
+    "original_filename": "WhatsApp Image 2026-11-03 at 12.23.57 (1).jpeg",
+    "notes": "Original bytes preserved. Illustrative research imagery; not verified as LYCA facilities. No licence or certification claim is made."
+  },
+  {
+    "asset": "/images/innovation/food-research.jpg",
+    "description": "Vegetable food research illustration",
+    "provider": "User supplied",
+    "source_archive": "WhatsApp Unknown 2026-11-03 at 12.41.36.zip",
+    "original_filename": "WhatsApp Image 2026-11-03 at 12.23.58.jpeg",
+    "notes": "Original bytes preserved. Illustrative research imagery; not verified as LYCA facilities. No licence or certification claim is made."
+  },
+  {
+    "asset": "/images/innovation/food-testing.jpg",
+    "description": "Food testing with a petri dish, including the supplied stock watermark",
+    "provider": "User supplied",
+    "source_archive": "WhatsApp Unknown 2026-11-03 at 12.41.36.zip",
+    "original_filename": "WhatsApp Image 2026-11-03 at 12.23.58 (1).jpeg",
+    "notes": "Original bytes preserved. Illustrative research imagery; not verified as LYCA facilities. No licence or certification claim is made."
   }
 ]
