@@ -1,3 +1,4 @@
+import { InnovationPage } from "./innovation"
 import { createBrowserRouter, Navigate } from "react-router"
 import { Layout } from "./components"
 import { AboutPage, ApplicationsPage, EnquiryPage, HomePage, LegalPage, NetworkPage, NotFound, ProductsPage } from "./pages"
@@ -6,6 +7,7 @@ export const router = createBrowserRouter([{ Component: Layout, children: [
   { path: "/", Component: HomePage },
   { path: "/landing", element: <Navigate to="/" replace /> },
   { path: "/home", element: <Navigate to="/" replace /> },
+  { path: "/innovation", Component: InnovationPage },
   { path: "/products", Component: ProductsPage },
   { path: "/applications", Component: ApplicationsPage },
   { path: "/about", Component: AboutPage },

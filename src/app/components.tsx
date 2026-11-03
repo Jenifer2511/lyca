@@ -29,7 +29,7 @@ export function SectionHeading({ eyebrow, title, copy, center = false }: {
 }
 const links = [
   ["Home", "/"], ["Ingredients", "/products"], ["Applications", "/applications"],
-  ["Our Company", "/about"], ["Global Network", "/network"],
+  ["Innovation", "/innovation"], ["Our Company", "/about"], ["Global Network", "/network"],
 ] as const
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -86,7 +86,7 @@ export function Layout() {
   useEffect(() => {
     if(previous.current !== loc.pathname) window.dispatchEvent(new Event("lyca:transition"))
     previous.current = loc.pathname
-    const names: Record<string, string> = { "/": "A World of Ingredients", "/products": "Ingredient Portfolio", "/applications": "Applications", "/about": "Our Company", "/network": "Global Network", "/enquiry": "Business Enquiry", "/privacy": "Privacy Policy", "/terms": "Terms of Use" }
+    const names: Record<string, string> = { "/innovation": "Innovation", "/": "A World of Ingredients", "/products": "Ingredient Portfolio", "/applications": "Applications", "/about": "Our Company", "/network": "Global Network", "/enquiry": "Business Enquiry", "/privacy": "Privacy Policy", "/terms": "Terms of Use" }
     document.title = `${names[loc.pathname] || "Page Not Found"} | LYCA`
   }, [loc.pathname])
   return <>
