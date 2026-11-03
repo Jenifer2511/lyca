@@ -1,113 +1,269 @@
-import { useLayoutEffect, useRef } from "react"
-import { ArrowUpRight } from "lucide-react"
+import { useLayoutEffect, useRef, useState } from "react"
 import { Link } from "react-router"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Lenis from "lenis"
+import "lenis/dist/lenis.css"
 import { useReducedMotion } from "./cinematic"
 import { IngredientPhoto } from "./ingredientPhoto"
 import "./innovation.css"
 
 gsap.registerPlugin(ScrollTrigger)
 
-// Local ingredient photography; licensing and source records: IMAGE-SOURCES.json.
-const photographs = ["fruit","coconut","coffee","cocoa","dairy","powder","berries","citrus","tomato","colors","mango","patisserie"]
+// All photography is locally bundled. Sources/licences: IMAGE-SOURCES.json.
+// Images illustrate ingredient character and applications, not LYCA facilities.
+const photos = ["citrus","cocoa","fruit","mango","coconut","berries","coffee","dairy","powder","colors","patisserie","dessert"]
 const letters = [
   ["10000","10000","10000","10000","10000","10000","11111"],
   ["10001","10001","01010","00100","00100","00100","00100"],
   ["01111","10000","10000","10000","10000","10000","01111"],
   ["01110","10001","10001","11111","10001","10001","10001"],
 ]
-const pixels = letters.flatMap((letter, letterIndex) => letter.flatMap((row,y) => [...row].flatMap((value,x) => value === "1" ? [{x:letterIndex*6+x,y}] : [])))
+const pixels = letters.flatMap((letter,k)=>letter.flatMap((row,y)=>[...row].flatMap((value,x)=>value==="1"?[{x:k*6+x,y}]:[])))
 const pillars = [
-  {title:"Smarter ingredient solutions.",copy:"We continuously explore food ingredients and sourcing opportunities to meet the changing requirements of manufacturers, businesses and consumers.",image:"fruit",alt:"A colourful still life of fruit ingredients",detail:"A broader perspective on sourcing."},
-  {title:"Quality, at every step.",copy:"From ingredient selection to supply, we focus on improving quality standards, consistency and reliability. Better possibilities begin with dependable foundations.",image:"cocoa",alt:"Cocoa powder and chocolate ingredients",detail:"Consistency is where confidence begins."},
-  {title:"New possibilities. Real applications.",copy:"Emerging food trends, innovative ingredients and evolving applications open up opportunities across the food industry. We look beyond the familiar to explore what an ingredient could become.",image:"patisserie",alt:"Patisserie illustrating creative food applications",detail:"From an ingredient to an experience."},
-  {title:"A smarter way to connect.",copy:"Innovation also means making ingredient sourcing and distribution more accessible, reliable and efficient for our business partners. We look for smarter practices that bring people and possibilities closer.",image:"coconut",alt:"Coconut ingredients on a dark surface",detail:"Sourcing. Supply. Meaningful connections."},
-  {title:"Your idea. Our starting point.",copy:"Every business has different requirements. We explore flexible ingredient solutions that support our customers’ product development and business goals, beginning with a conversation about what matters to them.",image:"berries",alt:"Fresh berries for food and beverage applications",detail:"Development begins with listening."},
+  {id:"sourcing",topic:"Smarter ingredient solutions",title:"Seek\nfurther.",copy:"We continuously explore food ingredients and sourcing opportunities to meet the changing requirements of manufacturers, businesses and consumers.",images:["fruit","citrus","mango"],alts:["A dark still life of fresh fruit","Citrus fruit and cut lemons","Mango ingredients and juice"]},
+  {id:"quality",topic:"Quality through innovation",title:"Quality.\nAt every step.",copy:"From ingredient selection to supply, we focus on improving quality standards, consistency and reliability. Better possibilities begin with dependable foundations.",images:["cocoa"],alts:["Cocoa and chocolate textures in close detail"]},
+  {id:"possibility",topic:"Exploring new possibilities",title:"What if?",copy:"Emerging food trends, innovative ingredients and evolving applications open up opportunities across the food industry. We look beyond the familiar to explore what an ingredient could become.",images:["patisserie","dessert"],alts:["A patisserie application illustrating ingredient creativity","A dessert with blueberries and syrup"]},
+  {id:"connections",topic:"Efficient supply chain",title:"Closer.\nAcross borders.",copy:"Innovation also means making ingredient sourcing and distribution more accessible, reliable and efficient for our business partners. We look for smarter practices that bring people and possibilities closer.",images:["coconut","coffee","fruit"],alts:["Coconut ingredients","Roasted coffee beans","A varied fruit portfolio"]},
+  {id:"collaboration",topic:"Customer-driven development",title:"It begins\nwith you.",copy:"Every business has different requirements. We explore flexible ingredient solutions that support our customers’ product development and business goals, beginning with a conversation about what matters to them.",images:["citrus","patisserie","tomato"],alts:["Ingredient inspiration for a beverage","Ingredient inspiration for bakery","Ingredient inspiration for culinary applications"]},
+]
+const applications = ["Beverage","Bakery","Culinary"]
+const future = [
+  ["Evolving preferences","Changing tastes and expectations invite a fresh look at the ingredients behind everyday food experiences."],
+  ["New applications","Familiar ingredients can inspire different formats, textures and uses. We explore possibilities with our customers’ requirements in mind."],
+  ["Smarter partnerships","Meaningful collaboration helps connect ingredient knowledge, dependable supply and the next business opportunity."],
 ]
 
-export function InnovationPage() {
+function Words({text, className=""}:{text:string;className?:string}) {
+  return <h2 className={className} aria-label={text.split("\n").join(" ")}>{text.split("\n").map((line,i)=><span className="iv-line" aria-hidden="true" key={i}>{line.split(" ").map((word,j)=><span className="iv-word-clip" key={j}><span className="iv-word">{word}</span>{j<line.split(" ").length-1?" ":null}</span>)}</span>)}</h2>
+}
+
+function sequence(section:HTMLElement, update:(p:number,w:number,h:number)=>void) {
+  let width=section.clientWidth,height=window.innerHeight
+  const state={progress:0}
+  const render=()=>{section.dataset.progress=state.progress.toFixed(4);update(state.progress,width,height)}
+  gsap.to(state,{progress:1,ease:"none",onUpdate:render,scrollTrigger:{
+    trigger:section,start:"top top",end:"bottom bottom",scrub:.65,invalidateOnRefresh:true,
+    onRefresh:()=>{width=section.clientWidth;height=window.innerHeight;render()},
+  }})
+  render()
+}
+const clamp=gsap.utils.clamp(0,1)
+function reveal(section:HTMLElement,p:number) {
+  const words=Array.from(section.querySelectorAll<HTMLElement>(".iv-word"))
+  words.forEach((word,i)=>{
+    const t=clamp((p-i*.025)/.24)
+    word.style.transform=`translate3d(0,${(1-t)*80}%,0) rotateX(${(1-t)*36}deg)`
+    word.style.opacity=String(.2+.8*t)
+  })
+  section.querySelectorAll<HTMLElement>("[data-iv-copy]").forEach((copy,i)=>{
+    const t=clamp((p-.12-i*.035)/.2)
+    copy.style.transform=`translate3d(0,${(1-t)*28}px,0)`
+    copy.style.opacity=String(.25+.75*t)
+  })
+}
+
+export function InnovationPage(){
   const page=useRef<HTMLDivElement>(null)
-  const journey=useRef<HTMLElement>(null)
   const reduce=useReducedMotion()
+  const [application,setApplication]=useState(0)
+
   useLayoutEffect(()=>{
-    const root=journey.current
+    if(reduce)return
+    const lenis=new Lenis({duration:1.1,smoothWheel:true,syncTouch:false,anchors:true})
+    const tick=(seconds:number)=>lenis.raf(seconds*1000)
+    lenis.on("scroll",ScrollTrigger.update)
+    gsap.ticker.add(tick)
+    return()=>{gsap.ticker.remove(tick);lenis.destroy()}
+  },[reduce])
+
+  useLayoutEffect(()=>{
+    const root=page.current
     if(!root||reduce)return
-    const tiles=Array.from(root.querySelectorAll<HTMLElement>(".innovation-tile"))
-    const intro=root.querySelector<HTMLElement>(".innovation-intro")
-    const end=root.querySelector<HTMLElement>(".innovation-resolution")
-    const spiral=root.querySelector<HTMLElement>(".innovation-spiral")
-    const state={progress:0}
-    const draw=()=>{
-      const p=state.progress,w=root.clientWidth,h=window.innerHeight
-      const unit=Math.min(w*.037,30),size=w<700?104:172
-      const morph=gsap.utils.clamp(0,1,(p-.48)/.43)
-      const blend=morph*morph*(3-2*morph)
-      root.dataset.progress=p.toFixed(4)
-      if(spiral)spiral.style.maskImage=p<.2?(w<700?"linear-gradient(180deg,#000,transparent 17%,transparent 58%,#000 75%)":"linear-gradient(90deg,transparent,transparent 43%,#000 68%)"):"none"
-      tiles.forEach((tile,i)=>{
-        const point=pixels[i],angle=i*.63-p*7.4
-        const radius=(90+i*19)*(1-p*.63)
-        const cx=w*(.7-.2*Math.min(1,p*2))
-        const spiralX=cx+Math.cos(angle)*radius
-        const spiralY=h*.52+Math.sin(angle)*radius*.72
-        const targetX=w/2+(point.x-11)*unit
-        const targetY=h*.5+(point.y-3)*unit
-        const x=spiralX+(targetX-spiralX)*blend,y=spiralY+(targetY-spiralY)*blend
-        const z=(-i*15+Math.sin(angle)*100)*(1-blend)
-        const scale=(.7+.16*Math.sin(angle))*(1-blend)+(unit/size*.87)*blend
-        tile.style.width=size+"px";tile.style.height=size+"px"
-        tile.style.transform=`translate3d(${x}px,${y}px,${z}px) translate(-50%,-50%) rotateX(${Math.sin(angle)*18*(1-blend)}deg) rotateY(${Math.cos(angle)*28*(1-blend)}deg) rotateZ(${Math.sin(angle)*12*(1-blend)}deg) scale(${scale})`
-        tile.style.opacity=String(.82+.18*blend)
-        tile.style.borderRadius=(12*(1-blend))+"px"
-      })
-      if(intro){intro.style.opacity=String(Math.max(0,1-p*4));intro.style.visibility=p>.28?"hidden":"visible"}
-      if(end){end.style.opacity=String(gsap.utils.clamp(0,1,(p-.84)/.12));end.style.transform=`translateY(${(1-blend)*24}px)`}
-    }
     const context=gsap.context(()=>{
-      gsap.to(state,{progress:1,ease:"none",onUpdate:draw,scrollTrigger:{trigger:root,start:"top top",end:"bottom bottom",scrub:.7,invalidateOnRefresh:true,onRefresh:draw}})
-      draw()
+      const hero=root.querySelector<HTMLElement>(".iv-origin")!
+      const tiles=Array.from(hero.querySelectorAll<HTMLElement>(".iv-tile"))
+      const intro=hero.querySelector<HTMLElement>(".iv-intro")!
+      const wordmark=hero.querySelector<HTMLElement>(".iv-wordmark")!
+      const resolution=hero.querySelector<HTMLElement>(".iv-resolution")!
+      const spiral=hero.querySelector<HTMLElement>(".iv-spiral")!
+      let previousSize=0
+      sequence(hero,(p,w,h)=>{
+        const size=w<700?190:300
+        if(previousSize!==size){tiles.forEach(tile=>{tile.style.width=size+"px";tile.style.height=size+"px"});previousSize=size}
+        const t=clamp((p-.43)/.43),m=t*t*(3-2*t)
+        const unit=Math.min(w*.86,1080)/23
+        spiral.style.maskImage=p<.16?(w<700?"linear-gradient(180deg,transparent 0%,transparent 46%,#000 68%)":"linear-gradient(90deg,transparent 0%,transparent 43%,#000 66%)"):"none"
+        tiles.forEach((tile,i)=>{
+          const a=i*.64-p*8.5,r=(40+i*22)*(1-p*.57)
+          const sx=w*(.76-.26*clamp(p*2.8))+Math.cos(a)*r
+          const sy=h*(w<700?.73:.57)+Math.sin(a)*r*.64
+          const tx=w/2+(pixels[i].x-11)*unit,ty=h*.46+(pixels[i].y-3)*unit
+          const scale=(i===0?1.5:.78+.15*Math.cos(a))*(1-m)+unit/size*.92*m
+          const z=(-i*18+Math.sin(a)*65+(i===0?160:0))*(1-m)
+          tile.style.transform=`translate3d(${sx+(tx-sx)*m}px,${sy+(ty-sy)*m}px,${z}px) translate(-50%,-50%) rotateX(${Math.sin(a)*15*(1-m)}deg) rotateY(${Math.cos(a)*25*(1-m)}deg) rotateZ(${Math.sin(a)*9*(1-m)}deg) scale(${scale})`
+          tile.style.opacity=String((i<5?1:clamp((p-.06)/.18))*(1-clamp((p-.86)/.1)))
+        })
+        intro.style.opacity=String(1-clamp(p/.19))
+        intro.style.transform=`translate3d(${-p*100}px,${-p*50}px,0)`
+        intro.style.visibility=p>.2?"hidden":"visible"
+        wordmark.style.opacity=String(clamp((p-.85)/.1))
+        wordmark.style.transform=`translate(-50%,-50%) scale(${.96+.04*clamp((p-.85)/.1)})`
+        resolution.style.opacity=String(clamp((p-.87)/.09))
+        resolution.style.transform=`translateY(${(1-clamp((p-.87)/.09))*24}px)`
+      })
+
+      gsap.fromTo(intro.children,{opacity:0,transform:"translate3d(0,28px,0)"},{opacity:1,transform:"translate3d(0,0,0)",duration:.85,stagger:.08,ease:"power3.out"})
+
+      const manifesto=root.querySelector<HTMLElement>(".iv-manifesto")!
+      const manifestoPictures=Array.from(manifesto.querySelectorAll<HTMLElement>(".iv-manifesto-photo"))
+      sequence(manifesto,(p,w)=>{
+        reveal(manifesto,p)
+        manifestoPictures.forEach((image,i)=>{image.style.transform=`translate3d(${(i===0?-1:1)*p*w*.08}px,${(1-p)*70}px,0) rotate(${(i===0?-1:1)*(5+p*8)}deg)`;image.style.opacity=String(.65+.35*p)})
+      })
+
+      root.querySelectorAll<HTMLElement>(".iv-pillar").forEach((section,index)=>{
+        const plates=Array.from(section.querySelectorAll<HTMLElement>(".iv-plate"))
+        sequence(section,(p,w)=>{
+          reveal(section,p)
+          const mobile=w<700
+          plates.forEach((plate,i)=>{
+            if(index===0){
+              const fan=(i-1)*(mobile?22:54)*clamp(p/.6)
+              plate.style.transform=`perspective(1100px) translate3d(${fan}px,${(1-clamp(p/.6))*70}px,${-i*35}px) rotateY(${(1-p)*(i-1)*24}deg) rotateZ(${(i-1)*(3+p*8)}deg) scale(${.88+.12*clamp(p/.6)})`
+            }else if(index===1){
+              plate.style.transform=`scale(${1.2-p*.2}) translate3d(${p*2}%,0,0)`
+            }else if(index===2){
+              plate.style.transform=`perspective(1000px) translate3d(0,${(i===0?1:-1)*(1-p)*90}px,${-(1-p)*140}px) rotateY(${(i===0?1:-1)*(1-p)*24}deg) rotateZ(${(i===0?-1:1)*(3+p*3)}deg)`
+            }else if(index===3){
+              const tileWidth=mobile?w*.72:w*.44
+              plate.style.width=tileWidth+"px"
+              plate.style.transform=`translate3d(${i*(tileWidth+24)-p*(mobile?w*1.45:w*.58)}px,${Math.sin(i+p)*16}px,0) rotateY(${(1-p)*7}deg)`
+            }else{
+              plate.style.transform=`perspective(1200px) translate3d(0,${(1-p)*60}px,0) rotateY(${(1-p)*-18}deg) rotateZ(${-5+p*5}deg) scale(${.92+p*.08})`
+            }
+          })
+        })
+      })
+
+      const action=root.querySelector<HTMLElement>(".iv-action")!
+      const frames=Array.from(action.querySelectorAll<HTMLElement>("figure"))
+      const actionImages=frames.map(frame=>frame.querySelector<HTMLElement>(".iv-action-image")!)
+      sequence(action,(p,w)=>{
+        reveal(action,p)
+        const mobile=w<700
+        frames.forEach((frame,i)=>{
+          if(mobile){
+            const step=p*2,d=Math.abs(i-step)
+            frame.style.transform="none"
+            frame.style.opacity="1"
+            actionImages[i].style.transform=`perspective(1000px) translate3d(${(i-step)*w*.55}px,${d*18}px,${-d*130}px) rotateY(${(i-step)*15}deg)`
+            actionImages[i].style.opacity=String(clamp(1-d*1.5))
+            const caption=frame.querySelector<HTMLElement>("figcaption")
+            if(caption)caption.style.visibility=i===Math.round(step)?"visible":"hidden"
+          }else{
+            actionImages[i].style.transform="none"
+            actionImages[i].style.opacity="1"
+            const caption=frame.querySelector<HTMLElement>("figcaption")
+            if(caption)caption.style.visibility="visible"
+            frame.style.transform=`perspective(1200px) translate3d(${(i-1)*(1-clamp(p/.7))*-w*.24}px,${(1-p)*(i+1)*35}px,${-(1-p)*i*90}px) rotateY(${(i-1)*(1-p)*28}deg) rotateZ(${(i-1)*(1-p)*7}deg)`
+            frame.style.opacity=String(.55+.45*p)
+          }
+        })
+      })
+
+      const next=root.querySelector<HTMLElement>(".iv-next")!
+      const rows=Array.from(next.querySelectorAll<HTMLElement>(".iv-next-row"))
+      sequence(next,(p,w)=>{
+        reveal(next,p)
+        rows.forEach((row,i)=>{
+          const t=clamp((p-i*.13)/.3)
+          row.style.opacity=String(.25+.75*t)
+          row.style.transform=`perspective(900px) translate3d(${(1-t)*(w<700?24:70)}px,0,0) rotateY(${(1-t)*-10}deg)`
+        })
+      })
+
+      const vision=root.querySelector<HTMLElement>(".iv-vision")!
+      const finalPhoto=vision.querySelector<HTMLElement>(".iv-final-photo")!
+      sequence(vision,(p)=>{
+        reveal(vision,p)
+        finalPhoto.style.transform=`perspective(1200px) rotateY(${(1-p)*-28}deg) rotateZ(${(1-p)*8}deg) scale(${.8+p*.2})`
+      })
     },root)
-    const frame=requestAnimationFrame(()=>ScrollTrigger.refresh())
-    return()=>{cancelAnimationFrame(frame);context.revert()}
+    let live=true
+    document.fonts.ready.then(()=>{if(live)ScrollTrigger.refresh()})
+    const refresh=requestAnimationFrame(()=>ScrollTrigger.refresh())
+    return()=>{live=false;cancelAnimationFrame(refresh);context.revert()}
   },[reduce])
-  useLayoutEffect(()=>{
-    if(reduce||!page.current)return
-    const context=gsap.context(()=>{
-      gsap.utils.toArray<HTMLElement>(".innovation-chapter").forEach(section=>{
-        const image=section.querySelector(".innovation-chapter__media")
-        if(image)gsap.fromTo(image,{transform:"perspective(1200px) rotateX(6deg) translateY(36px) scale(.96)"},{transform:"perspective(1200px) rotateX(0deg) translateY(-20px) scale(1)",ease:"none",scrollTrigger:{trigger:section,start:"top 90%",end:"bottom 20%",scrub:.6}})
-      })
-    },page)
-    return()=>context.revert()
-  },[reduce])
-  return <div ref={page} className="innovation-page" data-reduced={reduce}>
-    <section ref={journey} className="innovation-journey" aria-labelledby="innovation-title">
-      <div className="innovation-stage">
-        <div className="innovation-spiral" aria-hidden="true">{pixels.map((pixel,i)=><div className="innovation-tile" key={i}><img src={`/images/${photographs[i%photographs.length]}-480.webp`} alt="" decoding="async" loading={i<12?"eager":"lazy"}/></div>)}</div>
-        <div className="innovation-intro">
-          <p className="innovation-label">Innovation at LYCA</p>
-          <h1 id="innovation-title">Rethink food.<br/>Redefine possibility.</h1>
-          <p>Better ingredients. New perspectives.<br/>A world of possibilities, coming together.</p>
-          <a href="#innovation-approach" className="innovation-text-link">Explore our approach <ArrowUpRight size={20} aria-hidden="true"/></a>
+
+  return <div ref={page} className="iv-page" data-reduced={reduce}>
+    <section className="iv-origin iv-sequence" data-sequence="origin" aria-labelledby="innovation-title">
+      <div className="iv-stage">
+        <div className="iv-spiral" aria-hidden="true">{pixels.map((point,i)=><div className="iv-tile" key={i}><img src={`/images/${photos[i%photos.length]}-${i<5?"800":"480"}.webp`} alt="" decoding="async" loading={i<12?"eager":"lazy"}/></div>)}</div>
+        <div className="iv-intro">
+          <p className="iv-topic">Innovation at LYCA</p>
+          <h1 id="innovation-title">Beyond the<br/>ingredient.</h1>
+          <p>We source ingredients.<br/>We look for what they could become.</p>
+          <a href="#innovation-approach" className="iv-link">Enter the story <ArrowDown size={18}/></a>
         </div>
-        <div className="innovation-resolution"><p>Many possibilities. One LYCA.</p><span>Building better possibilities, one ingredient at a time.</span></div>
-        <span className="innovation-scroll-cue" aria-hidden="true">Scroll inward ↓</span>
+        <div className="iv-wordmark" aria-hidden="true">{photos.map(photo=><img key={photo} src={`/images/${photo}-480.webp`} alt="" loading="lazy"/>)}</div>
+        <div className="iv-resolution"><p>A world of possibility.<br/>Brought together.</p><span>LYCA Foods & Ingredients</span></div>
+        <div className="iv-hero-foot"><span>Rethinking food. Redefining possibilities.</span><span>Scroll inward <ArrowDown size={13}/></span></div>
       </div>
     </section>
-    <section id="innovation-approach" className="innovation-opening wrap">
-      <p className="innovation-label">Our perspective</p>
-      <h2>Innovation starts<br/>with a better question.</h2>
-      <div className="innovation-opening__body"><p>At LYCA Foods & Ingredients, innovation is more than introducing new products. It is about discovering better ways to source, deliver, develop and experience food ingredients.</p><p>We believe the future of the food industry lies in combining quality ingredients, evolving consumer needs, responsible sourcing and smarter business practices.</p></div>
+
+    <section id="innovation-approach" className="iv-manifesto iv-sequence" data-sequence="perspective" aria-label="Our innovation perspective">
+      <div className="iv-stage">
+        <div className="iv-manifesto-photo iv-manifesto-photo--left"><IngredientPhoto src="/images/berries.webp" alt="The colour and texture of raspberries" loading="lazy"/></div>
+        <div className="iv-manifesto-photo iv-manifesto-photo--right"><IngredientPhoto src="/images/citrus.webp" alt="Fresh citrus ingredient detail" loading="lazy"/></div>
+        <div className="iv-manifesto-copy">
+          <Words text={"One ingredient.\nMany futures."}/>
+          <div data-iv-copy><p>At LYCA, innovation is more than introducing new products. It is discovering better ways to source, deliver, develop and experience food ingredients.</p><p>Quality ingredients. Evolving consumer needs. Responsible sourcing. Smarter business practices. This is where our next chapter begins.</p></div>
+        </div>
+      </div>
     </section>
-    {pillars.map((pillar,index)=><section key={pillar.title} className={`innovation-chapter wrap innovation-chapter--${index+1}`}>
-      <div className="innovation-chapter__media"><IngredientPhoto src={`/images/${pillar.image}.webp`} alt={pillar.alt} loading="lazy"/><span>{pillar.detail}</span></div>
-      <div className="innovation-chapter__copy"><p className="innovation-label">{["Ingredient intelligence","Quality through innovation","Exploring new possibilities","Efficient supply chain","Customer-driven development"][index]}</p><h2>{pillar.title}</h2><p>{pillar.copy}</p>{index===4&&<Link to="/enquiry" className="innovation-text-link">Share your brief <ArrowUpRight size={18} aria-hidden="true"/></Link>}</div>
+
+    {pillars.map((pillar,index)=><section key={pillar.id} id={`innovation-${pillar.id}`} className={`iv-pillar iv-pillar--${pillar.id} iv-sequence`} data-sequence={pillar.id} aria-label={pillar.topic}>
+      <div className="iv-stage">
+        <div className="iv-art" aria-hidden={index===4?undefined:true}>
+          {pillar.images.map((image,i)=><div key={image} className="iv-plate" data-choice={index===4?application===i:undefined} aria-hidden={index===4?application!==i:undefined}><IngredientPhoto src={`/images/${image}.webp`} alt={pillar.alts[i]} loading="lazy" sizes={index===1?"100vw":"(max-width:700px) 90vw, 60vw"}/></div>)}
+        </div>
+        {index===1&&<div className="iv-photo-scrim" aria-hidden="true"/>}
+        <div className="iv-scene-copy">
+          <p className="iv-topic" data-iv-copy>{pillar.topic}</p>
+          <Words text={pillar.title}/>
+          <p className="iv-body" data-iv-copy>{pillar.copy}</p>
+          {index===4&&<div className="iv-brief" data-iv-copy>
+            <fieldset><legend>I’m creating something for…</legend><div>{applications.map((label,i)=><button type="button" key={label} aria-pressed={application===i} onClick={()=>setApplication(i)}>{label}</button>)}</div></fieldset>
+            <Link className="iv-link" to={`/enquiry?product=${encodeURIComponent(applications[application]+" application")}`}>Start your brief <ArrowUpRight size={18}/></Link>
+          </div>}
+        </div>
+        <a className="iv-scene-next" href={index<4?`#innovation-${pillars[index+1].id}`:"#innovation-in-action"} aria-label={`Continue from ${pillar.topic}`}><ArrowDown size={16}/></a>
+      </div>
     </section>)}
-    <section className="innovation-action wrap"><div className="innovation-action__heading"><p className="innovation-label">Innovation in action</p><h2>A closer look<br/>at possibility.</h2><p>Ingredient character, application and sourcing are connected. These are the starting points for better conversations and new product ideas.</p></div>
-      <div className="innovation-action__images">{[["mango","Explore ingredient character"],["powder","Consider colour and texture"],["dessert","Imagine a new application"]].map(([image,caption])=><figure key={image}><IngredientPhoto src={`/images/${image}.webp`} alt={caption} loading="lazy"/><figcaption>{caption}</figcaption></figure>)}</div>
+
+    <section id="innovation-in-action" className="iv-action iv-sequence" data-sequence="action" aria-label="Innovation in action">
+      <div className="iv-stage">
+        <div className="iv-action-heading"><p className="iv-topic" data-iv-copy>Innovation in action</p><Words text={"See it.\nImagine it."}/><p className="iv-body" data-iv-copy>Ingredient character, sourcing and application are connected. A closer look can be the beginning of a new idea.</p></div>
+        <div className="iv-action-gallery">{[["mango","Character","Explore what makes an ingredient distinct."],["powder","Texture","Consider colour, consistency and form."],["dessert","Application","Imagine a different food experience."]].map(([image,title,copy])=><figure key={image}><div className="iv-action-image"><IngredientPhoto src={`/images/${image}.webp`} alt={`${title}: ${copy}`} loading="lazy"/></div><figcaption><h3>{title}</h3><p>{copy}</p></figcaption></figure>)}</div>
+      </div>
     </section>
-    <section className="innovation-next wrap"><p className="innovation-label">What’s next?</p><h2>Stay curious.<br/>Look further.</h2><div>{[["Evolving preferences","Changing tastes and expectations invite a fresh look at the ingredients behind everyday food experiences."],["New applications","Familiar ingredients can inspire different formats, textures and uses. We explore possibilities with our customers’ requirements in mind."],["Smarter partnerships","Meaningful collaboration helps connect ingredient knowledge, dependable supply and the next business opportunity."]].map(([title,copy])=><article key={title}><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
-    <section className="innovation-vision"><div className="wrap"><p className="innovation-label">Our vision for the future</p><h2>Innovation that<br/>nourishes tomorrow.</h2><p>We aspire to contribute to a smarter, more sustainable and opportunity-driven food industry by bringing together innovative ideas, dependable ingredients and meaningful partnerships.</p><Link to="/enquiry" className="innovation-cta">Let’s innovate together <ArrowUpRight size={20} aria-hidden="true"/></Link><span className="innovation-signature">LYCA Foods & Ingredients — Building better possibilities, one ingredient at a time.</span></div></section>
+
+    <section className="iv-next iv-sequence" data-sequence="future" aria-label="What comes next">
+      <div className="iv-stage">
+        <div className="iv-next-heading"><p className="iv-topic" data-iv-copy>What’s next?</p><Words text={"Stay curious.\nLook further."}/><p className="iv-body" data-iv-copy>The next opportunity starts with the questions we are willing to ask.</p></div>
+        <div className="iv-next-rows">{future.map(([title,copy])=><article className="iv-next-row" key={title}><h3>{title}</h3><p>{copy}</p></article>)}</div>
+      </div>
+    </section>
+
+    <section className="iv-vision iv-sequence" data-sequence="vision" aria-label="Our vision for the future">
+      <div className="iv-stage">
+        <div className="iv-final-photo"><IngredientPhoto src="/images/fruit.webp" alt="A world of fruit ingredients and future possibilities" loading="lazy"/></div>
+        <div className="iv-vision-copy"><p className="iv-topic" data-iv-copy>Our vision for the future</p><Words text={"Nourish\ntomorrow."}/><p className="iv-body" data-iv-copy>We aspire to contribute to a smarter, more sustainable and opportunity-driven food industry, bringing together innovative ideas, dependable ingredients and meaningful partnerships.</p><Link className="iv-cta" data-iv-copy to="/enquiry">Let’s innovate together <ArrowUpRight size={20}/></Link></div>
+        <p className="iv-signature" data-iv-copy>Building better possibilities, one ingredient at a time.</p>
+      </div>
+    </section>
+    <nav className="iv-chapter-nav" aria-label="Innovation chapters"><a href="#innovation-approach">Perspective</a><a href="#innovation-sourcing">Ingredients</a><a href="#innovation-collaboration">Your idea</a><a href="#innovation-in-action">In action</a></nav>
   </div>
 }
