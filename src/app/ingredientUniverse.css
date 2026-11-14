@@ -2,6 +2,7 @@
 .ingredient-universe__stage{position:sticky;top:0;height:100svh;min-height:680px;overflow:hidden}
 .ingredient-universe__layout{height:100%;display:flex;flex-direction:column;padding-top:128px;padding-bottom:20px}
 .ingredient-universe__field{position:relative;flex:1;min-height:0;isolation:isolate;overflow:hidden}
+.ingredient-universe__webgl{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.82}
 .ingredient-universe__centre{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(440px,58%);height:236px;text-align:center;pointer-events:none;z-index:1}
 .ingredient-universe__story{position:absolute;top:50%;left:0;right:0;transform:translateY(calc(-50% + 12px));visibility:hidden;opacity:0;transition:opacity .3s var(--ease-film),transform .4s var(--ease-film)}
 .ingredient-universe__story[data-active=true]{visibility:visible;opacity:1;transform:translateY(-50%)}

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type CSSProperties } from "react"
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react"
 import { Link } from "react-router"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
 import gsap from "gsap"
@@ -51,6 +51,7 @@ const stories = [
 export function IngredientUniverse() {
   const root = useRef<HTMLElement>(null)
   const field = useRef<HTMLDivElement>(null)
+  const webgl = useRef<HTMLCanvasElement>(null)
   const trigger = useRef<ScrollTrigger | null>(null)
   const draw = useRef<(progress: number) => void>(() => {})
   const progress = useRef(0)
@@ -71,6 +72,133 @@ export function IngredientUniverse() {
     observer.observe(element)
     return () => observer.disconnect()
   }, [])
+
+  useEffect(() => {
+    const canvas = webgl.current
+    if (!canvas || reduce || !size.width || !size.height) return
+    const gl = canvas.getContext("webgl", { alpha: true, antialias: false, powerPreference: "low-power" })
+    if (!gl) return
+    const compile = (type: number, source: string) => {
+      const shader = gl.createShader(type)
+      if (!shader) return null
+      gl.shaderSource(shader, source)
+      gl.compileShader(shader)
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        gl.deleteShader(shader)
+        return null
+      }
+      return shader
+    }
+    const vertex = compile(gl.VERTEX_SHADER, "attribute vec2 position; varying vec2 uv; void main(){uv=position*.5+.5;gl_Position=vec4(position,0.,1.);}")
+    const fragment = compile(gl.FRAGMENT_SHADER, `precision highp float;
+      varying vec2 uv;
+      uniform vec2 resolution;
+      uniform float time;
+      uniform float scroll;
+      float hash(float n){return fract(sin(n*127.1)*43758.5453);}
+      void main(){
+        vec2 p=(uv-.5)*vec2(resolution.x/resolution.y,1.);
+        float t=time*.12+scroll*1.35;
+        float angle=atan(p.y,p.x);
+        float radius=length(p);
+        float warp=sin(angle*3.+t)*.018+sin(angle*7.-t*.7)*.009;
+        float d1=abs(radius-(.29+warp));
+        float d2=abs(radius-(.47+sin(angle*2.-t*.55)*.016));
+        float d3=abs(radius-(.66+sin(angle*4.+t*.38)*.022));
+        float filament=abs(sin(angle*5.+radius*19.-t*.8));
+        vec3 color=vec3(.20,.92,.68)*(exp(-d1*34.)*.07+exp(-d1*180.)*.12);
+        color+=vec3(.66,.38,.96)*(exp(-d2*32.)*.055+exp(-d2*170.)*.1);
+        color+=vec3(1.,.61,.35)*(exp(-d3*28.)*.04+exp(-d3*150.)*.08);
+        color+=vec3(.37,.69,1.)*filament*exp(-abs(radius-.49)*90.)*.025;
+        float alpha=max(max(color.r,color.g),color.b);
+        for(int i=0;i<16;i++){
+          float n=float(i);
+          float a=hash(n+2.)*6.28318+t*(.16+hash(n+8.)*.12);
+          float r=.22+hash(n+19.)*.48;
+          vec2 dotPosition=vec2(cos(a),sin(a))*r;
+          float d=length(p-dotPosition);
+          float glow=exp(-d*190.)*.045;
+          float core=exp(-d*760.)*.2;
+          vec3 tint=mix(vec3(.30,.95,.72),vec3(.81,.53,1.),hash(n+32.));
+          color+=tint*(glow+core);
+          alpha=max(alpha,glow+core);
+        }
+        alpha=clamp(alpha*.72,0.,.34);
+        gl_FragColor=vec4(color*alpha,alpha);
+      }`)
+    if (!vertex || !fragment) {
+      if (vertex) gl.deleteShader(vertex)
+      if (fragment) gl.deleteShader(fragment)
+      return
+    }
+    const program = gl.createProgram()
+    if (!program) {
+      gl.deleteShader(vertex)
+      gl.deleteShader(fragment)
+      return
+    }
+    gl.attachShader(program, vertex)
+    gl.attachShader(program, fragment)
+    gl.linkProgram(program)
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      gl.deleteProgram(program)
+      gl.deleteShader(vertex)
+      gl.deleteShader(fragment)
+      return
+    }
+    const buffer = gl.createBuffer()
+    if (!buffer) {
+      gl.deleteProgram(program)
+      gl.deleteShader(vertex)
+      gl.deleteShader(fragment)
+      return
+    }
+    const ratio = Math.min(window.devicePixelRatio || 1, 1.5)
+    canvas.width = Math.round(size.width * ratio)
+    canvas.height = Math.round(size.height * ratio)
+    gl.viewport(0, 0, canvas.width, canvas.height)
+    gl.useProgram(program)
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW)
+    const position = gl.getAttribLocation(program, "position")
+    gl.enableVertexAttribArray(position)
+    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0)
+    const resolution = gl.getUniformLocation(program, "resolution")
+    const time = gl.getUniformLocation(program, "time")
+    const scroll = gl.getUniformLocation(program, "scroll")
+    gl.uniform2f(resolution, canvas.width, canvas.height)
+    gl.enable(gl.BLEND)
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
+    gl.clearColor(0, 0, 0, 0)
+    let frame = 0
+    let visible = false
+    const render = (now: number) => {
+      frame = 0
+      if (!visible) return
+      gl.clear(gl.COLOR_BUFFER_BIT)
+      gl.uniform1f(time, now / 1000)
+      gl.uniform1f(scroll, progress.current)
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
+      frame = requestAnimationFrame(render)
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting
+      if (visible && !frame) frame = requestAnimationFrame(render)
+      if (!visible && frame) {
+        cancelAnimationFrame(frame)
+        frame = 0
+      }
+    }, { rootMargin: "100px" })
+    observer.observe(canvas)
+    return () => {
+      observer.disconnect()
+      if (frame) cancelAnimationFrame(frame)
+      gl.deleteBuffer(buffer)
+      gl.deleteProgram(program)
+      gl.deleteShader(vertex)
+      gl.deleteShader(fragment)
+    }
+  }, [reduce, size.width, size.height])
 
   useLayoutEffect(() => {
     const element = root.current
@@ -157,6 +285,7 @@ export function IngredientUniverse() {
     <div className="ingredient-universe__stage">
       <div className="ingredient-universe__layout wrap">
         <div ref={field} className="ingredient-universe__field">
+          <canvas ref={webgl} className="ingredient-universe__webgl" aria-hidden="true" />
           <div className="ingredient-universe__centre">
             {stories.map((story, index) => <div key={story.title} className="ingredient-universe__story"
               data-active={chapter === index} aria-hidden={!reduce && chapter !== index}>
