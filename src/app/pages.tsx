@@ -81,7 +81,6 @@ export function HomePage() {
       <div><p className="eyebrow reveal">CLOSE TO YOUR WORLD</p><Kinetic text="A world of ingredients." accent="A local conversation." /></div>
       <div className="global-cinema__details reveal">
         <div className="global-stats"><CountUp to={7} label="Ingredient families" /><CountUp to={6} label="Country locations" /><CountUp to={3} label="Sourcing regions" /></div>
-        <div className="market-line"><Globe2 size={22} /><span>Middle East · Africa · India · Sri Lanka</span></div>
         <ButtonLink to="/network" variant="text">Find your LYCA connection</ButtonLink>
       </div>
     </section>
