@@ -74,7 +74,7 @@ export function Footer() {
     <div className="footer-grid"><div className="footer-brand"><Link className="footer-wordmark" to="/">LYCA.</Link><p>From fruit and cocoa to dairy and colour, we connect food and beverage makers with ingredients for their next creation.</p></div>
       <div><h3>Explore</h3>{[...links, ["Enquiries", "/enquiry"] as const].map(([name, path]) => <Link key={path} to={path}>{name}</Link>)}</div>
       <div><h3>Ingredient Portfolio</h3>{categories.slice(0, 5).map(cat => <Link key={cat.id} to={`/products#${cat.id}`}>{cat.shortTitle}</Link>)}<Link to="/products">View all ingredients <ArrowRight size={13} /></Link></div>
-      <div><h3>Let's talk</h3><a href="mailto:sales@lycafoods.com">sales@lycafoods.com</a><a href="mailto:customerservice@lycafoods.com">customerservice@lycafoods.com</a><p>Sharjah · Kuwait City · India<br/>Cairo · Dar es Salaam · Nittambuwa</p></div>
+      <div><h3>Let's talk</h3><a href="mailto:sales@lycafoods.com">sales@lycafoods.com</a><a href="mailto:customerservice@lycafoods.com">customerservice@lycafoods.com</a><h3>Our locations</h3><p>United Arab Emirates<br/>Kuwait<br/>India<br/>Egypt<br/>Tanzania<br/>Sri Lanka</p></div>
     </div><div className="footer-bottom"><span>© {new Date().getFullYear()} LYCA Food Ingredients Supplies. All rights reserved.</span><div><Link to="/privacy">Privacy Policy</Link><Link to="/terms">Terms of Use</Link><span>Made for global trade</span></div></div>
   </div></footer>
 }
