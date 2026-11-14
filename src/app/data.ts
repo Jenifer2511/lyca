@@ -17,7 +17,7 @@ const images = {
   mango: "/images/mango.webp",
   coconut: "/images/coconut.webp",
   coffee: "/images/coffee.webp",
-  dairy: "/images/dairy.webp",
+  dairy: "https://i.pinimg.com/736x/8c/d0/e5/8cd0e5951721bc7364a8f0b187ca0ef7.jpg",
   berries: "/images/berries.webp",
   powder: "/images/powder.webp",
   colors: "/images/colors.webp",
