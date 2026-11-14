@@ -40,6 +40,7 @@ const families = [
   ] },
 ]
 
+const bubbleLabels = ["Juice & Fruit Ingredients", "Coconut Products", "Coffee & Cocoa", "Dairy Ingredients", "Fruit Preparations", "Spray-Dried Powders", "Food Colors"]
 const tints = ["255 151 119", "130 228 185", "229 171 112", "147 210 255", "242 143 201", "192 163 255", "104 225 218"]
 const bubbleSizes = [136, 120, 112, 144, 128, 112, 128]
 const stories = [
@@ -303,10 +304,10 @@ export function IngredientUniverse() {
                 data-shown={shown} data-family={categories[familyIndex].id} data-family-index={familyIndex} data-item-index={itemIndex} data-diameter={diameter}
                 style={{ width: diameter, height: diameter, "--bubble-tint": tints[familyIndex] } as CSSProperties}>
                 <Link className="ingredient-universe__ingredient title-3" tabIndex={shown ? 0 : -1}
-                  aria-label={`Enquire about ${label}`} to={`/enquiry?category=${encodeURIComponent(categories[familyIndex].title)}&product=${encodeURIComponent(product)}`}>
+                  aria-label={`Enquire about ${bubbleLabels[familyIndex]}`} to={`/enquiry?category=${encodeURIComponent(categories[familyIndex].title)}&product=${encodeURIComponent(product)}`}>
                   <span className="ingredient-universe__bubble">
                     <span className="ingredient-universe__rim" aria-hidden="true" />
-                    <span className="ingredient-universe__label">{product}<span className="ingredient-universe__arrow" aria-hidden="true">↗</span></span>
+                    <span className="ingredient-universe__label">{bubbleLabels[familyIndex]}<span className="ingredient-universe__arrow" aria-hidden="true">↗</span></span>
                   </span>
                 </Link>
               </div>
