@@ -19,7 +19,7 @@ const enquiryUrl = (category: string, product?: string) =>
 
 const process = [
   { n: "01", title: "Share your brief", copy: "Tell us the product, application, specification and target market." },
-  { n: "02", title: "Match ingredients", copy: "We align your needs with options across seven ingredient families." },
+  { n: "02", title: "Match ingredients", copy: "We align your needs with options across your ingredient families." },
   { n: "03", title: "Connect regionally", copy: "Your enquiry reaches the team closest to where you do business." },
   { n: "04", title: "Move forward", copy: "Discuss suitability, quantities and commercial terms directly." },
 ]
