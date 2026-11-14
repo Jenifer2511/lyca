@@ -22,7 +22,6 @@ body{background:var(--bg)}
 .product-category__hero{border-radius:8px;border:1px solid #d4bc8745}
 .product-category__hero>img{object-position:70% 45%;filter:none}
 .product-category__hero:after{background:linear-gradient(90deg,#100b23f5 0%,#160f2bd9 36%,#1d10314d 72%,#1b0d3020)}
-.ingredient-provenance{position:absolute;right:24px;top:22px;z-index:2;font-size:8px;letter-spacing:.14em;color:#f7ecd5;border:1px solid #d4bc8755;padding:8px 12px;background:#160e2bd9;max-width:calc(100% - 48px)}
 .industry-card__image img{object-position:50% 50%}
 .industry-card:nth-child(5) .industry-card__image img{object-position:50% 77%}
 .industry-card:nth-child(6) .industry-card__image img{object-position:50% 58%}
@@ -61,7 +60,6 @@ body{background:var(--bg)}
  .atelier{padding-block:25px 65px}.atelier-intro{display:block;margin-bottom:28px;padding-top:22px}.atelier-intro h2{font-size:40px}.atelier-intro>p:last-child{font-size:12px;margin-top:22px;max-width:300px}
  .atelier-layout{grid-template-columns:minmax(0,1fr);gap:26px}.atelier-menu{display:grid;grid-template-columns:1fr 1fr;gap:0 15px;border:0}.atelier-menu button{font-size:11px;gap:9px;padding:13px 8px;min-height:58px;border-top:1px solid var(--line);border-bottom:0}.atelier-menu button svg{width:14px}.atelier-index{font-size:8px}
  .atelier-photograph{height:380px;border-radius:180px 180px 6px 6px}.atelier-caption{min-height:110px;gap:15px}.atelier-caption p{font-size:8px}.atelier-caption span{font-size:11px}.atelier-caption>a{width:42px;height:42px}
- .ingredient-provenance{top:15px;right:18px;font-size:7px;max-width:calc(100% - 36px);padding:6px 8px}
  .product-category__hero>div{padding-top:70px}.product-category__hero:after{background:linear-gradient(90deg,#120b23e8,#170e2ab3 60%,#1a103375)}
  .page-hero__visual{padding:5px}
 }
