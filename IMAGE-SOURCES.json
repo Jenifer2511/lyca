@@ -159,7 +159,7 @@
   },
   {
     "asset": "/images/selected/dairy-ingredients.jpg",
-    "description": "Dairy Ingredients \u2014 user-selected reference image",
+    "description": "Dairy Ingredients — user-selected reference image",
     "provider": "User-selected Pinterest reference",
     "source_page": "https://www.pinterest.com/pin/1136877499682520476/",
     "original_url": "https://i.pinimg.com/originals/2d/a2/c1/2da2c1ea2a1d6b7f073d2b1b1750659c.jpg",
@@ -172,7 +172,7 @@
   },
   {
     "asset": "/images/selected/dried-fruit.jpg",
-    "description": "Spray-Dried Powders \u2014 user-selected reference image",
+    "description": "Assorted dried fruit ingredients, supplied as a reference by the user; native 4740 × 3121 source",
     "provider": "User-selected Pinterest reference",
     "source_page": "https://www.pinterest.com/pin/423831014947019433/",
     "original_url": "https://i.pinimg.com/originals/33/60/07/336007c56746a2b9b410f56321bb1215.jpg",
@@ -181,11 +181,15 @@
       3121
     ],
     "sha256": "d41b202ddc15b797c948d8d71605fd76aab71d6d8b58d9f186c75409d5a34fe0",
-    "license": "Not specified by the supplied reference"
+    "license": "Not specified by the supplied reference",
+    "placements": [
+      "Spray-Dried Powders category",
+      "Our Company ingredient sourcing story"
+    ]
   },
   {
     "asset": "/images/selected/culinary-sauces.jpg",
-    "description": "Culinary & sauces \u2014 user-selected reference image",
+    "description": "Culinary & sauces — user-selected reference image",
     "provider": "User-selected Pinterest reference",
     "source_page": "https://www.pinterest.com/pin/550776229450943270/",
     "original_url": "https://i.pinimg.com/originals/45/24/67/4524678600310df92c5e7802ecad3d79.jpg",
@@ -198,7 +202,7 @@
   },
   {
     "asset": "/images/selected/global-network.jpg",
-    "description": "Global Network hero \u2014 user-selected reference image",
+    "description": "Global Network hero — user-selected reference image",
     "provider": "User-selected Pinterest reference",
     "source_page": "https://www.pinterest.com/pin/1096978421770090336/",
     "original_url": "https://i.pinimg.com/originals/76/82/56/7682562808a4957fe656130e73b5c701.jpg",
@@ -208,5 +212,18 @@
     ],
     "sha256": "8659ccb566390bbadc3f4586008b6de3624ec124c934c02d38fb0e61dcf28b25",
     "license": "Not specified by the supplied reference"
+  },
+  {
+    "asset": "/images/selected/fruit-preparations.jpg",
+    "description": "Blueberries, yoghurt and granola illustrating a fruit preparation application",
+    "provider": "Unsplash food and drink Pinterest board",
+    "source_page": "https://www.pinterest.com/pin/e1_AfqPShwZNL07SLonFLeOHbhFTLc5EDs6t0h_AmD8eRwFVcP2igc-/",
+    "original_url": "https://i.pinimg.com/originals/11/c9/41/11c94128412566317e7aab8773d4acbf.jpg",
+    "dimensions": [
+      900,
+      600
+    ],
+    "sha256": "f9771aeb535e3095ebe9aa9ab3f95b4c6b171148a8fdac7162634c3602d51267",
+    "license": "Not specified by the source pin"
   }
 ]

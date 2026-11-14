@@ -7,13 +7,14 @@ export type Category = {
   image: string
   imageAlt: string
   imageCaption: string
-  imageFit?: "cover" | "contain"
   groups: ProductGroup[]
   note?: string
 }
 
 const images = {
   fruit: "/images/fruit.webp",
+  companyStory: "/images/selected/dried-fruit.jpg",
+  fruitPreparations: "/images/selected/fruit-preparations.jpg",
   dairyIngredients: "/images/selected/dairy-ingredients.jpg",
   sprayDriedPowders: "/images/selected/dried-fruit.jpg",
   culinarySauces: "/images/selected/culinary-sauces.jpg",
@@ -166,7 +167,6 @@ export const categories: Category[] = [
     image: images.dairyIngredients,
     imageAlt: "Milk bottles, yoghurt, cheese, butter and milk powder arranged on a wooden board",
     imageCaption: "DAIRY / TEXTURE & RICHNESS",
-    imageFit: "contain",
     groups: [
       {
         name: "Dairy Range",
@@ -191,8 +191,8 @@ export const categories: Category[] = [
     shortTitle: "Fruit Preparations",
     description:
       "Fruit preparations developed for integration across a wide range of finished food and beverage formats.",
-    image: images.berries,
-    imageAlt: "Raspberries reflected on a black surface",
+    image: images.fruitPreparations,
+    imageAlt: "Blueberries, granola and yoghurt illustrating a fruit preparation application",
     imageCaption: "FRUIT PREPARATIONS / FLAVOUR & TEXTURE",
     groups: [
       {
@@ -217,7 +217,6 @@ export const categories: Category[] = [
     image: images.sprayDriedPowders,
     imageAlt: "An assortment of dried berries, banana, kiwi and other sliced fruits",
     imageCaption: "FRUIT & SPECIALTY POWDERS / SOURCE FRUIT",
-    imageFit: "contain",
     groups: [
       {
         name: "Fruit Powders",
@@ -267,8 +266,8 @@ export const categories: Category[] = [
     shortTitle: "Food Colours",
     description:
       "A varied palette of plant-derived colour ingredients for food and beverage product development.",
-    image: "https://images.pexels.com/photos/31280796/pexels-photo-31280796.jpeg",
-    imageAlt: "Colorful Indian spices arranged in bowls on a textured dark surface.",
+    image: images.colors,
+    imageAlt: "Dried hibiscus petals, a botanical source in the natural food colour range",
     imageCaption: "HIBISCUS / COLOUR FROM NATURE",
     groups: [
       {

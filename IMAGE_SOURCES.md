@@ -19,3 +19,7 @@ The four photographs on the minimal Innovation page were supplied by the user in
 ## User-selected replacement images
 
 The Dairy Ingredients banner, Spray-Dried Powders banner, Culinary & sauces card and Global Network hero use the exact matching Pinterest originals, downloaded without resizing or recompression. Their source URLs, original dimensions and file checksums are recorded in `IMAGE-SOURCES.json`. They are served locally, preserve the full frame and do not require Pinterest access at runtime.
+
+## Consistent ingredient panels and company story
+
+All seven portfolio categories use one panel layout and landscape photo frame. The fruit preparation application photo is stored locally as `selected/fruit-preparations.jpg`; its Pinterest source is recorded in `IMAGE-SOURCES.json`. The company story now uses the user-selected dried fruit assortment at its native 4740 × 3121 resolution, without enlargement or a dark overlay. On Home, the opening coconut hero is retained; the subsequent collection features coffee and the later atelier starts with dairy.
