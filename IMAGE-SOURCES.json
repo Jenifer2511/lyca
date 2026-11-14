@@ -156,5 +156,57 @@
     "source_archive": "WhatsApp Unknown 2026-11-03 at 12.41.36.zip",
     "original_filename": "WhatsApp Image 2026-11-03 at 12.23.58 (1).jpeg",
     "notes": "Original bytes preserved. Illustrative research imagery; not verified as LYCA facilities. No licence or certification claim is made."
+  },
+  {
+    "asset": "/images/selected/dairy-ingredients.jpg",
+    "description": "Dairy Ingredients \u2014 user-selected reference image",
+    "provider": "User-selected Pinterest reference",
+    "source_page": "https://www.pinterest.com/pin/1136877499682520476/",
+    "original_url": "https://i.pinimg.com/originals/2d/a2/c1/2da2c1ea2a1d6b7f073d2b1b1750659c.jpg",
+    "dimensions": [
+      1024,
+      768
+    ],
+    "sha256": "8ac07f196c1fd0a2ab80cc1b328584861fc249a77b01cd3f14d26d77ef5f952b",
+    "license": "Not specified by the supplied reference"
+  },
+  {
+    "asset": "/images/selected/dried-fruit.jpg",
+    "description": "Spray-Dried Powders \u2014 user-selected reference image",
+    "provider": "User-selected Pinterest reference",
+    "source_page": "https://www.pinterest.com/pin/423831014947019433/",
+    "original_url": "https://i.pinimg.com/originals/33/60/07/336007c56746a2b9b410f56321bb1215.jpg",
+    "dimensions": [
+      4740,
+      3121
+    ],
+    "sha256": "d41b202ddc15b797c948d8d71605fd76aab71d6d8b58d9f186c75409d5a34fe0",
+    "license": "Not specified by the supplied reference"
+  },
+  {
+    "asset": "/images/selected/culinary-sauces.jpg",
+    "description": "Culinary & sauces \u2014 user-selected reference image",
+    "provider": "User-selected Pinterest reference",
+    "source_page": "https://www.pinterest.com/pin/550776229450943270/",
+    "original_url": "https://i.pinimg.com/originals/45/24/67/4524678600310df92c5e7802ecad3d79.jpg",
+    "dimensions": [
+      1440,
+      960
+    ],
+    "sha256": "90ee4b2b1671670cbc067058131ced89fc7b22049036c691e690b1ea33474b14",
+    "license": "Not specified by the supplied reference"
+  },
+  {
+    "asset": "/images/selected/global-network.jpg",
+    "description": "Global Network hero \u2014 user-selected reference image",
+    "provider": "User-selected Pinterest reference",
+    "source_page": "https://www.pinterest.com/pin/1096978421770090336/",
+    "original_url": "https://i.pinimg.com/originals/76/82/56/7682562808a4957fe656130e73b5c701.jpg",
+    "dimensions": [
+      735,
+      490
+    ],
+    "sha256": "8659ccb566390bbadc3f4586008b6de3624ec124c934c02d38fb0e61dcf28b25",
+    "license": "Not specified by the supplied reference"
   }
 ]

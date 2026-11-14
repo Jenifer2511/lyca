@@ -15,3 +15,7 @@ Photography supplied with the original project, served locally for reliable load
 ## Innovation research imagery
 
 The four photographs on the minimal Innovation page were supplied by the user in `WhatsApp Unknown 2026-11-03 at 12.41.36.zip`. Original image bytes and proportions are preserved, including the stock watermark on the testing photograph. The images illustrate research and ingredient development; they are not identified as verified LYCA premises or evidence of certification. Exact archive filenames are recorded in `IMAGE-SOURCES.json`.
+
+## User-selected replacement images
+
+The Dairy Ingredients banner, Spray-Dried Powders banner, Culinary & sauces card and Global Network hero use the exact matching Pinterest originals, downloaded without resizing or recompression. Their source URLs, original dimensions and file checksums are recorded in `IMAGE-SOURCES.json`. They are served locally, preserve the full frame and do not require Pinterest access at runtime.

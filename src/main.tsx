@@ -8,6 +8,7 @@ import "./palette.css"
 import "./editorial.css"
 import "./performance.css"
 import "./aurora.css"
+import "./image-layouts.css"
 
 
 

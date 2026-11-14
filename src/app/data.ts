@@ -7,12 +7,17 @@ export type Category = {
   image: string
   imageAlt: string
   imageCaption: string
+  imageFit?: "cover" | "contain"
   groups: ProductGroup[]
   note?: string
 }
 
 const images = {
   fruit: "/images/fruit.webp",
+  dairyIngredients: "/images/selected/dairy-ingredients.jpg",
+  sprayDriedPowders: "/images/selected/dried-fruit.jpg",
+  culinarySauces: "/images/selected/culinary-sauces.jpg",
+  globalNetwork: "/images/selected/global-network.jpg",
   citrus: "/images/citrus.webp",
   mango: "/images/mango.webp",
   coconut: "/images/coconut.webp",
@@ -158,9 +163,10 @@ export const categories: Category[] = [
     shortTitle: "Dairy Ingredients",
     description:
       "A structured range for dairy, beverage, bakery, nutrition, dessert, and prepared food applications.",
-    image: "https://images.pexels.com/photos/25482773/pexels-photo-25482773.jpeg",
-    imageAlt: "A glass jar of milk on a wooden surface against a black background.",
+    image: images.dairyIngredients,
+    imageAlt: "Milk bottles, yoghurt, cheese, butter and milk powder arranged on a wooden board",
     imageCaption: "DAIRY / TEXTURE & RICHNESS",
+    imageFit: "contain",
     groups: [
       {
         name: "Dairy Range",
@@ -208,9 +214,10 @@ export const categories: Category[] = [
     shortTitle: "Spray-Dried Powders",
     description:
       "Fruit, specialty, and natural colour powders presented in an easy-to-browse ingredient collection.",
-    image: "https://images.pexels.com/photos/7176645/pexels-photo-7176645.jpeg",
-    imageAlt: "Fresh fruit and vivid colour powders arranged on patterned textile.",
+    image: images.sprayDriedPowders,
+    imageAlt: "An assortment of dried berries, banana, kiwi and other sliced fruits",
     imageCaption: "FRUIT & SPECIALTY POWDERS / SOURCE FRUIT",
+    imageFit: "contain",
     groups: [
       {
         name: "Fruit Powders",

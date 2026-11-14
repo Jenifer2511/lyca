@@ -1,5 +1,5 @@
-import { Link } from "react-router"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowDown, Plus } from "lucide-react"
+import { ButtonLink } from "./components"
 import { innovationPhotography, type InnovationPhotoKey } from "./innovationPhotography"
 import "./innovation.css"
 
@@ -26,17 +26,15 @@ const approaches = [
   },
 ]
 
-function ResearchPhoto({ name, className = "", priority = false, caption }: {
+function ResearchPhoto({ name, className = "", priority = false }: {
   name: InnovationPhotoKey
   className?: string
   priority?: boolean
-  caption?: string
 }) {
   const photo = innovationPhotography[name]
   return <figure className={`innovation-photo ${className}`}>
     <img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height}
       loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" />
-    {caption && <figcaption>{caption}</figcaption>}
   </figure>
 }
 
@@ -47,7 +45,8 @@ export function InnovationPage() {
         <h1 id="innovation-title">Innovation</h1>
         <p className="innovation-tagline">Rethinking food.<br />Redefining possibilities.</p>
         <p className="innovation-intro-body">Better ways to source, develop and deliver food ingredients. At LYCA, innovation begins with understanding what your business needs next.</p>
-        <Link className="innovation-button" to="/enquiry">Discuss your next idea <ArrowUpRight size={18} aria-hidden="true" /></Link>
+        <ButtonLink to="/enquiry">Discuss your next idea</ButtonLink>
+        <a className="innovation-explore" href="#innovation-approach">Explore our approach <ArrowDown size={16} aria-hidden="true" /></a>
       </div>
       <ResearchPhoto name="research" className="innovation-intro-photo" priority />
     </section>
@@ -67,40 +66,40 @@ export function InnovationPage() {
         <h2 id="innovation-approach-title">Our approach.</h2>
         <p>Practical thinking.<br />Better possibilities.</p>
       </div>
-      <div className="innovation-approach-list">{approaches.map(approach =>
-        <article key={approach.title}>
-          <h3>{approach.title}</h3>
+      <div className="innovation-approach-list">{approaches.map((approach, index) =>
+        <details key={approach.title} name="innovation-approach" open={index === 0}>
+          <summary><h3>{approach.title}</h3><Plus size={20} aria-hidden="true" /></summary>
           <p>{approach.copy}</p>
-        </article>
+        </details>
       )}</div>
     </section>
 
-    <section className="innovation-research innovation-container innovation-two-column" aria-labelledby="innovation-research-title">
-      <div className="innovation-research-heading">
+    <section className="innovation-research" aria-labelledby="innovation-research-title">
+      <div className="innovation-container innovation-research-layout">
         <h2 id="innovation-research-title">Innovation in action.</h2>
-        <p>Quality, ingredient knowledge and product development inform the possibilities we explore.</p>
-        <p className="innovation-image-note">Research imagery is illustrative.</p>
+        <div>
+          <p className="innovation-research-statement">Better possibilities begin with better understanding.</p>
+          <p>Quality, ingredient knowledge and product development inform the possibilities we explore.</p>
+          <ButtonLink to="/enquiry">Explore your requirements</ButtonLink>
+        </div>
       </div>
-      <ResearchPhoto name="quality" caption="Ingredient quality and evaluation" />
     </section>
 
-    <section className="innovation-next" aria-labelledby="innovation-next-title">
-      <div className="innovation-container innovation-next-layout">
-        <ResearchPhoto name="testing" className="innovation-testing-photo" />
-        <div className="innovation-next-copy">
-          <h2 id="innovation-next-title">What’s next?</h2>
-          <p className="innovation-next-intro">A fresh look at what food can become.</p>
-          <div className="innovation-next-topics">
-            <article><h3>Evolving ingredients</h3><p>Emerging food ingredients and changing consumer preferences invite us to look beyond the familiar.</p></article>
-            <article><h3>New applications</h3><p>Different formats, textures and uses can open up new product possibilities for our customers.</p></article>
-            <article><h3>Smarter ways of working</h3><p>Technology, better sourcing practices and meaningful partnerships can help make ingredient supply more efficient and responsive.</p></article>
-          </div>
+    <section className="innovation-next innovation-container" aria-labelledby="innovation-next-title">
+      <ResearchPhoto name="testing" className="innovation-testing-photo" />
+      <div className="innovation-next-copy">
+        <h2 id="innovation-next-title">What’s next?</h2>
+        <p className="innovation-next-intro">A fresh look at what food can become.</p>
+        <div className="innovation-next-topics">
+          <article><h3>Evolving ingredients</h3><p>Emerging food ingredients and changing consumer preferences invite us to look beyond the familiar.</p></article>
+          <article><h3>New applications</h3><p>Different formats, textures and uses can open up new product possibilities for our customers.</p></article>
+          <article><h3>Smarter ways of working</h3><p>Technology, better sourcing practices and meaningful partnerships can help make ingredient supply more efficient and responsive.</p></article>
         </div>
       </div>
     </section>
 
     <section className="innovation-vision innovation-container innovation-two-column" aria-labelledby="innovation-vision-title">
-      <h2 id="innovation-vision-title">Innovation that<br />nourishes tomorrow.</h2>
+      <h2 id="innovation-vision-title">Nourishing tomorrow.</h2>
       <div className="innovation-prose">
         <p>We aspire to contribute to a smarter, more sustainable and opportunity driven food industry by bringing together innovative ideas, dependable ingredients and meaningful partnerships.</p>
         <p>Building better possibilities, one ingredient at a time.</p>
@@ -112,9 +111,8 @@ export function InnovationPage() {
         <div>
           <h2 id="innovation-contact-title">Let’s innovate together.</h2>
           <p>For food manufacturers, distributors and business partners. Share your requirements and explore the next possibility with LYCA.</p>
-          <Link className="innovation-button" to="/enquiry">Talk to our team <ArrowUpRight size={18} aria-hidden="true" /></Link>
         </div>
-        <ResearchPhoto name="development" className="innovation-development-photo" />
+        <ButtonLink to="/enquiry">Talk to our team</ButtonLink>
       </div>
     </section>
   </div>
