@@ -1,10 +1,9 @@
 import { useEffect, useLayoutEffect, useRef, useState, useId } from "react"
 import { Link } from "react-router"
-import { ArrowDown, ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import logo from "../assets/lyca-logo.png"
 import { landingStories } from "./landingData"
 import { IngredientPhoto } from "./ingredientPhoto"
-import { glideTo } from "./motion"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
@@ -58,7 +57,6 @@ export function Letterbox(){
 
 export function InwardHero() {
  const ref=useRef<HTMLElement>(null)
- const trigger=useRef<ScrollTrigger | null>(null)
  const [active,setActive]=useState(0)
  const activeRef=useRef(0)
  const reduce=useReducedMotion()
@@ -75,7 +73,6 @@ export function InwardHero() {
   const root=ref.current;if(!root||reduce)return
   const cards=Array.from(root.querySelectorAll<HTMLElement>('.journey-card'))
   const copies=Array.from(root.querySelectorAll<HTMLElement>('.journey-copy'))
-  const progress=root.querySelector<HTMLElement>('.journey-progress i')
   const state={frame:0}
   const draw=()=>{
    const frame=Math.max(0,Math.min(landingStories.length-1,state.frame))
@@ -88,21 +85,15 @@ export function InwardHero() {
     card.style.zIndex=String(i+1)
    })
    copies.forEach((copy,i)=>{const selected=i===Math.round(frame);copy.style.opacity=selected?'1':'0';copy.style.visibility=selected?'visible':'hidden'})
-   if(progress)progress.style.transform=`scaleX(${frame/(landingStories.length-1)})`
    const index=Math.round(frame)
    if(activeRef.current!==index){activeRef.current=index;setActive(index)}
   }
   const ctx=gsap.context(()=>{
    const tween=gsap.to(state,{frame:landingStories.length-1,ease:'none',onUpdate:draw,scrollTrigger:{trigger:root,start:'top top',end:'bottom bottom',scrub:.4,invalidateOnRefresh:true,onRefresh:draw}})
-   trigger.current=tween.scrollTrigger||null
   },root)
   draw()
-  return()=>{trigger.current=null;ctx.revert();[...cards,...copies].forEach(el=>el.removeAttribute('style'));progress?.removeAttribute('style')}
+  return()=>{ctx.revert();[...cards,...copies].forEach(el=>el.removeAttribute('style'))}
  },[reduce])
- const go=(index:number)=>{
-  const st=trigger.current;if(!st)return
-  glideTo(st.start+(st.end-st.start)*Math.max(0,Math.min(landingStories.length-1,index))/(landingStories.length-1))
- }
  return <section ref={ref} className={`lyca-hero ${reduce?'lyca-hero--static':''}`} aria-label="Ingredient inspiration journey">
   <div className="journey-stage">
    <div className="journey-kicker"><span><i/>LYCA / FOOD INGREDIENTS SUPPLIES</span><span>GLOBAL INGREDIENTS. INDIVIDUAL POSSIBILITIES.</span></div>
@@ -113,7 +104,6 @@ export function InwardHero() {
     {reduce&&<div className="journey-caption"><p>0{i+1} / {story.tag}</p><h2>{story.title}</h2><Link className="liquid-control" to={story.to} aria-label={`Explore ${story.name}`}><ArrowUpRight size={22}/></Link></div>}
    </article>)}{!reduce&&<div className="journey-caption journey-caption--fixed"><div key={active} className="journey-caption-copy"><p>0{active+1} / {landingStories[active].tag}</p><h2>{landingStories[active].title}</h2></div><Link className="liquid-control" to={landingStories[active].to} aria-label={`Explore ${landingStories[active].name}`}><ArrowUpRight size={22}/></Link></div>}</div>
    <div className="journey-details">{landingStories.map((story,i)=><div className="journey-copy" key={story.tag} aria-hidden={!reduce&&active!==i}><p className="eyebrow">{story.tag}</p><p>{story.detail}</p></div>)}<Link className="button button--primary journey-cta" to="/products">Explore ingredients <ArrowUpRight size={17}/></Link></div>
-   {!reduce&&<div className="journey-controls"><button className="journey-scroll" onClick={()=>active<landingStories.length-1?go(active+1):document.getElementById('ingredient-story')?.scrollIntoView({behavior:'smooth'})}>SCROLL TO DISCOVER <ArrowDown size={15}/></button><div className="journey-pagination"><button className="liquid-control" disabled={active===0} onClick={()=>go(active-1)} aria-label="Previous ingredient"><ArrowLeft size={18}/></button><span>0{active+1}<small> / 06</small></span><button className="liquid-control" disabled={active===landingStories.length-1} onClick={()=>go(active+1)} aria-label="Next ingredient"><ArrowRight size={18}/></button></div><div className="journey-progress"><i/></div></div>}
   </div>
  </section>
 }

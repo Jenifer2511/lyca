@@ -6,5 +6,5 @@ export function photoSources(src: string) {
   return `${src.replace(/\.webp$/, "-480.webp")} 480w, ${src.replace(/\.webp$/, "-800.webp")} 800w, ${src} 1440w`
 }
 export function IngredientPhoto({ src = "", alt = "", sizes = "(max-width: 700px) 90vw, (max-width: 1100px) 60vw, 50vw", ...props }: ImgHTMLAttributes<HTMLImageElement>) {
-  return <img src={src} srcSet={photoSources(src)} sizes={sizes} alt={alt} decoding="async" {...props} />
+  return <img src={src} srcSet={src.startsWith("/") ? photoSources(src) : undefined} sizes={sizes} alt={alt} decoding="async" {...props} />
 }

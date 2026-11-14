@@ -36,7 +36,7 @@ export function HomePage() {
         <Kinetic text="Rich in character." accent="Made for your craft." />
         <p className="reveal">From the brightness of fruit to the depth of cocoa, discover ingredients that give your next food or beverage its own character.</p>
       </div>
-      <div className="cinema-collections">{[{...categories[1],image:landingImages.coconut,imageAlt:"Coconut with a white splash and a flower"},{...categories[6],image:landingImages.powders,imageAlt:"Purple, green and yellow powder bowls"},{...categories[0],image:landingImages.fig,imageAlt:"Sliced purple fig with water droplets"}].map((category, index) =>
+      <div className="cinema-collections">{[{...categories[1],image:landingImages.coconut,imageAlt:"Three coconuts with water poured over them against a dark background"},{...categories[6],image:landingImages.powders,imageAlt:"Purple, green and yellow powder bowls"},{...categories[0],image:landingImages.fig,imageAlt:"Sliced purple fig with water droplets"}].map((category, index) =>
         <Link className={`collection-panel collection-panel--${index} reveal reveal--iris`} style={{ ["--d" as string]: index }} to={`/products#${category.id}`} key={category.id}>
           <div className="collection-image"><IngredientPhoto src={category.image} alt={category.imageAlt} loading="lazy" /></div>
           <div className="collection-caption"><span className="collection-number">0{index + 1}</span><div><p>THE LYCA PORTFOLIO</p><h3>{category.shortTitle}</h3></div><span className="circle-arrow"><ArrowUpRight size={25} /></span></div>
@@ -53,7 +53,7 @@ export function HomePage() {
     <IngredientAtelier />
 
     <section className="brand-statement"><div className="wrap statement-grid">
-      <div className="statement-photo reveal reveal--iris"><IngredientPhoto src={landingImages.coconut} alt="Fresh coconut ingredients" loading="lazy" /></div>
+      <div className="statement-photo reveal reveal--iris"><IngredientPhoto src={landingImages.coconut} alt="Three coconuts with water poured over them against a dark background" loading="lazy" /></div>
       <div className="statement-copy"><p className="eyebrow reveal">02 / THE LYCA CONNECTION</p>
         <Kinetic text="Across borders." accent="Closer to your craft." />
         <p className="reveal">We connect manufacturers and food businesses through a considered ingredient portfolio and regional relationships across the Middle East, Africa, India and Sri Lanka.</p>

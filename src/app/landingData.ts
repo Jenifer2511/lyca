@@ -1,11 +1,11 @@
 export const landingImages = {
- coconut: "/images/landing/coconut.webp", powders: "/images/landing/powders.webp",
+ coconut: "https://i.pinimg.com/736x/4c/8b/ca/4c8bca1492e4b362c1121ccc33d79220.jpg", powders: "/images/landing/powders.webp",
  botanical: "/images/landing/botanical.webp", fig: "/images/landing/fig.webp",
  dessert: "/images/landing/dessert.webp", drink: "/images/landing/citrus-drink.webp",
 }
 /** Supplied visuals illustrate ingredient families and creative applications. */
 export const landingStories = [
- {title:"Naturally rich.\nBeautifully versatile.",name:"Coconut products",tag:"COCONUT",image:landingImages.coconut,alt:"Coconut with a white splash and a flower under a green spotlight",detail:"From coconut milk and cream powder to oils and desiccated formats. Explore the versatility of coconut.",to:"/products#coconut-products"},
+ {title:"Naturally rich.\nBeautifully versatile.",name:"Coconut products",tag:"COCONUT",image:landingImages.coconut,alt:"Three coconuts with water poured over them against a dark background",detail:"From coconut milk and cream powder to oils and desiccated formats. Explore the versatility of coconut.",to:"/products#coconut-products"},
  {title:"A palette of\npossibilities.",name:"Colour & powder inspiration",tag:"COLOUR & POWDERS",image:landingImages.powders,alt:"Bowls of purple, green and yellow powders with wooden spoons",detail:"Colour, texture and a little imagination. Discover food colours and specialty powder collections.",to:"/products#food-colours"},
  {title:"A fresh take\non possibility.",name:"Beverage inspiration",tag:"BEVERAGE INSPIRATION",image:landingImages.botanical,alt:"Avocado and a vivid green liquid splash against an emerald background",detail:"Fresh visual inspiration for your next beverage idea. Tell us the flavour, texture and application you have in mind.",to:"/applications"},
  {title:"Character,\nfrom within.",name:"Fruit inspiration",tag:"FRUIT INSPIRATION",image:landingImages.fig,alt:"A sliced purple fig with glistening water droplets",detail:"Bright notes. Rich character. Explore our fruit concentrates, purees and preparations for your next formulation.",to:"/products#juice-concentrates"},
