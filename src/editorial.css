@@ -38,7 +38,6 @@ body{background:var(--bg)}
 .atelier-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:75px;align-items:center}
 .atelier-menu{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .atelier-menu button{appearance:none;display:flex;align-items:center;gap:20px;border:0;border-bottom:1px solid var(--line);background:transparent;color:#d2cbe4;text-align:left;font:500 clamp(13px,1.3vw,19px)/1.4 Manrope,Arial,sans-serif;padding:23px 12px;min-height:70px;cursor:pointer;transition:color .25s,background .25s}
-.atelier-index{font-size:10px;color:var(--image-gold);letter-spacing:.08em;flex:none}
 .atelier-menu button svg{margin-left:auto;flex:none;opacity:.3;transition:opacity .25s,transform .25s}
 .atelier-menu button[aria-selected=true]{color:#fefefc;background:linear-gradient(90deg,#d4bc8716,transparent);box-shadow:inset 2px 0 var(--image-gold)}
 .atelier-menu button[aria-selected=true] svg{opacity:1;color:var(--lime);transform:translate(2px,-2px)}
