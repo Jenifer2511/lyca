@@ -31,7 +31,7 @@ export function HomePage() {
     <IngredientUniverse />
 
     <section id="discover" className="discovery section">
-      <div className="discovery-top reveal"><p className="eyebrow">01 / A WORLD OF INGREDIENTS</p><span className="micro-label">SOURCED WITH PURPOSE. CONNECTED BY LYCA.</span></div>
+      <div className="discovery-top reveal"><p className="eyebrow">A WORLD OF INGREDIENTS</p><span className="micro-label">SOURCED WITH PURPOSE. CONNECTED BY LYCA.</span></div>
       <div className="discovery-heading">
         <Kinetic text="Rich in character." accent="Made for your craft." />
         <p className="reveal">From the brightness of fruit to the depth of cocoa, discover ingredients that give your next food or beverage its own character.</p>
@@ -54,7 +54,7 @@ export function HomePage() {
 
     <section className="brand-statement"><div className="wrap statement-grid">
       <div className="statement-photo reveal reveal--iris"><IngredientPhoto src={landingImages.coconut} alt="Three coconuts with water poured over them against a dark background" loading="lazy" /></div>
-      <div className="statement-copy"><p className="eyebrow reveal">02 / THE LYCA CONNECTION</p>
+      <div className="statement-copy"><p className="eyebrow reveal">THE LYCA CONNECTION</p>
         <Kinetic text="Across borders." accent="Closer to your craft." />
         <p className="reveal">We connect manufacturers and food businesses through a considered ingredient portfolio and regional relationships across the Middle East, Africa, India and Sri Lanka.</p>
         <ButtonLink to="/about" variant="text">Get to know LYCA</ButtonLink></div>
@@ -62,7 +62,7 @@ export function HomePage() {
 
     <section className="section application-cinema">
       <div className="application-cinema__image reveal reveal--iris"><IngredientPhoto src={landingImages.dessert} alt="Purple pancakes with blueberries and syrup, a dessert application illustration" loading="lazy" /></div>
-      <div className="application-cinema__copy"><p className="eyebrow reveal">03 / MADE FOR WHAT YOU CREATE</p>
+      <div className="application-cinema__copy"><p className="eyebrow reveal">MADE FOR WHAT YOU CREATE</p>
         <Kinetic text="Flavour. Texture. Colour." accent="Your next signature." />
         <p className="reveal">A vibrant sip. A rich filling. A beautifully balanced dessert. Explore the ingredients behind the experiences you want to create.</p>
         <ButtonLink to="/applications" variant="secondary">Explore applications</ButtonLink></div>
@@ -78,7 +78,7 @@ export function HomePage() {
     </section>
 
     <section className="global-cinema section">
-      <div><p className="eyebrow reveal">04 / CLOSE TO YOUR WORLD</p><Kinetic text="A world of ingredients." accent="A local conversation." /></div>
+      <div><p className="eyebrow reveal">CLOSE TO YOUR WORLD</p><Kinetic text="A world of ingredients." accent="A local conversation." /></div>
       <div className="global-cinema__details reveal">
         <div className="global-stats"><CountUp to={7} label="Ingredient families" /><CountUp to={6} label="Country locations" /><CountUp to={3} label="Sourcing regions" /></div>
         <div className="market-line"><Globe2 size={22} /><span>Middle East · Africa · India · Sri Lanka</span></div>
