@@ -101,8 +101,8 @@ export function InwardHero() {
    <div className="journey-gallery">{landingStories.map((story,i)=><article className="journey-card" key={story.tag} aria-hidden={!reduce&&active!==i} inert={!reduce&&active!==i}>
     <IngredientPhoto src={story.image} alt={story.alt} loading={i<2?'eager':'lazy'} fetchPriority={i===0?'high':'low'} sizes="(max-width: 700px) 86vw, 40vw" />
     <span className="journey-image-shade"/>
-    {reduce&&<div className="journey-caption"><p>0{i+1} / {story.tag}</p><h2>{story.title}</h2><Link className="liquid-control" to={story.to} aria-label={`Explore ${story.name}`}><ArrowUpRight size={22}/></Link></div>}
-   </article>)}{!reduce&&<div className="journey-caption journey-caption--fixed"><div key={active} className="journey-caption-copy"><p>0{active+1} / {landingStories[active].tag}</p><h2>{landingStories[active].title}</h2></div><Link className="liquid-control" to={landingStories[active].to} aria-label={`Explore ${landingStories[active].name}`}><ArrowUpRight size={22}/></Link></div>}</div>
+    {reduce&&<div className="journey-caption"><p>{story.tag}</p><h2>{story.title}</h2><Link className="liquid-control" to={story.to} aria-label={`Explore ${story.name}`}><ArrowUpRight size={22}/></Link></div>}
+   </article>)}{!reduce&&<div className="journey-caption journey-caption--fixed"><div key={active} className="journey-caption-copy"><p>{landingStories[active].tag}</p><h2>{landingStories[active].title}</h2></div><Link className="liquid-control" to={landingStories[active].to} aria-label={`Explore ${landingStories[active].name}`}><ArrowUpRight size={22}/></Link></div>}</div>
    <div className="journey-details">{landingStories.map((story,i)=><div className="journey-copy" key={story.tag} aria-hidden={!reduce&&active!==i}><p className="eyebrow">{story.tag}</p><p>{story.detail}</p></div>)}<Link className="button button--primary journey-cta" to="/products">Explore ingredients <ArrowUpRight size={17}/></Link></div>
   </div>
  </section>

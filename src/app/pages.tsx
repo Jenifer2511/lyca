@@ -19,7 +19,7 @@ const enquiryUrl = (category: string, product?: string) =>
 
 const process = [
   { n: "01", title: "Share your brief", copy: "Tell us the product, application, specification and target market." },
-  { n: "02", title: "Match ingredients", copy: "We align your needs with options across seven ingredient families." },
+  { n: "02", title: "Match ingredients", copy: "We align your needs with options across your ingredient families." },
   { n: "03", title: "Connect regionally", copy: "Your enquiry reaches the team closest to where you do business." },
   { n: "04", title: "Move forward", copy: "Discuss suitability, quantities and commercial terms directly." },
 ]
@@ -31,7 +31,7 @@ export function HomePage() {
     <IngredientUniverse />
 
     <section id="discover" className="discovery section">
-      <div className="discovery-top reveal"><p className="eyebrow">01 / A WORLD OF INGREDIENTS</p><span className="micro-label">SOURCED WITH PURPOSE. CONNECTED BY LYCA.</span></div>
+      <div className="discovery-top reveal"><p className="eyebrow">A WORLD OF INGREDIENTS</p><span className="micro-label">SOURCED WITH PURPOSE. CONNECTED BY LYCA.</span></div>
       <div className="discovery-heading">
         <Kinetic text="Rich in character." accent="Made for your craft." />
         <p className="reveal">From the brightness of fruit to the depth of cocoa, discover ingredients that give your next food or beverage its own character.</p>
@@ -53,8 +53,8 @@ export function HomePage() {
     <IngredientAtelier />
 
     <section className="brand-statement"><div className="wrap statement-grid">
-      <div className="statement-photo reveal reveal--iris"><IngredientPhoto src={landingImages.coconut} alt="Three coconuts with water poured over them against a dark background" loading="lazy" /></div>
-      <div className="statement-copy"><p className="eyebrow reveal">02 / THE LYCA CONNECTION</p>
+      <div className="statement-photo reveal reveal--iris"><IngredientPhoto src="https://images.pexels.com/photos/30689829/pexels-photo-30689829.jpeg" alt="Grains and seeds displayed at a market." loading="lazy" /></div>
+      <div className="statement-copy"><p className="eyebrow reveal">THE LYCA CONNECTION</p>
         <Kinetic text="Across borders." accent="Closer to your craft." />
         <p className="reveal">We connect manufacturers and food businesses through a considered ingredient portfolio and regional relationships across the Middle East, Africa, India and Sri Lanka.</p>
         <ButtonLink to="/about" variant="text">Get to know LYCA</ButtonLink></div>
@@ -62,7 +62,7 @@ export function HomePage() {
 
     <section className="section application-cinema">
       <div className="application-cinema__image reveal reveal--iris"><IngredientPhoto src={landingImages.dessert} alt="Purple pancakes with blueberries and syrup, a dessert application illustration" loading="lazy" /></div>
-      <div className="application-cinema__copy"><p className="eyebrow reveal">03 / MADE FOR WHAT YOU CREATE</p>
+      <div className="application-cinema__copy"><p className="eyebrow reveal">MADE FOR WHAT YOU CREATE</p>
         <Kinetic text="Flavour. Texture. Colour." accent="Your next signature." />
         <p className="reveal">A vibrant sip. A rich filling. A beautifully balanced dessert. Explore the ingredients behind the experiences you want to create.</p>
         <ButtonLink to="/applications" variant="secondary">Explore applications</ButtonLink></div>
@@ -78,10 +78,9 @@ export function HomePage() {
     </section>
 
     <section className="global-cinema section">
-      <div><p className="eyebrow reveal">04 / CLOSE TO YOUR WORLD</p><Kinetic text="A world of ingredients." accent="A local conversation." /></div>
+      <div><p className="eyebrow reveal">CLOSE TO YOUR WORLD</p><Kinetic text="A world of ingredients." accent="A local conversation." /></div>
       <div className="global-cinema__details reveal">
         <div className="global-stats"><CountUp to={7} label="Ingredient families" /><CountUp to={6} label="Country locations" /><CountUp to={3} label="Sourcing regions" /></div>
-        <div className="market-line"><Globe2 size={22} /><span>Middle East · Africa · India · Sri Lanka</span></div>
         <ButtonLink to="/network" variant="text">Find your LYCA connection</ButtonLink>
       </div>
     </section>
@@ -99,22 +98,22 @@ export function ProductsPage() {
     <PageHero eyebrow="INGREDIENT PORTFOLIO / 07 COLLECTIONS" title="A palette for your next creation." copy="Browse our food and beverage ingredient range. Search by product, explore categories and enquire about the options that match your needs." image={images.fruit} imageAlt="A dark still life of fruit representing the ingredient portfolio" />
     <div className="product-toolbar"><div className="wrap product-toolbar__inner"><div className="category-links" aria-label="Jump to ingredient category">{filtered.map(cat => <a href={`#${cat.id}`} key={cat.id}>{cat.shortTitle}</a>)}</div><label className="search-field"><Search size={19}/><span className="sr-only">Search ingredients</span><input value={search} onChange={e => setSearch(e.target.value)} placeholder={`Search ${total}+ ingredient options`} />{search && <button aria-label="Clear search" type="button" onClick={() => setSearch("")}><X size={17}/></button>}</label></div></div>
     <section className="products-layout wrap"><aside className="products-aside"><p className="eyebrow">BROWSE BY FAMILY</p>{filtered.map((cat, index) => <a key={cat.id} href={`#${cat.id}`}><span>0{index+1}</span>{cat.shortTitle}<ChevronRight size={16}/></a>)}<div className="products-help"><p>Need a specific ingredient?</p><Link to="/enquiry">Ask our team <ArrowUpRight size={16}/></Link></div></aside>
-      <div className="product-sections"><p className="search-summary" role="status">{normalizedSearch ? `${filtered.length} collections matching “${search.trim()}”` : "Explore all 7 ingredient collections"}</p>{filtered.length ? filtered.map((category) => <article id={category.id} key={category.id} className="product-category"><div className="product-category__hero"><IngredientPhoto src={category.image} alt={category.imageAlt} loading="lazy"/><span className="ingredient-provenance">{category.imageCaption}</span><div><p className="eyebrow">COLLECTION {String(categories.indexOf(categories.find(c => c.id === category.id)!) + 1).padStart(2, "0")}</p><h2>{category.title}</h2><p>{category.description}</p><ButtonLink to={enquiryUrl(category.title)} variant="light">Enquire about this range</ButtonLink></div></div><div className="product-groups">{category.groups.map(group => <div key={group.name} className="product-group"><h3>{group.name}</h3><div>{group.items.map(item => <Link className="product-line" to={enquiryUrl(category.title, item)} key={item}><span className="product-line__check"><Check size={14}/></span><span>{item}</span><ArrowUpRight size={17}/></Link>)}</div></div>)}</div>{category.note && <p className="product-note"><ShieldCheck size={21}/>{category.note}</p>}</article>) : <div className="no-results"><Search size={32}/><h2>No ingredients match “{search}”</h2><p>Try another keyword or clear your search to view the full portfolio.</p><button className="button button--primary" onClick={() => setSearch("")}>Clear search <ArrowRight size={16}/></button></div>}</div>
-    </section><FinalCta title="Have a specific ingredient in mind?" copy="Share the specifications, application and quantities you're looking for. Our team can help with the next conversation."/>
+      <div className="product-sections"><p className="search-summary" role="status">{normalizedSearch ? `${filtered.length} collections matching “${search.trim()}”` : "Explore all 7 ingredient collections"}</p>{filtered.length ? filtered.map((category) => <article id={category.id} key={category.id} className="product-category"><div className="product-category__hero"><IngredientPhoto src={category.image} alt={category.imageAlt} loading="lazy"/><div><h2>{category.title}</h2><p>{category.description}</p><ButtonLink to={enquiryUrl(category.title)} variant="light">Enquire about this range</ButtonLink></div></div><div className="product-groups">{category.groups.map(group => <div key={group.name} className="product-group"><h3>{group.name}</h3><div>{group.items.map(item => <Link className="product-line" to={enquiryUrl(category.title, item)} key={item}><span className="product-line__check"><Check size={14}/></span><span>{item}</span><ArrowUpRight size={17}/></Link>)}</div></div>)}</div>{category.note && <p className="product-note"><ShieldCheck size={21}/>{category.note}</p>}</article>) : <div className="no-results"><Search size={32}/><h2>No ingredients match “{search}”</h2><p>Try another keyword or clear your search to view the full portfolio.</p><button className="button button--primary" onClick={() => setSearch("")}>Clear search <ArrowRight size={16}/></button></div>}</div>
+    </section><FinalCta title="Have a specific ingredient in mind?" copy="Tell us what you're creating. We'll help you find the right ingredients to bring it to life."/>
   </>
 }
 
 const industries = [
-  { icon: "01", title: "Beverages & juices", copy: "Create vibrant drinks with fruit concentrates, purees, coffee extracts and naturally derived colour options.", image: images.citrus, tags: ["Fruit concentrates", "Coffee extracts", "Food colours"], category: categories[0] },
-  { icon: "02", title: "Dairy & alternatives", copy: "Discover ingredients for dairy products, flavoured milk, cultured formats and plant-based innovations.", image: images.dairy, tags: ["Milk powders", "Fruit preparations", "Coconut products"], category: categories[3] },
-  { icon: "03", title: "Bakery & patisserie", copy: "Ingredient formats that help bring flavour, texture and a memorable finish to baked products.", image: images.patisserie, tags: ["Fruit preparations", "Cocoa powder", "Coconut"], category: categories[4] },
-  { icon: "04", title: "Confectionery", copy: "Explore cocoa, fruit and coconut ingredients suited to sweets, fillings and indulgent creations.", image: images.cocoa, tags: ["Cocoa", "Fruit", "Coconut"], category: categories[2] },
-  { icon: "05", title: "Culinary & sauces", copy: "Fruit, vegetable and savoury ingredients for sauces, dressings and prepared food manufacturing.", image: images.tomato, tags: ["Tomato paste", "Chilli purees", "Fruit bases"], category: categories[0] },
-  { icon: "06", title: "Desserts & ice cream", copy: "Discover fruit preparations, milk-based ingredients and flavour options for dessert applications.", image: images.dessert, tags: ["Fruit preparations", "Dairy", "Specialty powders"], category: categories[4] },
+  { title: "Beverages & juices", copy: "Create vibrant drinks with fruit concentrates, purees, coffee extracts and naturally derived colour options.", image: images.citrus, tags: ["Fruit concentrates", "Coffee extracts", "Food colours"], category: categories[0] },
+  { title: "Dairy & alternatives", copy: "Discover ingredients for dairy products, flavoured milk, cultured formats and plant-based innovations.", image: images.dairy, tags: ["Milk powders", "Fruit preparations", "Coconut products"], category: categories[3] },
+  { title: "Bakery & patisserie", copy: "Ingredient formats that help bring flavour, texture and a memorable finish to baked products.", image: images.patisserie, tags: ["Fruit preparations", "Cocoa powder", "Coconut"], category: categories[4] },
+  { title: "Confectionery", copy: "Explore cocoa, fruit and coconut ingredients suited to sweets, fillings and indulgent creations.", image: images.cocoa, tags: ["Cocoa", "Fruit", "Coconut"], category: categories[2] },
+  { title: "Culinary & sauces", copy: "Fruit, vegetable and savoury ingredients for sauces, dressings and prepared food manufacturing.", image: images.tomato, tags: ["Tomato paste", "Chilli purees", "Fruit bases"], category: categories[0] },
+  { title: "Desserts & ice cream", copy: "Discover fruit preparations, milk-based ingredients and flavour options for dessert applications.", image: images.dessert, tags: ["Fruit preparations", "Dairy", "Specialty powders"], category: categories[4] },
 ]
 export function ApplicationsPage() {
-  return <><PageHero eyebrow="WHERE OUR INGREDIENTS GO" title="Made for memorable tastes." copy="Behind every memorable bite or sip is the right combination of ingredients. Explore the industries and applications our portfolio supports." image={images.berries} imageAlt="Fresh berries for culinary applications" />
-    <section className="section applications-section"><SectionHeading eyebrow="FROM IDEA TO FINISHED PRODUCT" title="One portfolio. Many possibilities." copy="Ingredient suggestions below are application examples rather than confirmed formulations. Our team can discuss suitability for your specific product."/><div className="industry-grid">{industries.map(ind => <article key={ind.title} className="industry-card reveal"><div className="industry-card__image"><IngredientPhoto src={ind.image} alt={ind.title} loading="lazy"/><span>{ind.icon} / 06</span></div><div className="industry-card__content"><h3>{ind.title}</h3><p>{ind.copy}</p><div className="industry-tags">{ind.tags.map(tag => <span key={tag}>{tag}</span>)}</div><Link to={`/products#${ind.category.id}`}>Explore suitable categories <ArrowUpRight size={16}/></Link></div></article>)}</div></section>
+  return <><PageHero eyebrow="WHERE OUR INGREDIENTS GO" title="Made for memorable tastes." copy="Behind every memorable bite or sip is the right combination of ingredients. Explore the industries and applications our portfolio supports." image="https://i.pinimg.com/736x/01/65/de/0165de29dc5b5f562f281de11dd35459.jpg" imageAlt="Assorted fresh berries with mint leaves arranged on a blue surface." />
+    <section className="section applications-section"><SectionHeading eyebrow="FROM IDEA TO FINISHED PRODUCT" title="One portfolio. Many possibilities." copy="Ingredient suggestions below are application examples rather than confirmed formulations. Our team can discuss suitability for your specific product."/><div className="industry-grid">{industries.map(ind => <article key={ind.title} className="industry-card reveal"><div className="industry-card__image"><IngredientPhoto src={ind.image} alt={ind.title === "Dairy & alternatives" ? "Milk bottles with cheddar, brie, and blue cheeses" : ind.title} loading="lazy"/></div><div className="industry-card__content"><h3>{ind.title}</h3><p>{ind.copy}</p><div className="industry-tags">{ind.tags.map(tag => <span key={tag}>{tag}</span>)}</div><Link to={`/products#${ind.category.id}`}>Explore suitable categories <ArrowUpRight size={16}/></Link></div></article>)}</div></section>
     <section className="application-outro wrap reveal"><div><p className="eyebrow">HAVE A NEW CONCEPT?</p><h2>From a new formulation to your next great idea.</h2></div><p>Let us know the product you're developing, along with any technical and commercial requirements. Our team can start a conversation with you.</p></section><FinalCta title="Your next product starts here." copy="Connect with LYCA to discuss ingredient options for your specific application."/>
   </>
 }

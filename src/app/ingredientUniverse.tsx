@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react"
 import { Link } from "react-router"
-import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { ArrowDown } from "lucide-react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { categories } from "./data"
@@ -40,6 +40,7 @@ const families = [
   ] },
 ]
 
+const bubbleLabels = ["Juice & Fruit Ingredients", "Coconut Products", "Coffee & Cocoa", "Dairy Ingredients", "Fruit Preparations", "Spray-Dried Powders", "Food Colors"]
 const tints = ["255 151 119", "130 228 185", "229 171 112", "147 210 255", "242 143 201", "192 163 255", "104 225 218"]
 const bubbleSizes = [136, 120, 112, 144, 128, 112, 128]
 const stories = [
@@ -57,7 +58,6 @@ export function IngredientUniverse() {
   const progress = useRef(0)
   const chapterRef = useRef(0)
   const reduce = useReducedMotion()
-  const [active, setActive] = useState<number | null>(null)
   const [size, setSize] = useState({ width: 0, height: 0 })
   const [chapter, setChapter] = useState(0)
   const phone = size.width < 500
@@ -214,7 +214,7 @@ export function IngredientUniverse() {
       progress.current = amount
       element.dataset.progress = amount.toFixed(4)
       nodes.forEach(({ node, family, item, diameter, rim }) => {
-        const shown = active === null ? item === 0 : family === active
+        const shown = item === 0
         if (!shown) { node.style.opacity = "0"; return }
         if (reduce) {
           node.style.transform = "none"
@@ -222,8 +222,8 @@ export function IngredientUniverse() {
           if (rim) rim.style.transform = "none"
           return
         }
-        const count = active === null ? families.length : 4
-        const order = active === null ? family : item
+        const count = families.length
+        const order = family
         const angle = -Math.PI / 2 + order / count * Math.PI * 2 + amount * Math.PI * 2.2
         const margin = diameter * .55 + (phone ? 8 : 18)
         const spread = .96 + .04 * Math.sin(amount * Math.PI)
@@ -244,7 +244,7 @@ export function IngredientUniverse() {
       }
     }
     draw.current(progress.current)
-  }, [active, size, phone, reduce])
+  }, [size, phone, reduce])
 
   useLayoutEffect(() => {
     const element = root.current
@@ -280,7 +280,7 @@ export function IngredientUniverse() {
   }, [reduce])
 
   return <section ref={root} id="ingredient-story" className="ingredient-universe" aria-labelledby="ingredient-universe-title"
-    data-family={active === null ? "all" : categories[active].id} data-reduced={reduce} data-chapter={chapter}>
+    data-family="all" data-reduced={reduce} data-chapter={chapter}>
     <h2 id="ingredient-universe-title" className="sr-only">A world of ingredients</h2>
     <div className="ingredient-universe__stage">
       <div className="ingredient-universe__layout wrap">
@@ -298,38 +298,21 @@ export function IngredientUniverse() {
           </div>
           <div className="ingredient-universe__nodes">
             {families.flatMap((family, familyIndex) => family.items.map(([label, product], itemIndex) => {
-              const shown = size.width > 0 && (active === null ? itemIndex === 0 : active === familyIndex)
-              const diameter = reduce ? (phone ? 88 : 112) : phone ? (size.width < 320 ? (active === familyIndex ? 72 : 64) : (active === familyIndex ? 88 : 76)) : small ? (active === familyIndex ? 120 : 112) : Math.min(active === familyIndex ? 144 : bubbleSizes[familyIndex], size.height < 520 ? 104 : 144)
+              const shown = size.width > 0 && itemIndex === 0
+              const diameter = reduce ? (phone ? 88 : 112) : phone ? (size.width < 320 ? 64 : 76) : small ? 112 : Math.min(bubbleSizes[familyIndex], size.height < 520 ? 104 : 144)
               return <div key={`${familyIndex}-${product}`} className="ingredient-universe__node" aria-hidden={!shown}
                 data-shown={shown} data-family={categories[familyIndex].id} data-family-index={familyIndex} data-item-index={itemIndex} data-diameter={diameter}
                 style={{ width: diameter, height: diameter, "--bubble-tint": tints[familyIndex] } as CSSProperties}>
                 <Link className="ingredient-universe__ingredient title-3" tabIndex={shown ? 0 : -1}
-                  aria-label={`Enquire about ${label}`} to={`/enquiry?category=${encodeURIComponent(categories[familyIndex].title)}&product=${encodeURIComponent(product)}`}>
+                  aria-label={`Enquire about ${bubbleLabels[familyIndex]}`} to={`/enquiry?category=${encodeURIComponent(categories[familyIndex].title)}&product=${encodeURIComponent(product)}`}>
                   <span className="ingredient-universe__bubble">
                     <span className="ingredient-universe__rim" aria-hidden="true" />
-                    <span className="ingredient-universe__label">{label}<span className="ingredient-universe__arrow" aria-hidden="true">↗</span></span>
+                    <span className="ingredient-universe__label">{bubbleLabels[familyIndex]}<span className="ingredient-universe__arrow" aria-hidden="true">↗</span></span>
                   </span>
                 </Link>
               </div>
             }))}
           </div>
-        </div>
-        <div className="ingredient-universe__controls">
-          <div className="ingredient-universe__families" role="group" aria-label="Choose an ingredient family">
-            <button type="button" className="button-sm" aria-pressed={active === null} onClick={() => setActive(null)}>All ingredients</button>
-            {families.map((family, index) => <button type="button" className="button-sm" key={family.label} aria-pressed={active === index}
-              onClick={() => setActive(index)}>{family.label}</button>)}
-          </div>
-          <label className="ingredient-universe__mobile-family">
-            <span className="sr-only">Ingredient family</span>
-            <select value={active === null ? "all" : String(active)} onChange={event => setActive(event.target.value === "all" ? null : Number(event.target.value))}>
-              <option value="all">All ingredients</option>
-              {families.map((family, index) => <option key={family.label} value={index}>{family.label}</option>)}
-            </select>
-          </label>
-          <Link className="ingredient-universe__collection button-sm" to={active === null ? "/products" : `/products#${categories[active].id}`}>
-            {active === null ? "View the portfolio" : "View the collection"}<ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
         </div>
         {!reduce && <p className="ingredient-universe__scroll-cue" aria-hidden="true"><ArrowDown size={12} />{chapter < 2 ? "Scroll to unfold the story" : "Keep scrolling to explore"}</p>}
       </div>

@@ -17,7 +17,7 @@ const images = {
   mango: "/images/mango.webp",
   coconut: "/images/coconut.webp",
   coffee: "/images/coffee.webp",
-  dairy: "/images/dairy.webp",
+  dairy: "https://i.pinimg.com/736x/8c/d0/e5/8cd0e5951721bc7364a8f0b187ca0ef7.jpg",
   berries: "/images/berries.webp",
   powder: "/images/powder.webp",
   colors: "/images/colors.webp",
@@ -158,8 +158,8 @@ export const categories: Category[] = [
     shortTitle: "Dairy Ingredients",
     description:
       "A structured range for dairy, beverage, bakery, nutrition, dessert, and prepared food applications.",
-    image: images.dairy,
-    imageAlt: "Fresh milk pouring into a glass against black",
+    image: "https://images.pexels.com/photos/25482773/pexels-photo-25482773.jpeg",
+    imageAlt: "A glass jar of milk on a wooden surface against a black background.",
     imageCaption: "DAIRY / TEXTURE & RICHNESS",
     groups: [
       {
@@ -208,8 +208,8 @@ export const categories: Category[] = [
     shortTitle: "Spray-Dried Powders",
     description:
       "Fruit, specialty, and natural colour powders presented in an easy-to-browse ingredient collection.",
-    image: images.powder,
-    imageAlt: "Fresh mangoes, a source fruit for the fruit powder range",
+    image: "https://images.pexels.com/photos/7176645/pexels-photo-7176645.jpeg",
+    imageAlt: "Fresh fruit and vivid colour powders arranged on patterned textile.",
     imageCaption: "FRUIT & SPECIALTY POWDERS / SOURCE FRUIT",
     groups: [
       {
@@ -260,8 +260,8 @@ export const categories: Category[] = [
     shortTitle: "Food Colours",
     description:
       "A varied palette of plant-derived colour ingredients for food and beverage product development.",
-    image: images.colors,
-    imageAlt: "Deep red dried hibiscus flowers, a botanical colour source",
+    image: "https://images.pexels.com/photos/31280796/pexels-photo-31280796.jpeg",
+    imageAlt: "Colorful Indian spices arranged in bowls on a textured dark surface.",
     imageCaption: "HIBISCUS / COLOUR FROM NATURE",
     groups: [
       {

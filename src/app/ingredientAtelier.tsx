@@ -18,7 +18,7 @@ export function IngredientAtelier() {
         else if (event.key === "End") next = landingStories.length - 1
         else return
         event.preventDefault(); setActive(next); document.getElementById(`atelier-tab-${next}`)?.focus()
-      }}><span className="atelier-index">0{i + 1}</span><span>{category.name}</span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div>
+      }}><span>{category.name}</span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div>
       <div className="atelier-exhibit" id="atelier-panel" role="tabpanel" aria-labelledby={`atelier-tab-${active}`} tabIndex={0}>
         <div className="atelier-photograph" key={current.tag}><IngredientPhoto src={current.image} alt={current.alt} loading="lazy" sizes="(max-width: 700px) 90vw, 55vw" /><span className="atelier-plate">LYCA <i>Collection</i><b>0{active + 1}</b></span></div>
         <div className="atelier-caption"><div><p>{current.tag}</p><span>{current.detail}</span></div><Link to={current.to} aria-label={`Explore ${current.name}`}><ArrowUpRight size={24} /></Link></div>
