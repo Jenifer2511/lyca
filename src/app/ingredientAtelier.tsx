@@ -1,12 +1,20 @@
 import { useState } from "react"
 import { Link } from "react-router"
 import { ArrowUpRight } from "lucide-react"
-import { landingStories } from "./landingData"
 import { images } from "./data"
 import { IngredientPhoto } from "./ingredientPhoto"
 
-// The opening coconut photograph belongs to the hero; this later exhibit starts with dairy.
-const atelierStories = [{ ...landingStories[0], name: "Dairy ingredients", tag: "DAIRY", image: images.dairyIngredients, alt: "Milk, yoghurt, cheese, butter and milk powder", detail: "From milk powders and whey proteins to butter and cheese powder. Explore ingredients that bring richness and texture to your next product.", to: "/products#dairy-ingredients" }, ...landingStories.slice(1)]
+type AtelierStory = { name: string; tag: string; image: string; alt: string; detail: string; to: string; position?: string }
+// Each gallery photograph is separate from the hero, collections and interior pages.
+const atelierStories: AtelierStory[] = [
+  { name: "Dairy ingredients", tag: "DAIRY", image: "/images/dairy.webp", alt: "Fresh milk being poured into a glass", detail: "From milk powders and whey proteins to butter and cheese powder. Explore ingredients that bring richness and texture to your next product.", to: "/products#dairy-ingredients" },
+  { name: "Colour ingredients", tag: "COLOUR", image: images.colors, alt: "Dried hibiscus petals, a botanical source of food colour", detail: "Discover botanical colour ingredients, from hibiscus and beetroot to spirulina and black carrot.", to: "/products#food-colours" },
+  { name: "Beverage inspiration", tag: "BEVERAGES", image: "/images/editorial/atelier-beverage.jpg", alt: "An orange drink being finished with a fresh herb garnish", detail: "Fresh visual inspiration for your next beverage idea. Tell us the flavour, texture and application you have in mind.", to: "/applications" },
+  { name: "Fruit ingredients", tag: "FRUIT", image: "/images/editorial/atelier-fruit.jpg", alt: "Fresh limes growing among green leaves", detail: "Bright citrus notes. Explore fruit concentrates, purees and preparations for beverages and food applications.", to: "/products#juice-concentrates" },
+  { name: "Dessert applications", tag: "DESSERTS", image: images.patisserie, alt: "A fruit tart topped with strawberries, blueberries and raspberries", detail: "Bring flavour, texture and colour together. Explore ingredient ideas for bakery, desserts and confectionery.", to: "/applications" },
+  { name: "Your next creation", tag: "YOUR NEXT CREATION", image: "/images/editorial/atelier-next-creation.jpg", alt: "A pink citrus drink with lemon and rosemary", detail: "From a first concept to a signature taste, the next conversation begins with your idea.", to: "/enquiry" },
+]
+
 export function IngredientAtelier() {
   const [active, setActive] = useState(0)
   const current = atelierStories[active]
@@ -23,7 +31,7 @@ export function IngredientAtelier() {
         event.preventDefault(); setActive(next); document.getElementById(`atelier-tab-${next}`)?.focus()
       }}><span>{category.name}</span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div>
       <div className="atelier-exhibit" id="atelier-panel" role="tabpanel" aria-labelledby={`atelier-tab-${active}`} tabIndex={0}>
-        <div className="atelier-photograph" key={current.tag}><IngredientPhoto src={current.image} alt={current.alt} loading="lazy" sizes="(max-width: 700px) 90vw, 55vw" /><span className="atelier-plate">LYCA <i>Collection</i><b>0{active + 1}</b></span></div>
+        <div className="atelier-photograph" key={current.tag}><IngredientPhoto src={current.image} alt={current.alt} style={{ objectPosition: current.position || "center" }} loading="lazy" sizes="(max-width: 700px) 90vw, 55vw" /><span className="atelier-plate">LYCA <i>Collection</i><b>0{active + 1}</b></span></div>
         <div className="atelier-caption"><div><p>{current.tag}</p><span>{current.detail}</span></div><Link to={current.to} aria-label={`Explore ${current.name}`}><ArrowUpRight size={24} /></Link></div>
       </div>
     </div>

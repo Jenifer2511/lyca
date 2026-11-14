@@ -14,16 +14,25 @@ export type Category = {
 const images = {
   fruit: "/images/fruit.webp",
   companyStory: "/images/selected/dried-fruit.jpg",
+  companyHero: "/images/editorial/company-hero.jpg",
+  applicationsHero: "/images/editorial/applications-hero.jpg",
+  applicationBakery: "/images/editorial/application-bakery.jpg",
+  homeCoffee: "/images/editorial/collection-coffee.jpg",
+  homeColour: "/images/editorial/food-colour-sprinkles.jpg",
+  homeFruit: "/images/berries.webp",
+  homeConnection: "/images/editorial/ingredient-connection.png",
+  homeApplications: "/images/editorial/home-applications.jpg",
+  foodColours: "/images/landing/powders.webp",
   fruitPreparations: "/images/selected/fruit-preparations.jpg",
   dairyIngredients: "/images/selected/dairy-ingredients.jpg",
-  sprayDriedPowders: "/images/selected/dried-fruit.jpg",
+  sprayDriedPowders: "/images/powder.webp",
   culinarySauces: "/images/selected/culinary-sauces.jpg",
   globalNetwork: "/images/selected/global-network.jpg",
   citrus: "/images/citrus.webp",
   mango: "/images/mango.webp",
   coconut: "/images/coconut.webp",
   coffee: "/images/coffee.webp",
-  dairy: "https://i.pinimg.com/736x/8c/d0/e5/8cd0e5951721bc7364a8f0b187ca0ef7.jpg",
+  dairy: "/images/editorial/application-dairy.jpg",
   berries: "/images/berries.webp",
   powder: "/images/powder.webp",
   colors: "/images/colors.webp",
@@ -215,7 +224,7 @@ export const categories: Category[] = [
     description:
       "Fruit, specialty, and natural colour powders presented in an easy-to-browse ingredient collection.",
     image: images.sprayDriedPowders,
-    imageAlt: "An assortment of dried berries, banana, kiwi and other sliced fruits",
+    imageAlt: "Green mangoes and leaves illustrating the source fruit for mango powders",
     imageCaption: "FRUIT & SPECIALTY POWDERS / SOURCE FRUIT",
     groups: [
       {
@@ -266,9 +275,9 @@ export const categories: Category[] = [
     shortTitle: "Food Colours",
     description:
       "A varied palette of plant-derived colour ingredients for food and beverage product development.",
-    image: images.colors,
-    imageAlt: "Dried hibiscus petals, a botanical source in the natural food colour range",
-    imageCaption: "HIBISCUS / COLOUR FROM NATURE",
+    image: images.foodColours,
+    imageAlt: "Purple, green and yellow food colour powders arranged in bowls",
+    imageCaption: "FOOD COLOURS / A PALETTE OF POSSIBILITIES",
     groups: [
       {
         name: "Natural Colour Range",

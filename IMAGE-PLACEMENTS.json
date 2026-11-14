@@ -1,0 +1,344 @@
+[
+  {
+    "route": "/",
+    "placement": "Home hero 1",
+    "src": "/images/editorial/hero-coconut.jpg",
+    "alt": "Three coconuts with water poured over them against a dark background",
+    "width": 736,
+    "height": 1103,
+    "sha256": "c092fa2acee2c8463f575de19760cd117ed1ebb7817b003a3ff88381cf38a860"
+  },
+  {
+    "route": "/",
+    "placement": "Home hero 2",
+    "src": "/images/editorial/hero-colour.jpg",
+    "alt": "A fresh citrus drink with lime slices against a green backdrop",
+    "width": 1000,
+    "height": 1500,
+    "sha256": "43b3ca8a7a2a46dbacc614a06e52e38b7665efb3f4cb4c4dfb06f2786c97b858"
+  },
+  {
+    "route": "/",
+    "placement": "Home hero 3",
+    "src": "/images/landing/botanical.webp",
+    "alt": "Avocado and a vivid green liquid splash against an emerald background",
+    "width": 576,
+    "height": 1024,
+    "sha256": "7899e64ae559210d17f5894feaf9c07196af6d518a2afd744256e377b2c0f1f2"
+  },
+  {
+    "route": "/",
+    "placement": "Home hero 4",
+    "src": "/images/landing/fig.webp",
+    "alt": "A sliced purple fig with glistening water droplets",
+    "width": 576,
+    "height": 1024,
+    "sha256": "e9aec9f4a919aceb0ea4c328d77f96212858d09dcd347743031b94ca77587da1"
+  },
+  {
+    "route": "/",
+    "placement": "Home hero 5",
+    "src": "/images/landing/dessert.webp",
+    "alt": "Purple pancakes topped with blueberries and a stream of syrup",
+    "width": 576,
+    "height": 720,
+    "sha256": "c3c554e71c6db125853234b83db2733df7f33d3aea05cb613a35a6f4a1bf2b26"
+  },
+  {
+    "route": "/",
+    "placement": "Home hero 6",
+    "src": "/images/landing/citrus-drink.webp",
+    "alt": "A luminous green drink garnished with citrus in a glass",
+    "width": 576,
+    "height": 864,
+    "sha256": "ac4b20042335b2cb6aa3ed8cb9e6237bdf8accfe9af5772770db321b9c4b6241"
+  },
+  {
+    "route": "/",
+    "placement": "Home collection 1",
+    "src": "/images/editorial/collection-coffee.jpg",
+    "alt": "Freshly prepared cappuccino with latte art",
+    "width": 2000,
+    "height": 3000,
+    "sha256": "c487de2c9f6de2a583b0f388529fd96e98e75b31ccace438871b86265bf523d0"
+  },
+  {
+    "route": "/",
+    "placement": "Home collection 2",
+    "src": "/images/editorial/food-colour-sprinkles.jpg",
+    "alt": "Colourful confectionery sprinkles in a wooden spoon",
+    "width": 1552,
+    "height": 2209,
+    "sha256": "04f4b2cdc6fe121c2a589f1900a5efc9e0a9d9bde830eaf6565cf7cf17bb5a37"
+  },
+  {
+    "route": "/",
+    "placement": "Home collection 3",
+    "src": "/images/berries.webp",
+    "alt": "Raspberries on a dark background",
+    "width": 720,
+    "height": 1080,
+    "sha256": "365fcfa19484a836fb834bf75088e145954ed12ce274e7831642e6fab5672ebb"
+  },
+  {
+    "route": "/",
+    "placement": "Ingredient connection",
+    "src": "/images/editorial/ingredient-connection.png",
+    "alt": "Vegetables, herbs and a variety of finished food applications on a table",
+    "width": 800,
+    "height": 1157,
+    "sha256": "ecf5fa4e06e0c0092795627d65d5223c409a920b810191f7f42a96eefbabb3d9"
+  },
+  {
+    "route": "/",
+    "placement": "Application introduction",
+    "src": "/images/editorial/home-applications.jpg",
+    "alt": "Pastries, fruit, juice and coffee illustrating bakery and beverage applications",
+    "width": 900,
+    "height": 1206,
+    "sha256": "c5ba649e15eaeecdb6922ead0d755256a20d001acce61bb5ce4b710874f464b5"
+  },
+  {
+    "route": "/",
+    "placement": "Ingredient atelier tab 1",
+    "src": "/images/dairy.webp",
+    "alt": "Fresh milk being poured into a glass",
+    "width": 792,
+    "height": 1188,
+    "sha256": "0b41d5fd4781ec88e155ba006a7b4e35fbfe251564176146d018688e2c296d92"
+  },
+  {
+    "route": "/",
+    "placement": "Ingredient atelier tab 2",
+    "src": "/images/colors.webp",
+    "alt": "Dried hibiscus petals, a botanical source of food colour",
+    "width": 792,
+    "height": 527,
+    "sha256": "0190909bfa34adbf9fe2ecb0732b0e921241fd76da8d347d4062ebfbe61f4ffb"
+  },
+  {
+    "route": "/",
+    "placement": "Ingredient atelier tab 3",
+    "src": "/images/editorial/atelier-beverage.jpg",
+    "alt": "An orange drink being finished with a fresh herb garnish",
+    "width": 2000,
+    "height": 3000,
+    "sha256": "49cef4d9676359c54d36a0885546ff50bd9151873c931410762d68833a94d6f5"
+  },
+  {
+    "route": "/",
+    "placement": "Ingredient atelier tab 4",
+    "src": "/images/editorial/atelier-fruit.jpg",
+    "alt": "Fresh limes growing among green leaves",
+    "width": 1000,
+    "height": 1500,
+    "sha256": "0074c3c360209d60348b187bbaf03b6269f803a16505c98452a512b082d7a12b"
+  },
+  {
+    "route": "/",
+    "placement": "Ingredient atelier tab 5",
+    "src": "/images/patisserie.webp",
+    "alt": "A fruit tart topped with strawberries, blueberries and raspberries",
+    "width": 792,
+    "height": 1223,
+    "sha256": "e9fe773b94114345496eb3f867ad69b95e10f984fb439a05ca58863cdeeea141"
+  },
+  {
+    "route": "/",
+    "placement": "Ingredient atelier tab 6",
+    "src": "/images/editorial/atelier-next-creation.jpg",
+    "alt": "A pink citrus drink with lemon and rosemary",
+    "width": 2000,
+    "height": 3000,
+    "sha256": "79d661113af4c378c218ed858d35db0210c81cec66531a8ae2c18d8f16a788c1"
+  },
+  {
+    "route": "/products",
+    "placement": "Page photograph 1",
+    "src": "/images/fruit.webp",
+    "alt": "A dark still life of fruit representing the ingredient portfolio",
+    "width": 720,
+    "height": 512,
+    "sha256": "a2ca2852b74d8017b28539eb5a5de78ddfe91f677bdc0dc0e2d1ddcdfdd44629"
+  },
+  {
+    "route": "/products",
+    "placement": "Page photograph 2",
+    "src": "/images/mango.webp",
+    "alt": "Mango juice and freshly sliced mango against a dark backdrop",
+    "width": 576,
+    "height": 383,
+    "sha256": "ab541b0859d965b2edf664c10cf5eceb3ffbe667cac864e1d2cfb94ec8182518"
+  },
+  {
+    "route": "/products",
+    "placement": "Page photograph 3",
+    "src": "/images/coconut.webp",
+    "alt": "Fresh coconut halves and pieces on a dark surface",
+    "width": 576,
+    "height": 383,
+    "sha256": "5ed618cff3e45bb2e5075209eaa03b98434a2cab5fb734806d8337ae6b8b6484"
+  },
+  {
+    "route": "/products",
+    "placement": "Page photograph 4",
+    "src": "/images/coffee.webp",
+    "alt": "Roasted coffee beans on dark stone",
+    "width": 576,
+    "height": 825,
+    "sha256": "daa468248b5a5e931fa91a8700f0c437b5ed11fde4152a7a8003a46508507d54"
+  },
+  {
+    "route": "/products",
+    "placement": "Page photograph 5",
+    "src": "/images/selected/dairy-ingredients.jpg",
+    "alt": "Milk bottles, yoghurt, cheese, butter and milk powder arranged on a wooden board",
+    "width": 1024,
+    "height": 768,
+    "sha256": "8ac07f196c1fd0a2ab80cc1b328584861fc249a77b01cd3f14d26d77ef5f952b"
+  },
+  {
+    "route": "/products",
+    "placement": "Page photograph 6",
+    "src": "/images/selected/fruit-preparations.jpg",
+    "alt": "Blueberries, granola and yoghurt illustrating a fruit preparation application",
+    "width": 900,
+    "height": 600,
+    "sha256": "f9771aeb535e3095ebe9aa9ab3f95b4c6b171148a8fdac7162634c3602d51267"
+  },
+  {
+    "route": "/products",
+    "placement": "Page photograph 7",
+    "src": "/images/powder.webp",
+    "alt": "Green mangoes and leaves illustrating the source fruit for mango powders",
+    "width": 576,
+    "height": 383,
+    "sha256": "ab687d38fed27fee216c90b4330327a543d17fc3d895c5ebb9d12972ea7eec41"
+  },
+  {
+    "route": "/products",
+    "placement": "Page photograph 8",
+    "src": "/images/landing/powders.webp",
+    "alt": "Purple, green and yellow food colour powders arranged in bowls",
+    "width": 576,
+    "height": 861,
+    "sha256": "9c46ab400b6afe27c5746c348d8065e11f56f123b161d4c2efebd4b6d9c555cb"
+  },
+  {
+    "route": "/applications",
+    "placement": "Page photograph 1",
+    "src": "/images/editorial/applications-hero.jpg",
+    "alt": "Assorted fresh berries with mint leaves arranged on a blue surface.",
+    "width": 1059,
+    "height": 1920,
+    "sha256": "294a1b79e58cb70f25e9182749e054de242ca0e878259d86b70434bc151f6422"
+  },
+  {
+    "route": "/applications",
+    "placement": "Page photograph 2",
+    "src": "/images/citrus.webp",
+    "alt": "Beverages & juices",
+    "width": 720,
+    "height": 960,
+    "sha256": "2e2fb6eaeba1fe187ab04168c03133574ea8117f2d34e1c271a439d1cb92713e"
+  },
+  {
+    "route": "/applications",
+    "placement": "Page photograph 3",
+    "src": "/images/editorial/application-dairy.jpg",
+    "alt": "Milk bottles with cheddar, brie, and blue cheeses",
+    "width": 640,
+    "height": 853,
+    "sha256": "ef6c7b3b207c871370fec7c5585b7cb53d2f433169b6bf10753a38f35a8afec7"
+  },
+  {
+    "route": "/applications",
+    "placement": "Page photograph 4",
+    "src": "/images/editorial/application-bakery.jpg",
+    "alt": "Croissant and cereal with fruit, illustrating bakery applications",
+    "width": 900,
+    "height": 1246,
+    "sha256": "12a95e45838131e897618e9fc3dbeadadf46c7f12183cf68382ee4ea8a9412a0"
+  },
+  {
+    "route": "/applications",
+    "placement": "Page photograph 5",
+    "src": "/images/cocoa.webp",
+    "alt": "Confectionery",
+    "width": 720,
+    "height": 1080,
+    "sha256": "5d12505dc2f288d3dfb0f070860681b9ea22b1534f8d4066238d851faab956f4"
+  },
+  {
+    "route": "/applications",
+    "placement": "Page photograph 6",
+    "src": "/images/selected/culinary-sauces.jpg",
+    "alt": "Bottled sauces, dips, tomatoes, chillies and herbs on a wooden table",
+    "width": 1440,
+    "height": 960,
+    "sha256": "90ee4b2b1671670cbc067058131ced89fc7b22049036c691e690b1ea33474b14"
+  },
+  {
+    "route": "/applications",
+    "placement": "Page photograph 7",
+    "src": "/images/dessert.webp",
+    "alt": "Desserts & ice cream",
+    "width": 720,
+    "height": 1080,
+    "sha256": "c4a7e0892b782d5e32292f8d79c4225144f576262954f919b90125f0f4f4c9a0"
+  },
+  {
+    "route": "/about",
+    "placement": "Page photograph 1",
+    "src": "/images/editorial/company-hero.jpg",
+    "alt": "Fresh salad ingredients and citrus juice illustrating a broad ingredient portfolio",
+    "width": 2000,
+    "height": 3000,
+    "sha256": "e9bdccd8e74c8e2da9e6aef1bbdabb6060a420b4c99ba95ecfd58d9ae386126f"
+  },
+  {
+    "route": "/about",
+    "placement": "Page photograph 2",
+    "src": "/images/selected/dried-fruit.jpg",
+    "alt": "An assortment of dried fruit slices and berries illustrating ingredient sourcing",
+    "width": 4740,
+    "height": 3121,
+    "sha256": "d41b202ddc15b797c948d8d71605fd76aab71d6d8b58d9f186c75409d5a34fe0"
+  },
+  {
+    "route": "/network",
+    "placement": "Page photograph",
+    "src": "/images/selected/global-network.jpg",
+    "alt": "A connected globe above a city skyline, illustrating LYCA’s international network",
+    "width": 735,
+    "height": 490,
+    "sha256": "8659ccb566390bbadc3f4586008b6de3624ec124c934c02d38fb0e61dcf28b25"
+  },
+  {
+    "route": "/enquiry",
+    "placement": "Page photograph",
+    "src": "/images/blueberries.webp",
+    "alt": "Blueberries on dark stone",
+    "width": 720,
+    "height": 939,
+    "sha256": "a32561a912105ab3f3c294e33bc5869b79c84bb7f4853567996d5f783d886ede"
+  },
+  {
+    "route": "/innovation",
+    "placement": "Page photograph 1",
+    "src": "/images/innovation/food-research.jpg",
+    "alt": "Food research professional examining vegetables in a laboratory",
+    "width": 1200,
+    "height": 864,
+    "sha256": "191cbbee6fa4cfba989db014897c7c19cb0e5e6aedeb542051bdcf4f88cc8e6e"
+  },
+  {
+    "route": "/innovation",
+    "placement": "Page photograph 2",
+    "src": "/images/innovation/food-testing.jpg",
+    "alt": "Gloved hands preparing a food testing sample in a petri dish",
+    "width": 590,
+    "height": 885,
+    "sha256": "f3107627023fdce90d02fdebb33e8c60712188a1c3a03d6cce2a71b21458647d"
+  }
+]

@@ -183,7 +183,6 @@
     "sha256": "d41b202ddc15b797c948d8d71605fd76aab71d6d8b58d9f186c75409d5a34fe0",
     "license": "Not specified by the supplied reference",
     "placements": [
-      "Spray-Dried Powders category",
       "Our Company ingredient sourcing story"
     ]
   },
@@ -217,7 +216,7 @@
     "asset": "/images/selected/fruit-preparations.jpg",
     "description": "Blueberries, yoghurt and granola illustrating a fruit preparation application",
     "provider": "Unsplash food and drink Pinterest board",
-    "source_page": "https://www.pinterest.com/pin/e1_AfqPShwZNL07SLonFLeOHbhFTLc5EDs6t0h_AmD8eRwFVcP2igc-/",
+    "source_page": "https://www.pinterest.com/unsplash/food-drink/",
     "original_url": "https://i.pinimg.com/originals/11/c9/41/11c94128412566317e7aab8773d4acbf.jpg",
     "dimensions": [
       900,
@@ -225,5 +224,174 @@
     ],
     "sha256": "f9771aeb535e3095ebe9aa9ab3f95b4c6b171148a8fdac7162634c3602d51267",
     "license": "Not specified by the source pin"
+  },
+  {
+    "asset": "/images/editorial/atelier-beverage.jpg",
+    "description": "atelier beverage",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://www.pinterest.com/unsplash/food-drink/",
+    "original_url": "https://i.pinimg.com/originals/eb/56/b2/eb56b2543676fb6681019dfc297260db.jpg",
+    "dimensions": [
+      2000,
+      3000
+    ],
+    "sha256": "49cef4d9676359c54d36a0885546ff50bd9151873c931410762d68833a94d6f5",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/atelier-next-creation.jpg",
+    "description": "atelier next creation",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://www.pinterest.com/unsplash/food-drink/",
+    "original_url": "https://i.pinimg.com/originals/06/4f/a0/064fa060d4c3e9a0e0cc29dd19b301be.jpg",
+    "dimensions": [
+      2000,
+      3000
+    ],
+    "sha256": "79d661113af4c378c218ed858d35db0210c81cec66531a8ae2c18d8f16a788c1",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/collection-coffee.jpg",
+    "description": "collection coffee",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://www.pinterest.com/unsplash/food-drink/",
+    "original_url": "https://i.pinimg.com/originals/68/7b/a9/687ba911635e5f25c18237bec1110bf6.jpg",
+    "dimensions": [
+      2000,
+      3000
+    ],
+    "sha256": "c487de2c9f6de2a583b0f388529fd96e98e75b31ccace438871b86265bf523d0",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/company-hero.jpg",
+    "description": "company hero",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://www.pinterest.com/unsplash/food-drink/",
+    "original_url": "https://i.pinimg.com/originals/bc/74/c3/bc74c3c64b9d9d07f487eb82b81ebb50.jpg",
+    "dimensions": [
+      2000,
+      3000
+    ],
+    "sha256": "e9bdccd8e74c8e2da9e6aef1bbdabb6060a420b4c99ba95ecfd58d9ae386126f",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/food-colour-sprinkles.jpg",
+    "description": "food colour sprinkles",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://www.pinterest.com/unsplash/food-drink/",
+    "original_url": "https://i.pinimg.com/originals/fa/8f/f2/fa8ff2d140a1a32bc3b7c650fb13a230.jpg",
+    "dimensions": [
+      1552,
+      2209
+    ],
+    "sha256": "04f4b2cdc6fe121c2a589f1900a5efc9e0a9d9bde830eaf6565cf7cf17bb5a37",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/home-applications.jpg",
+    "description": "home applications",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://www.pinterest.com/unsplash/food-drink/",
+    "original_url": "https://i.pinimg.com/originals/f7/37/36/f7373651f573d3efe79fdb864b0dc3ea.jpg",
+    "dimensions": [
+      900,
+      1206
+    ],
+    "sha256": "c5ba649e15eaeecdb6922ead0d755256a20d001acce61bb5ce4b710874f464b5",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/ingredient-connection.png",
+    "description": "ingredient connection",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://www.pinterest.com/unsplash/food-drink/",
+    "original_url": "https://i.pinimg.com/originals/92/36/ff/9236fff2395745450576d2957614a93e.png",
+    "dimensions": [
+      800,
+      1157
+    ],
+    "sha256": "ecf5fa4e06e0c0092795627d65d5223c409a920b810191f7f42a96eefbabb3d9",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/application-dairy.jpg",
+    "description": "application dairy",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://i.pinimg.com/originals/8c/d0/e5/8cd0e5951721bc7364a8f0b187ca0ef7.jpg",
+    "original_url": "https://i.pinimg.com/originals/8c/d0/e5/8cd0e5951721bc7364a8f0b187ca0ef7.jpg",
+    "dimensions": [
+      640,
+      853
+    ],
+    "sha256": "ef6c7b3b207c871370fec7c5585b7cb53d2f433169b6bf10753a38f35a8afec7",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/hero-coconut.jpg",
+    "description": "hero coconut",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://i.pinimg.com/originals/4c/8b/ca/4c8bca1492e4b362c1121ccc33d79220.jpg",
+    "original_url": "https://i.pinimg.com/originals/4c/8b/ca/4c8bca1492e4b362c1121ccc33d79220.jpg",
+    "dimensions": [
+      736,
+      1103
+    ],
+    "sha256": "c092fa2acee2c8463f575de19760cd117ed1ebb7817b003a3ff88381cf38a860",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/applications-hero.jpg",
+    "description": "applications hero",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://i.pinimg.com/originals/01/65/de/0165de29dc5b5f562f281de11dd35459.jpg",
+    "original_url": "https://i.pinimg.com/originals/01/65/de/0165de29dc5b5f562f281de11dd35459.jpg",
+    "dimensions": [
+      1059,
+      1920
+    ],
+    "sha256": "294a1b79e58cb70f25e9182749e054de242ca0e878259d86b70434bc151f6422",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/application-bakery.jpg",
+    "description": "Croissant and breakfast bakery application",
+    "provider": "Pinterest food and drink reference collection",
+    "source_page": "https://www.pinterest.com/unsplash/food-drink/",
+    "original_url": "https://i.pinimg.com/originals/4f/d5/8f/4fd58f2c303668cd908ab91a6032f012.jpg",
+    "dimensions": [
+      900,
+      1246
+    ],
+    "sha256": "12a95e45838131e897618e9fc3dbeadadf46c7f12183cf68382ee4ea8a9412a0",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/atelier-fruit.jpg",
+    "description": "Limes growing among leaves for the fruit ingredient gallery",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://www.pinterest.com/pexels/",
+    "original_url": "https://i.pinimg.com/originals/b6/66/d6/b666d60f3b7c9593dcdfc755e12ecff1.jpg",
+    "dimensions": [
+      1000,
+      1500
+    ],
+    "sha256": "0074c3c360209d60348b187bbaf03b6269f803a16505c98452a512b082d7a12b",
+    "license": "Not specified by the source reference"
+  },
+  {
+    "asset": "/images/editorial/hero-colour.jpg",
+    "description": "Green citrus drink with lime slices for colour inspiration",
+    "provider": "Pinterest reference photography",
+    "source_page": "https://www.pinterest.com/pexels/",
+    "original_url": "https://i.pinimg.com/originals/f7/ad/be/f7adbe5e3c8080f46971bf39078714cd.jpg",
+    "dimensions": [
+      1000,
+      1500
+    ],
+    "sha256": "43b3ca8a7a2a46dbacc614a06e52e38b7665efb3f4cb4c4dfb06f2786c97b858",
+    "license": "Not specified by the source reference"
   }
 ]
