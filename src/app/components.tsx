@@ -75,7 +75,7 @@ export function Footer() {
       <div><h3>Explore</h3>{[...links, ["Enquiries", "/enquiry"] as const].map(([name, path]) => <Link key={path} to={path}>{name}</Link>)}</div>
       <div><h3>Ingredient Portfolio</h3>{categories.slice(0, 5).map(cat => <Link key={cat.id} to={`/products#${cat.id}`}>{cat.shortTitle}</Link>)}<Link to="/products">View all ingredients <ArrowRight size={13} /></Link></div>
       <div><h3>Let's talk</h3><a href="mailto:sales@lycafoods.com">sales@lycafoods.com</a><h3>Our locations</h3><p>United Arab Emirates<br/>Kuwait<br/>India<br/>Egypt<br/>Tanzania<br/>Sri Lanka</p></div>
-    </div><div className="footer-bottom"><span>© {new Date().getFullYear()} LYCA Food Ingredients Supplies. All rights reserved.</span><div><Link to="/privacy">Privacy Policy</Link><Link to="/terms">Terms of Use</Link><span>Made for global trade</span></div></div>
+    </div><div className="footer-bottom"><span>© LYCA Food Ingredients Supplies. All rights reserved.</span><div><Link to="/privacy">Privacy Policy</Link><Link to="/terms">Terms of Use</Link><span>Made for global trade</span></div></div>
   </div></footer>
 }
 export function Layout() {
@@ -115,4 +115,3 @@ export function OfficeCard({ office }: { office: typeof offices[number] }) {
 export function FinalCta({ title = "Your vision deserves the right ingredients.", copy = "Tell us what you're developing. We'll help direct your ingredient enquiry to the right team." }: { title?: string; copy?: string }) {
   return <section className="cta-section wrap reveal"><div className="cta-section__glow"/><div><p className="eyebrow">YOUR NEXT STEP</p><h2>{title}</h2><p>{copy}</p></div><ButtonLink to="/enquiry" variant="light">Contact our team</ButtonLink></section>
 }
-export function Stat({ number, label }: { number: string; label: string }) { return <div className="stat"><strong>{number}</strong><span>{label}</span></div> }

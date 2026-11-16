@@ -62,7 +62,6 @@ body::after{content:"";position:fixed;inset:0;z-index:138;pointer-events:none;bo
 .fx-orb{position:absolute;left:var(--orb-x);top:var(--orb-y);width:var(--orb-size);height:var(--orb-size);translate:-50% calc(-50% + var(--parallax-y,0px));border-radius:50%;filter:blur(var(--orb-blur));background:radial-gradient(circle,hsl(var(--orb-hue) 70% 60% / .35),transparent 65%);pointer-events:none;mix-blend-mode:screen}
 [data-parallax]{translate:0 var(--parallax-y,0px)}.magnetic__inner{display:inline-block;transform:translate(var(--mag-x,0px),var(--mag-y,0px));transition:transform .5s var(--ease-film)}
 .tilt{perspective:900px}.tilt__inner{position:relative;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transform-style:preserve-3d;transition:transform .6s var(--ease-film)}.tilt__glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(300px circle at var(--gx,50%) var(--gy,50%),#fefefc26,transparent 60%);mix-blend-mode:overlay}
-.stat--count{position:relative}.stat__glow{position:absolute;inset:-20%;border-radius:50%;background:radial-gradient(circle,#d4ff4d14,transparent 65%);opacity:0;transition:opacity 1.2s;pointer-events:none}.stat--count.is-done .stat__glow{opacity:1}
 .site-header.is-scrolled{backdrop-filter:blur(18px) saturate(1.3)}
 /* Integration: retain the existing anchored caption layout and responsive controls. */
 .film-card>.film-glass{position:absolute}.film-gallery{z-index:1}.film-kicker{z-index:4}.film-controls{z-index:6}.film-light-leak{pointer-events:none}.marquee{touch-action:pan-y}

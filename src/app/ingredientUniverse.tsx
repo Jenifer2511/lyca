@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger)
 const families = [
   { label: "Fruit", title: "Fruit.", items: [
     ["Alphonso mango", "Alphonso Mango Pulp"], ["Guava", "White Guava Juice Concentrate / Pulp"],
-    ["Tomato", "Tomato Paste 36–38 (CB & HB)"], ["Chilli", "Red and Green Chilli Puree"],
+    ["Tomato", "Tomato Paste (CB & HB)"], ["Chilli", "Red and Green Chilli Puree"],
   ] },
   { label: "Coconut", title: "Coconut.", items: [
     ["Coconut cream", "Coconut Cream Powder"], ["Virgin coconut oil", "Virgin Coconut Oil"],

@@ -77,9 +77,7 @@ export const categories: Category[] = [
       {
         name: "Tomato",
         items: [
-          "Tomato Paste 36–38 (CB & HB)",
-          "Tomato Paste 30–32 (CB & HB)",
-          "Tomato Paste 28–30 (CB & HB)",
+          "Tomato Paste (CB & HB)",
           "Dehydrated Tomato Flakes",
         ],
       },
@@ -306,42 +304,36 @@ export const offices = [
     country: "United Arab Emirates",
     flag: "🇦🇪",
     city: "SPC Free Zone, Sharjah, UAE",
-    phone: "+971 50 6361790",
     email: "mohamed@lycafoods.com",
   },
   {
     country: "Kuwait",
     flag: "🇰🇼",
     city: "Business Plaza, Kuwait City, Kuwait",
-    phone: "+965 98741141 / +965 98021009",
     email: "sales@lycafoods.com",
   },
   {
     country: "India",
     flag: "🇮🇳",
     city: "Erode, Tamil Nadu, India",
-    phone: "+91 95670 59898",
     email: "sales2@lycafoods.com",
   },
   {
     country: "Egypt",
     flag: "🇪🇬",
     city: "Cairo, Egypt",
-    phone: "+20 1096028740",
     email: "ruaa.k@lycafoods.com",
   },
   {
     country: "Tanzania",
     flag: "🇹🇿",
     city: "Dar es Salaam, Tanzania",
-    phone: "+255 655 100 100",
     email: "marcelina.m@lycafoods.com",
   },
   {
     country: "Sri Lanka",
     flag: "🇱🇰",
     city: "Nittambuwa, Sri Lanka",
-    phone: "+94 76 2407750 / +94 75 1637839",
     email: "mano.p@lycafoods.com",
   },
 ]

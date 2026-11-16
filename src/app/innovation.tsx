@@ -102,7 +102,7 @@ export function InnovationPage() {
       <h2 id="innovation-vision-title">Nourishing tomorrow.</h2>
       <div className="innovation-prose">
         <p>We aspire to contribute to a smarter, more sustainable and opportunity driven food industry by bringing together innovative ideas, dependable ingredients and meaningful partnerships.</p>
-        <p>Building better possibilities, one ingredient at a time.</p>
+        <p>Building better possibilities with every ingredient.</p>
       </div>
     </section>
 

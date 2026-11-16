@@ -1,5 +1,5 @@
 import {onFrame} from "./app/frameLoop"
-import { useEffect, useRef, useState, type ReactNode } from "react"
+import { useEffect, useRef } from "react"
 
 
 /** Grain, vignette, cursor glow, scroll reveals and card spotlights for the whole site. Mount once. */
@@ -107,34 +107,5 @@ export function Marquee({ items, reverse = false, speed=40 }: { items: string[];
   return <div ref={ref} style={{["--marquee-speed" as string]:`${speed}s`}} className={`marquee${reverse ? " marquee--reverse" : ""}`} aria-label={items.join(", ")}>
     <div className="marquee__track" aria-hidden="true">{row}{row}{row}</div>
     <i className="marquee__fade marquee__fade--l" aria-hidden="true"/><i className="marquee__fade marquee__fade--r" aria-hidden="true"/>
-  </div>
-}
-
-/** Counts up to a number once visible. */
-export function CountUp({ to, pad = 2, label }: { to: number; pad?: number; label: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [n, setN] = useState(0)
-  const [done,setDone]=useState(false)
-  useEffect(() => {
-    const el = ref.current; if (!el) return
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { setN(to);setDone(true); return }
-    let raf = 0
-    const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return
-      io.disconnect()
-      const start = performance.now(), dur = 1600
-      const tick = (t: number) => {
-        const p = Math.min(1, (t - start) / dur)
-        setN(Math.round(to * (1 - Math.pow(1 - p, 4))))
-        if (p < 1) raf = requestAnimationFrame(tick);else setDone(true)
-      }
-      raf = requestAnimationFrame(tick)
-    }, { threshold: 0.5 })
-    io.observe(el)
-    return () => {io.disconnect();cancelAnimationFrame(raf)}
-  }, [to])
-  return <div className={`stat stat--count${done?" is-done":""}`} ref={ref}>
-    <i className="stat__glow" aria-hidden="true"/>
-    <strong aria-label={String(to)}>{String(n).padStart(pad, "0")}</strong><span>{label}</span>
   </div>
 }

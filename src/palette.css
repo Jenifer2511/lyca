@@ -24,7 +24,6 @@ body{background:var(--bg);color:var(--ink)}
 .form-grid input::placeholder,.form-grid textarea::placeholder,.search-field input::placeholder{color:#cbc8de}
 .form-grid select option{background:#171528;color:#fefefc}
 .product-line{background:#080c1540;color:#fefefc;border-color:#fefefc30}.product-line:hover{background:#080c1570;border-color:var(--lime)}
-.stat strong{background-image:linear-gradient(180deg,#fefefc,#d4ff4d)}
 .footer{background:linear-gradient(180deg,#10121ef2,#080c15)}
 .footer-bottom{color:#cbc8de}
 .title-card,.film-bars i{background:#080c15}.title-card{color:#fefefc}.title-card p{color:#e5e3f7}
