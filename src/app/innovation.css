@@ -7,8 +7,6 @@
 .innovation-page h3{font-size:20px;line-height:28px;letter-spacing:-.02em}
 .innovation-page p{font-size:16px;line-height:28px;text-wrap:pretty;margin:0}
 .innovation-page a:focus-visible,.innovation-page summary:focus-visible{outline:2px solid var(--lime);outline-offset:5px}
-.innovation-page .button{background:var(--lime);color:#080c15;border-color:var(--lime);box-shadow:none}
-.innovation-page .button:hover{background:#e0ff83;border-color:#e0ff83}
 .innovation-intro{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;padding-block:192px 96px}
 .innovation-intro-copy{min-width:0}
 .innovation-page .innovation-tagline{font-size:36px;line-height:40px;letter-spacing:-.03em;color:var(--innovation-heading);margin-top:32px}
