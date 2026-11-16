@@ -302,37 +302,37 @@ export const categories: Category[] = [
 export const offices = [
   {
     country: "United Arab Emirates",
-    flag: "🇦🇪",
+    flagCode: "ae",
     city: "SPC Free Zone, Sharjah, UAE",
     email: "mohamed@lycafoods.com",
   },
   {
     country: "Kuwait",
-    flag: "🇰🇼",
+    flagCode: "kw",
     city: "Business Plaza, Kuwait City, Kuwait",
     email: "sales@lycafoods.com",
   },
   {
     country: "India",
-    flag: "🇮🇳",
+    flagCode: "in",
     city: "Erode, Tamil Nadu, India",
     email: "sales2@lycafoods.com",
   },
   {
     country: "Egypt",
-    flag: "🇪🇬",
+    flagCode: "eg",
     city: "Cairo, Egypt",
     email: "ruaa.k@lycafoods.com",
   },
   {
     country: "Tanzania",
-    flag: "🇹🇿",
+    flagCode: "tz",
     city: "Dar es Salaam, Tanzania",
     email: "marcelina.m@lycafoods.com",
   },
   {
     country: "Sri Lanka",
-    flag: "🇱🇰",
+    flagCode: "lk",
     city: "Nittambuwa, Sri Lanka",
     email: "mano.p@lycafoods.com",
   },
