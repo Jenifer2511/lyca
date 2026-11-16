@@ -17,7 +17,7 @@ const images = {
   companyHero: "https://i.pinimg.com/736x/88/39/17/8839172c0a7eb0bd6649fbb4650e6383.jpg",
   applicationsHero: "/images/editorial/applications-hero.jpg",
   applicationBakery: "/images/editorial/application-bakery.jpg",
-  homeCoffee: "/images/editorial/collection-coffee.jpg",
+  homeCoffee: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkV0ZAZm9ohC_h7_XaJat_aseHVf9Bt80W7yQNJI8pzqtXzaA2zt3TgJM&s=10",
   homeCoconut: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmFhDUkcoGSpgZwEttWvLCzOeeOX30aeOu84ABQjxgQQ&s=10",
   homeFruit: "/images/berries.webp",
   homeConnection: "/images/editorial/ingredient-connection.png",
