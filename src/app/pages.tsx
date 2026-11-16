@@ -35,7 +35,7 @@ export function HomePage() {
         <Kinetic text="Rich in character." accent="Made for your craft." />
         <p className="reveal">From the brightness of fruit to the depth of cocoa, discover ingredients that give your next food or beverage its own character.</p>
       </div>
-      <div className="cinema-collections">{[{...categories[2],image:images.homeCoffee,imageAlt:"Freshly prepared cappuccino with latte art"},{...categories[6],image:images.homeColour,imageAlt:"Fresh beetroot slices displayed with a kitchen knife on a rustic surface"},{...categories[0],image:images.homeFruit,imageAlt:"Raspberries on a dark background"}].map((category, index) =>
+      <div className="cinema-collections">{[{...categories[2],image:images.homeCoffee,imageAlt:"Freshly prepared cappuccino with latte art"},{...categories[1],image:images.coconut,imageAlt:"Fresh coconut halves and pieces on a dark wooden surface"},{...categories[0],image:images.homeFruit,imageAlt:"Raspberries on a dark background"}].map((category, index) =>
         <Link className={`collection-panel collection-panel--${index} reveal reveal--iris`} style={{ ["--d" as string]: index }} to={`/products#${category.id}`} key={category.id}>
           <div className="collection-image"><IngredientPhoto src={category.image} alt={category.imageAlt} loading="lazy" /></div>
           <div className="collection-caption"><div><p>THE LYCA PORTFOLIO</p><h3>{category.shortTitle}</h3></div><span className="circle-arrow"><ArrowUpRight size={25} /></span></div>
