@@ -18,7 +18,7 @@ const images = {
   applicationsHero: "/images/editorial/applications-hero.jpg",
   applicationBakery: "/images/editorial/application-bakery.jpg",
   homeCoffee: "/images/editorial/collection-coffee.jpg",
-  homeColour: "https://images.pexels.com/photos/3537741/pexels-photo-3537741.jpeg",
+  homeColour: "https://images.pexels.com/photos/5501886/pexels-photo-5501886.jpeg",
   homeFruit: "/images/berries.webp",
   homeConnection: "/images/editorial/ingredient-connection.png",
   homeApplications: "/images/editorial/home-applications.jpg",
