@@ -9,7 +9,7 @@ import {
   Search, ShieldCheck, Sparkles, X,
 } from "lucide-react"
 import { ButtonLink, FinalCta, OfficeCard, PageHero, SectionHeading, Stat } from "./components"
-import { Kinetic, CountUp } from "../premium"
+import { Kinetic } from "../premium"
 import { InwardHero } from "./cinematic"
 import { categories, images, offices } from "./data"
 
@@ -38,7 +38,7 @@ export function HomePage() {
       <div className="cinema-collections">{[{...categories[2],image:images.homeCoffee,imageAlt:"Freshly prepared cappuccino with latte art"},{...categories[6],image:images.homeColour,imageAlt:"Colourful confectionery sprinkles in a wooden spoon"},{...categories[0],image:images.homeFruit,imageAlt:"Raspberries on a dark background"}].map((category, index) =>
         <Link className={`collection-panel collection-panel--${index} reveal reveal--iris`} style={{ ["--d" as string]: index }} to={`/products#${category.id}`} key={category.id}>
           <div className="collection-image"><IngredientPhoto src={category.image} alt={category.imageAlt} loading="lazy" /></div>
-          <div className="collection-caption"><span className="collection-number">0{index + 1}</span><div><p>THE LYCA PORTFOLIO</p><h3>{category.shortTitle}</h3></div><span className="circle-arrow"><ArrowUpRight size={25} /></span></div>
+          <div className="collection-caption"><div><p>THE LYCA PORTFOLIO</p><h3>{category.shortTitle}</h3></div><span className="circle-arrow"><ArrowUpRight size={25} /></span></div>
         </Link>)}
       </div>
       <div className="portfolio-bottom reveal"><span>Seven ingredient families. Your next signature creation.</span><ButtonLink to="/products" variant="secondary">Discover the full portfolio</ButtonLink></div>
@@ -79,7 +79,6 @@ export function HomePage() {
     <section className="global-cinema section">
       <div><p className="eyebrow reveal">CLOSE TO YOUR WORLD</p><Kinetic text="A world of ingredients." accent="A local conversation." /></div>
       <div className="global-cinema__details reveal">
-        <div className="global-stats"><CountUp to={7} label="Ingredient families" /><CountUp to={6} label="Country locations" /><CountUp to={3} label="Sourcing regions" /></div>
         <ButtonLink to="/network" variant="text">Find your LYCA connection</ButtonLink>
       </div>
     </section>
@@ -117,7 +116,7 @@ export function ApplicationsPage() {
   </>
 }
 export function AboutPage() {
-  return <><PageHero eyebrow="WHO WE ARE / OUR COMPANY" title="Connecting ingredients. Inspiring creation." copy="LYCA Food Ingredients Supplies connects manufacturers and businesses through a focused portfolio of ingredients and an international network." image={images.companyHero} imageAlt="Fresh salad ingredients and citrus juice illustrating a broad ingredient portfolio" />
+  return <><PageHero eyebrow="WHO WE ARE / OUR COMPANY" title="Connecting ingredients. Inspiring creation." copy="LYCA Food Ingredients Supplies connects manufacturers and businesses through a focused portfolio of ingredients and an international network." image={images.companyHero} imageAlt="Ghee illustrating a traditional food ingredient" />
     <section className="section about-story"><div className="about-story__copy"><SectionHeading eyebrow="THE LYCA STORY" title="From global origins to local ambition." copy="LYCA Food Ingredients Supplies works with manufacturers from Europe, China and South America, serving food and beverage businesses across the Middle East, East and West Africa, North Africa, India and Sri Lanka."/><p>We believe sourcing conversations should begin with clarity: the right product, the right application and a team that understands the markets you work in.</p><ButtonLink to="/network" variant="text">See our global network</ButtonLink></div><figure className="about-story__visual reveal"><IngredientPhoto src={images.companyStory} loading="lazy" alt="An assortment of dried fruit slices and berries illustrating ingredient sourcing" sizes="(max-width: 700px) 90vw, 50vw" /><figcaption>Ingredients connect us.</figcaption></figure></section>
     <section className="values-section"><div className="wrap"><SectionHeading eyebrow="WHAT GUIDES OUR WORK" title="A practical approach. A global outlook."/><div className="values-grid"><article className="reveal"><span><PackageCheck size={27}/></span><h3>Portfolio focus</h3><p>A carefully organised selection across seven ingredient categories for a wide variety of manufacturing needs.</p></article><article className="reveal"><span><Globe2 size={27}/></span><h3>International perspective</h3><p>Sourcing relationships spanning Europe, China and South America, paired with a presence across key regional markets.</p></article><article className="reveal"><span><HeartHandshake size={27}/></span><h3>Business connection</h3><p>A direct route to discuss ingredients, specifications and commercial enquiries with regional contacts.</p></article></div></div></section>
     <section className="section about-categories"><SectionHeading eyebrow="OUR PRODUCT FAMILIES" title="Broad capabilities, focused conversations."/><div className="expertise-grid">{categories.map((cat, i) => <Link key={cat.id} to={`/products#${cat.id}`}><span>0{i+1}</span><h3>{cat.shortTitle}</h3><ArrowUpRight size={21}/></Link>)}</div></section><FinalCta title="Let's build a strong partnership." copy="Explore our ingredient portfolio or get in touch to discuss what your business needs." />

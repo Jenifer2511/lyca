@@ -14,7 +14,7 @@ export type Category = {
 const images = {
   fruit: "/images/fruit.webp",
   companyStory: "/images/selected/dried-fruit.jpg",
-  companyHero: "/images/editorial/company-hero.jpg",
+  companyHero: "https://i.pinimg.com/736x/88/39/17/8839172c0a7eb0bd6649fbb4650e6383.jpg",
   applicationsHero: "/images/editorial/applications-hero.jpg",
   applicationBakery: "/images/editorial/application-bakery.jpg",
   homeCoffee: "/images/editorial/collection-coffee.jpg",
@@ -22,7 +22,7 @@ const images = {
   homeFruit: "/images/berries.webp",
   homeConnection: "/images/editorial/ingredient-connection.png",
   homeApplications: "/images/editorial/home-applications.jpg",
-  foodColours: "/images/landing/powders.webp",
+  foodColours: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF8WEtKoWPszVex-Tr9CnrJhayh-qnPvID0sFtoKs5pw&s=10",
   fruitPreparations: "/images/selected/fruit-preparations.jpg",
   dairyIngredients: "/images/selected/dairy-ingredients.jpg",
   sprayDriedPowders: "/images/powder.webp",
@@ -276,7 +276,7 @@ export const categories: Category[] = [
     description:
       "A varied palette of plant-derived colour ingredients for food and beverage product development.",
     image: images.foodColours,
-    imageAlt: "Purple, green and yellow food colour powders arranged in bowls",
+    imageAlt: "Green mangoes and leaves illustrating the source fruit for mango powders",
     imageCaption: "FOOD COLOURS / A PALETTE OF POSSIBILITIES",
     groups: [
       {
@@ -304,36 +304,42 @@ export const categories: Category[] = [
 export const offices = [
   {
     country: "United Arab Emirates",
+    flag: "🇦🇪",
     city: "SPC Free Zone, Sharjah, UAE",
     phone: "+971 50 6361790",
     email: "mohamed@lycafoods.com",
   },
   {
     country: "Kuwait",
+    flag: "🇰🇼",
     city: "Business Plaza, Kuwait City, Kuwait",
     phone: "+965 98741141 / +965 98021009",
     email: "sales@lycafoods.com",
   },
   {
     country: "India",
+    flag: "🇮🇳",
     city: "Erode, Tamil Nadu, India",
     phone: "+91 95670 59898",
     email: "sales2@lycafoods.com",
   },
   {
     country: "Egypt",
+    flag: "🇪🇬",
     city: "Cairo, Egypt",
     phone: "+20 1096028740",
     email: "ruaa.k@lycafoods.com",
   },
   {
     country: "Tanzania",
+    flag: "🇹🇿",
     city: "Dar es Salaam, Tanzania",
     phone: "+255 655 100 100",
     email: "marcelina.m@lycafoods.com",
   },
   {
     country: "Sri Lanka",
+    flag: "🇱🇰",
     city: "Nittambuwa, Sri Lanka",
     phone: "+94 76 2407750 / +94 75 1637839",
     email: "mano.p@lycafoods.com",

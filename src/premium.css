@@ -133,8 +133,6 @@ body{background:#0b0a13;overflow-x:clip}
 
 /* ---------- Stats ---------- */
 .stat strong{font-size:clamp(48px,5vw,76px);font-weight:600;background:linear-gradient(180deg,#fefefc,#e5e3f7);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
-.global-stats{border-bottom:0;position:relative}
-.global-stats::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,var(--lime),#e5e3f744,transparent)}
 
 /* ---------- Interior pages ---------- */
 .page-hero{overflow:hidden;padding-top:180px}
