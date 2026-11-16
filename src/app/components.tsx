@@ -1,7 +1,7 @@
 import { IngredientPhoto } from "./ingredientPhoto"
 import { useEffect, useState, useRef, type ReactNode } from "react"
 import { Link, NavLink, useOutlet, useLocation, useNavigationType } from "react-router"
-import { ArrowRight, ArrowUpRight, Globe2, Mail, MapPin, Menu, Phone, X } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Globe2, MapPin, Menu, X } from "lucide-react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 import { RuntimeQuality } from "./quality"
 import { Atmosphere } from "../premium"
@@ -75,7 +75,7 @@ export function Footer() {
       <div><h3>Explore</h3>{[...links, ["Enquiries", "/enquiry"] as const].map(([name, path]) => <Link key={path} to={path}>{name}</Link>)}</div>
       <div><h3>Ingredient Portfolio</h3>{categories.slice(0, 5).map(cat => <Link key={cat.id} to={`/products#${cat.id}`}>{cat.shortTitle}</Link>)}<Link to="/products">View all ingredients <ArrowRight size={13} /></Link></div>
       <div><h3>Let's talk</h3><a href="mailto:sales@lycafoods.com">sales@lycafoods.com</a><h3>Our locations</h3><p>United Arab Emirates<br/>Kuwait<br/>India<br/>Egypt<br/>Tanzania<br/>Sri Lanka</p></div>
-    </div><div className="footer-bottom"><span>© {new Date().getFullYear()} LYCA Food Ingredients Supplies. All rights reserved.</span><div><Link to="/privacy">Privacy Policy</Link><Link to="/terms">Terms of Use</Link><span>Made for global trade</span></div></div>
+    </div><div className="footer-bottom"><span>© LYCA Food Ingredients Supplies. All rights reserved.</span><div><Link to="/privacy">Privacy Policy</Link><Link to="/terms">Terms of Use</Link><span>Made for global trade</span></div></div>
   </div></footer>
 }
 export function Layout() {
@@ -110,10 +110,8 @@ export function PageHero({ eyebrow, title, copy, image, imageAlt = "", imageFit 
   return <section className="page-hero"><div className="wrap page-hero__inner"><div className="page-hero__copy"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p>{copy}</p><span className="page-hero__rule" /></div><div className={`page-hero__visual${imageFit === "contain" ? " page-hero__visual--contained" : ""}`}><IngredientPhoto src={image} alt={imageAlt} loading="eager" fetchPriority="high" /><span className="page-hero__visual-dot" /></div></div></section>
 }
 export function OfficeCard({ office }: { office: typeof offices[number] }) {
-  const firstPhone = office.phone.split(" / ")[0].replace(/\s/g, "")
-  return <article className="office-card reveal"><span className="office-card__icon"><MapPin size={21} /></span><p className="eyebrow">{office.country}</p><h3>{office.city}</h3><div className="office-card__details"><a href={`tel:${firstPhone}`}><Phone size={15}/>{office.phone}</a><a href={`mailto:${office.email}`}><Mail size={15}/>{office.email}</a></div><a className="office-card__map" target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.city)}`}>Find on map <ArrowUpRight size={17}/></a></article>
+  return <article className="office-card reveal"><span className="office-card__icon"><MapPin size={21} /></span><p className="eyebrow">{office.country}</p><h3>{office.city}</h3><div className="office-card__details"><img className="office-card__flag" src={`https://flagcdn.com/w40/${office.flagCode}.png`} alt={`${office.country} flag`} width={40} height={27} loading="lazy" /></div><a className="office-card__map" target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.city)}`}>Find on map <ArrowUpRight size={17}/></a></article>
 }
 export function FinalCta({ title = "Your vision deserves the right ingredients.", copy = "Tell us what you're developing. We'll help direct your ingredient enquiry to the right team." }: { title?: string; copy?: string }) {
   return <section className="cta-section wrap reveal"><div className="cta-section__glow"/><div><p className="eyebrow">YOUR NEXT STEP</p><h2>{title}</h2><p>{copy}</p></div><ButtonLink to="/enquiry" variant="light">Contact our team</ButtonLink></section>
 }
-export function Stat({ number, label }: { number: string; label: string }) { return <div className="stat"><strong>{number}</strong><span>{label}</span></div> }

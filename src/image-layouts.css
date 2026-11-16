@@ -5,7 +5,7 @@
 .category-banner__copy{grid-column:1;grid-row:1;align-self:center;min-width:0;padding:40px}
 .category-banner__copy h2{font-size:36px;line-height:40px;letter-spacing:-.04em;color:var(--ink);margin:0 0 16px}
 .category-banner__copy p{font-size:14px;line-height:24px;color:var(--muted);max-width:420px;margin:0}
-.category-banner__copy .button{margin-top:24px;min-height:48px;box-shadow:none}
+.category-banner__copy .button{margin-top:24px;min-height:48px}
 @media(max-width:1100px) and (min-width:1021px){.category-banner__copy{padding:24px}.category-banner__copy h2{font-size:30px;line-height:36px}}
 @media(max-width:900px){
  .category-banner{grid-template-columns:minmax(0,1fr);min-height:0}

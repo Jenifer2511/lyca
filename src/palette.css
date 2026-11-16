@@ -4,11 +4,8 @@ body{background:var(--bg);color:var(--ink)}
 .webgl-world{background:radial-gradient(ellipse at 70% 40%,#705cf0,#5a47e1 65%,#4936c6)}
 .site-header,.site-header.is-scrolled{background:linear-gradient(120deg,#171528dc,#080c15d9);border-color:#fefefc30}
 .mobile-nav{background:#171528f2}
-.header-cta{background:var(--lime);border-color:var(--lime);color:#080c15}.header-cta:hover{background:#e0ff83;color:#080c15}
-.button--primary,.button--light{color:#080c15;background:var(--lime);border-color:var(--lime)}
-.button--primary:hover,.button--light:hover{background:#e0ff83;border-color:#e0ff83}
-.button--secondary{background:#080c1545;border-color:#fefefc70;color:var(--ink)}
-.button--secondary:hover{background:#080c1570;border-color:var(--lime)}
+.button--primary,.button--light,.button--secondary,.button--text,.header-cta{color:#080c15;background:var(--lime);border-color:var(--lime)}
+.button--primary:hover,.button--light:hover,.button--secondary:hover,.button--text:hover,.header-cta:hover{color:#080c15;background:#e0ff83;border-color:#e0ff83}
 ::selection{color:#080c15;background:var(--lime)}
 .kinetic__word{background-image:linear-gradient(100deg,#fefefc,#e5e3f7 50%,#fefefc)}
 .kinetic__word.is-accent{background-image:linear-gradient(100deg,#d4ff4d,#efffc0 45%,#d4ff4d)}
@@ -27,11 +24,9 @@ body{background:var(--bg);color:var(--ink)}
 .form-grid input::placeholder,.form-grid textarea::placeholder,.search-field input::placeholder{color:#cbc8de}
 .form-grid select option{background:#171528;color:#fefefc}
 .product-line{background:#080c1540;color:#fefefc;border-color:#fefefc30}.product-line:hover{background:#080c1570;border-color:var(--lime)}
-.stat strong{background-image:linear-gradient(180deg,#fefefc,#d4ff4d)}
 .footer{background:linear-gradient(180deg,#10121ef2,#080c15)}
 .footer-bottom{color:#cbc8de}
 .title-card,.film-bars i{background:#080c15}.title-card{color:#fefefc}.title-card p{color:#e5e3f7}
 .fx-vignette{background:radial-gradient(ellipse 70% 60% at 50% 45%,transparent 40%,#080c15 130%)}
-@media(max-width:700px){.film-details>.button{background:transparent;border:0;color:var(--lime);box-shadow:none}}
 @media(prefers-reduced-motion:reduce){.webgl-world{background:radial-gradient(ellipse at 70% 40%,#705cf0,#5a47e1 65%,#4936c6)}.kinetic__word{color:#fefefc;background:none}.kinetic__word.is-accent{color:var(--lime)}}
 @media(prefers-reduced-transparency:reduce){.site-header,.site-header.is-scrolled,.mobile-nav,.film-glass,.enquiry-form,.office-card,.product-toolbar{background:#171528;backdrop-filter:none}}
