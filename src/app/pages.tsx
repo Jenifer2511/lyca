@@ -52,7 +52,7 @@ export function HomePage() {
     <IngredientAtelier />
 
     <section className="brand-statement"><div className="wrap statement-grid">
-      <div className="statement-photo reveal reveal--iris"><IngredientPhoto src={images.homeConnection} alt="Vegetables, herbs and a variety of finished food applications on a table" loading="lazy" /></div>
+      <div className="statement-photo reveal reveal--iris"><IngredientPhoto src={images.homeConnection} alt="Food ingredients and applications" loading="lazy" /></div>
       <div className="statement-copy"><p className="eyebrow reveal">THE LYCA CONNECTION</p>
         <Kinetic text="Across borders." accent="Closer to your craft." />
         <p className="reveal">We connect manufacturers and food businesses through a considered ingredient portfolio and regional relationships across the Middle East, Africa, India and Sri Lanka.</p>
