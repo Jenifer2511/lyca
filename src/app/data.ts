@@ -23,7 +23,7 @@ const images = {
   homeConnection: "/images/editorial/ingredient-connection.png",
   homeApplications: "/images/editorial/home-applications.jpg",
   foodColours: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLKfBds6cpAfEOS1uFn56aGOMO30QM2pSqnMxoEfpYMA&s",
-  fruitPreparations: "/images/selected/fruit-preparations.jpg",
+  fruitPreparations: "https://i.pinimg.com/736x/b2/e7/b1/b2e7b14b8ccc364acd9357c5d11db571.jpg",
   dairyIngredients: "/images/selected/dairy-ingredients.jpg",
   sprayDriedPowders: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF8WEtKoWPszVex-Tr9CnrJhayh-qnPvID0sFtoKs5pw&s=10",
   culinarySauces: "/images/selected/culinary-sauces.jpg",
