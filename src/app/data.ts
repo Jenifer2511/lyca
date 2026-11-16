@@ -18,6 +18,7 @@ const images = {
   applicationsHero: "/images/editorial/applications-hero.jpg",
   applicationBakery: "/images/editorial/application-bakery.jpg",
   homeCoffee: "/images/editorial/collection-coffee.jpg",
+  homeCoconut: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmFhDUkcoGSpgZwEttWvLCzOeeOX30aeOu84ABQjxgQQ&s=10",
   homeFruit: "/images/berries.webp",
   homeConnection: "/images/editorial/ingredient-connection.png",
   homeApplications: "/images/editorial/home-applications.jpg",
