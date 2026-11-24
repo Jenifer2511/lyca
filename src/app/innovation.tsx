@@ -1,3 +1,4 @@
+import { ContentStatus, useCatalogue } from "./catalogue"
 import { ArrowDown, Plus } from "lucide-react"
 import { ButtonLink } from "./components"
 import { innovationPhotography, type InnovationPhotoKey } from "./innovationPhotography"
@@ -39,6 +40,7 @@ function ResearchPhoto({ name, className = "", priority = false }: {
 }
 
 export function InnovationPage() {
+  const {data} = useCatalogue()
   return <div className="innovation-page">
     <section className="innovation-intro innovation-container" aria-labelledby="innovation-title">
       <div className="innovation-intro-copy">
@@ -50,6 +52,17 @@ export function InnovationPage() {
       </div>
       <ResearchPhoto name="research" className="innovation-intro-photo" priority />
     </section>
+
+    <div className="innovation-container"><ContentStatus /></div>
+    {!!data?.developments.length && <section id="new-product-development" className="development-feed innovation-container">
+      <h2>New Product Development</h2>
+      <div>{data.developments.map(story=><article key={story.id}>
+        <img src={story.image} alt={story.title} loading="lazy" />
+        <div><h3>{story.title}</h3><p>{story.description}</p>
+          <ButtonLink to={`/enquiry?category=Innovations&product=${encodeURIComponent(story.title)}`}>Enquire about this development</ButtonLink>
+        </div>
+      </article>)}</div>
+    </section>}
 
     <section className="innovation-perspective" aria-labelledby="innovation-perspective-title">
       <div className="innovation-container innovation-two-column">

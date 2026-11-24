@@ -39,6 +39,8 @@ The complete six-image sequence becomes a readable grid under reduced motion. Ga
 
 By default the enquiry form composes an email. A live enquiry service requires `VITE_ENQUIRY_API_URL` to be configured.
 
+Ingredients and Innovation read published categories, products, photos and development posts from the same PostgreSQL database as the separate LYCA Admin deployment. Configure the customer project's Production `DATABASE_URL` for the same Neon branch and database as the admin project, then deploy the repository root including `api/` and `server/`. The public endpoint `/api/cms?action=catalogue` returns JSON with `categories`, `products` and `developments`.
+
 Vercel settings: Vite; build command `npm run build`; output directory `dist`. The included SPA rewrite supports direct page reloads. Dependencies, Git history and generated build files are excluded from this ZIP.
 
 The final theme is in `src/aurora.css`. Landing scene content is in `src/app/landingData.ts`; its animation is in `src/app/cinematic.tsx`.

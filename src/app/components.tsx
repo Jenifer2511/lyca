@@ -1,3 +1,4 @@
+import { CatalogueProvider, useCatalogue } from "./catalogue"
 import { IngredientPhoto } from "./ingredientPhoto"
 import { useEffect, useState, useRef, type ReactNode } from "react"
 import { Link, NavLink, useOutlet, useLocation, useNavigationType } from "react-router"
@@ -69,16 +70,20 @@ export function Header() {
   </header>
 }
 export function Footer() {
+  const families = useCatalogue().data?.categories.map(c=>({id:c.id,shortTitle:c.label})) || categories
   return <footer className="footer"><div className="footer-content wrap">
     <div className="footer-head"><div><p className="eyebrow">GLOBAL INGREDIENTS. INDIVIDUAL POSSIBILITIES.</p><h2>Fine ingredients.<br/><em>Memorable creations.</em></h2></div><ButtonLink to="/enquiry" variant="light">Start an enquiry</ButtonLink></div>
     <div className="footer-grid"><div className="footer-brand"><Link className="footer-wordmark" to="/">LYCA.</Link><p>From fruit and cocoa to dairy and colour, we connect food and beverage makers with ingredients for their next creation.</p></div>
       <div><h3>Explore</h3>{[...links, ["Enquiries", "/enquiry"] as const].map(([name, path]) => <Link key={path} to={path}>{name}</Link>)}</div>
-      <div><h3>Ingredient Portfolio</h3>{categories.slice(0, 5).map(cat => <Link key={cat.id} to={`/products#${cat.id}`}>{cat.shortTitle}</Link>)}<Link to="/products">View all ingredients <ArrowRight size={13} /></Link></div>
+      <div><h3>Ingredient Portfolio</h3>{families.slice(0, 5).map(cat => <Link key={cat.id} to={`/products#${cat.id}`}>{cat.shortTitle}</Link>)}<Link to="/products">View all ingredients <ArrowRight size={13} /></Link></div>
       <div><h3>Let's talk</h3><a href="mailto:sales@lycafoods.com">sales@lycafoods.com</a><h3>Our locations</h3><p>United Arab Emirates<br/>Kuwait<br/>India<br/>Egypt<br/>Tanzania<br/>Sri Lanka</p></div>
     </div><div className="footer-bottom"><span>© LYCA Food Ingredients Supplies. All rights reserved.</span><div><Link to="/privacy">Privacy Policy</Link><Link to="/terms">Terms of Use</Link><span>Made for global trade</span></div></div>
   </div></footer>
 }
 export function Layout() {
+  return <CatalogueProvider><CustomerLayout /></CatalogueProvider>
+}
+function CustomerLayout() {
   const loc = useLocation()
   const outlet = useOutlet()
   const navigation = useNavigationType()

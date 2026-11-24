@@ -1,12 +1,12 @@
 {
-  "name": "lyca-cinematic-website",
+  "name": "lyca-customer",
   "version": "3.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --strictPort",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --strictPort",
     "typecheck": "tsc --noEmit",
     "prebuild": "node scripts/verify-assets.mjs",
     "test:animation-clock": "node scripts/verify-animation-clock.cjs"
@@ -15,6 +15,7 @@
     "gsap": "^3.15.0",
     "lucide-react": "^0.468.0",
     "motion": "^14.3.0",
+    "pg": "^8.23.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.13.1"
@@ -28,6 +29,6 @@
     "vite": "^8.0.5"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": "24.x"
   }
 }
