@@ -71,7 +71,7 @@ export function Header() {
 export function Footer() {
   return <footer className="footer"><div className="footer-content wrap">
     <div className="footer-head"><div><p className="eyebrow">GLOBAL INGREDIENTS. INDIVIDUAL POSSIBILITIES.</p><h2>Fine ingredients.<br/><em>Memorable creations.</em></h2></div><ButtonLink to="/enquiry" variant="light">Start an enquiry</ButtonLink></div>
-    <div className="footer-grid"><div className="footer-brand"><Link className="footer-wordmark" to="/">LYCA.</Link><p>From fruit and cocoa to dairy and colour, we connect food and beverage makers with ingredients for their next creation.</p></div>
+    <div className="footer-grid"><div className="footer-brand"><Link className="footer-wordmark" to="/">LYCA.</Link><span className="footer-brand__descriptor">Food ingredients and supplies</span><p>From fruit and cocoa to dairy and colour, we connect food and beverage makers with ingredients for their next creation.</p></div>
       <div><h3>Explore</h3>{[...links, ["Enquiries", "/enquiry"] as const].map(([name, path]) => <Link key={path} to={path}>{name}</Link>)}</div>
       <div><h3>Ingredient Portfolio</h3>{categories.slice(0, 5).map(cat => <Link key={cat.id} to={`/products#${cat.id}`}>{cat.shortTitle}</Link>)}<Link to="/products">View all ingredients <ArrowRight size={13} /></Link></div>
       <div><h3>Let's talk</h3><a href="mailto:sales@lycafoods.com">sales@lycafoods.com</a><h3>Our locations</h3><p>United Arab Emirates<br/>Kuwait<br/>India<br/>Egypt<br/>Tanzania<br/>Sri Lanka</p></div>

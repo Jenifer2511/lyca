@@ -54,7 +54,7 @@ body{background:#0c0a13}.site-header{background:linear-gradient(120deg,#221d3888
 @media(max-width:700px){.film-reduced .film-gallery{grid-template-columns:1fr}.film-reduced .film-card{height:400px;max-height:none}}
 @media(prefers-reduced-transparency:reduce){.film-glass,.site-header,.enquiry-form,.office-card{background:#151223;backdrop-filter:none}}
 
-.footer-wordmark{font-size:32px;font-weight:700;letter-spacing:-.06em;color:#fefefc}
+.footer-wordmark{font-size:32px;font-weight:700;letter-spacing:-.06em;color:#fefefc}.footer-brand__descriptor{display:block;margin-top:4px;color:#d4ff4d;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
 
 @media(min-width:701px){.film-gallery{mask-image:linear-gradient(90deg,transparent 44%,#000 49%)}.film-reduced .film-gallery{mask-image:none}}
 @media(max-height:760px) and (min-width:701px){.film-stage{min-height:640px}.film-kicker{top:125px}.film-heading{top:27%}.film-heading h1{font-size:clamp(55px,6vw,85px);margin-bottom:15px}.film-heading>p{display:none}.film-card{top:26%;height:59%}.film-details{top:59%}.film-details>.button{margin-top:110px}.film-controls{bottom:13px}}
