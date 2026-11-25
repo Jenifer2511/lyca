@@ -3,44 +3,19 @@ import { Link } from "react-router"
 import { ArrowDown } from "lucide-react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useCatalogue } from "./catalogue"
 import { categories } from "./data"
 import { useReducedMotion } from "./cinematic"
 import "./ingredientUniverse.css"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const families = [
-  { label: "Fruit", title: "Fruit.", items: [
-    ["Alphonso mango", "Alphonso Mango Pulp"], ["Guava", "White Guava Juice Concentrate / Pulp"],
-    ["Tomato", "Tomato Paste (CB & HB)"], ["Chilli", "Red and Green Chilli Puree"],
-  ] },
-  { label: "Coconut", title: "Coconut.", items: [
-    ["Coconut cream", "Coconut Cream Powder"], ["Virgin coconut oil", "Virgin Coconut Oil"],
-    ["Coconut sugar", "Coconut Sugar"], ["Coconut milk", "Aseptic Coconut Milk & Water"],
-  ] },
-  { label: "Coffee & cocoa", title: "Coffee\n& cocoa.", items: [
-    ["Cocoa powder", "Cocoa Powder"], ["Coffee extract", "Coffee Extract"],
-    ["Instant coffee", "Spray-Dried Instant Coffee"], ["Coffee oil", "Coffee Oil"],
-  ] },
-  { label: "Dairy", title: "Dairy.", items: [
-    ["Whole milk powder", "Whole Milk Powder"], ["Whey protein", "Whey Protein Powder"],
-    ["Sweet cream butter", "Unsalted Sweet Cream Lactic Butter"], ["Cheese powder", "Cheese Powder"],
-  ] },
-  { label: "Fruit preparations", title: "Fruit\npreparations.", items: [
-    ["Fruit for ice cream", "Ice cream"], ["Fruit for bakery", "Bakery products"],
-    ["Fruit for desserts", "Desserts"], ["Fruit for beverages", "Beverages"],
-  ] },
-  { label: "Powders", title: "Powders.", items: [
-    ["Mango powder", "Ripe Mango"], ["Honey powder", "Honey"],
-    ["Orange powder", "Orange"], ["Tamarind powder", "Tamarind"],
-  ] },
-  { label: "Colours", title: "Colour.", items: [
-    ["Beetroot", "Beetroot"], ["Spirulina", "Spirulina"],
-    ["Black carrot", "Black Carrot"], ["Hibiscus", "Hibiscus"],
-  ] },
-]
-
-const bubbleLabels = ["Juice & Fruit Ingredients", "Coconut Products", "Coffee & Cocoa", "Dairy Ingredients", "Fruit Preparations", "Spray-Dried Powders", "Food Colors"]
+const originalFamilies = categories.map(c => ({id:c.id, label:c.shortTitle, title:c.title}))
+const featuredProducts: Record<string,string> = {
+  "juice-concentrates":"Alphonso Mango Pulp", "coconut-products":"Coconut Cream Powder",
+  "coffee-cocoa":"Cocoa Powder", "dairy-ingredients":"Whole Milk Powder",
+  "fruit-preparations":"Ice cream", "spray-dried-powders":"Ripe Mango", "food-colours":"Beetroot",
+}
 const tints = ["255 151 119", "130 228 185", "229 171 112", "147 210 255", "242 143 201", "192 163 255", "104 225 218"]
 const bubbleSizes = [136, 120, 112, 144, 128, 112, 128]
 const stories = [
@@ -50,6 +25,9 @@ const stories = [
 ]
 
 export function IngredientUniverse() {
+  const {data} = useCatalogue()
+  const families = data?.categories ?? originalFamilies
+  const familyCount = families.length
   const root = useRef<HTMLElement>(null)
   const field = useRef<HTMLDivElement>(null)
   const webgl = useRef<HTMLCanvasElement>(null)
@@ -206,23 +184,20 @@ export function IngredientUniverse() {
     const nodes = Array.from(element.querySelectorAll<HTMLElement>(".ingredient-universe__node")).map(node => ({
       node,
       family: Number(node.dataset.familyIndex),
-      item: Number(node.dataset.itemIndex),
       diameter: Number(node.dataset.diameter),
       rim: node.querySelector<HTMLElement>(".ingredient-universe__rim"),
     }))
     draw.current = amount => {
       progress.current = amount
       element.dataset.progress = amount.toFixed(4)
-      nodes.forEach(({ node, family, item, diameter, rim }) => {
-        const shown = item === 0
-        if (!shown) { node.style.opacity = "0"; return }
+      nodes.forEach(({ node, family, diameter, rim }) => {
         if (reduce) {
           node.style.transform = "none"
           node.style.opacity = "1"
           if (rim) rim.style.transform = "none"
           return
         }
-        const count = families.length
+        const count = familyCount
         const order = family
         const angle = -Math.PI / 2 + order / count * Math.PI * 2 + amount * Math.PI * 2.2
         const margin = diameter * .55 + (phone ? 8 : 18)
@@ -244,7 +219,7 @@ export function IngredientUniverse() {
       }
     }
     draw.current(progress.current)
-  }, [size, phone, reduce])
+  }, [size, phone, reduce, familyCount])
 
   useLayoutEffect(() => {
     const element = root.current
@@ -297,21 +272,26 @@ export function IngredientUniverse() {
             </div>
           </div>
           <div className="ingredient-universe__nodes">
-            {families.flatMap((family, familyIndex) => family.items.map(([label, product], itemIndex) => {
-              const shown = size.width > 0 && itemIndex === 0
-              const diameter = reduce ? (phone ? 88 : 112) : phone ? (size.width < 320 ? 64 : 76) : small ? 112 : Math.min(bubbleSizes[familyIndex], size.height < 520 ? 104 : 144)
-              return <div key={`${familyIndex}-${product}`} className="ingredient-universe__node" aria-hidden={!shown}
-                data-shown={shown} data-family={categories[familyIndex].id} data-family-index={familyIndex} data-item-index={itemIndex} data-diameter={diameter}
-                style={{ width: diameter, height: diameter, "--bubble-tint": tints[familyIndex] } as CSSProperties}>
+            {families.map((family, familyIndex) => {
+              const preferred = featuredProducts[family.id]
+              const activeProduct = data
+                ? data.products.find(p=>p.category===family.id && p.title===preferred)?.title ?? data.products.find(p=>p.category===family.id)?.title
+                : preferred
+              const familyName = family.label
+              const shown = size.width > 0
+              const diameter = reduce ? (phone ? 88 : 112) : phone ? (size.width < 320 ? 64 : 76) : small ? 112 : Math.min(bubbleSizes[familyIndex % bubbleSizes.length], size.height < 520 ? 104 : 144)
+              return <div key={family.id} className="ingredient-universe__node" aria-hidden={!shown}
+                data-shown={shown} data-family={family.id} data-family-index={familyIndex} data-diameter={diameter}
+                style={{ width: diameter, height: diameter, "--bubble-tint": tints[familyIndex % tints.length] } as CSSProperties}>
                 <Link className="ingredient-universe__ingredient title-3" tabIndex={shown ? 0 : -1}
-                  aria-label={`Enquire about ${bubbleLabels[familyIndex]}`} to={`/enquiry?category=${encodeURIComponent(categories[familyIndex].title)}&product=${encodeURIComponent(product)}`}>
+                  aria-label={`Enquire about ${familyName}`} to={`/enquiry?category=${encodeURIComponent(family.title)}&product=${encodeURIComponent(activeProduct || "")}`}>
                   <span className="ingredient-universe__bubble">
                     <span className="ingredient-universe__rim" aria-hidden="true" />
-                    <span className="ingredient-universe__label">{bubbleLabels[familyIndex]}<span className="ingredient-universe__arrow" aria-hidden="true">↗</span></span>
+                    <span className="ingredient-universe__label">{familyName}<span className="ingredient-universe__arrow" aria-hidden="true">↗</span></span>
                   </span>
                 </Link>
               </div>
-            }))}
+            })}
           </div>
         </div>
         {!reduce && <p className="ingredient-universe__scroll-cue" aria-hidden="true"><ArrowDown size={12} />{chapter < 2 ? "Scroll to unfold the story" : "Keep scrolling to explore"}</p>}
