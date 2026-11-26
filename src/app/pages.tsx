@@ -7,7 +7,7 @@ import { Link, useSearchParams } from "react-router"
 import {
   ArrowRight, ArrowUpRight, Check, ChevronRight, CircleCheck,
   Globe2, HeartHandshake, Leaf, Mail, PackageCheck,
-  Search, ShieldCheck, Sparkles, X,
+  Search, ShieldCheck, X,
 } from "lucide-react"
 import { ButtonLink, FinalCta, OfficeCard, PageHero, SectionHeading } from "./components"
 import { Kinetic } from "../premium"
@@ -57,7 +57,6 @@ export function HomePage() {
     </section>
 
     <section className="manifesto wrap">
-      <p className="eyebrow reveal"><Sparkles size={14} /> OUR BELIEF</p>
       <Kinetic className="manifesto__line" text="Behind every memorable flavour," accent="an ingredient worth choosing." />
     </section>
 
