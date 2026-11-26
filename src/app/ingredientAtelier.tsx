@@ -19,7 +19,7 @@ export function IngredientAtelier() {
   const [active, setActive] = useState(0)
   const current = atelierStories[active]
   return <section className="atelier section" aria-labelledby="atelier-title">
-    <div className="atelier-intro reveal"><p className="eyebrow">THE INGREDIENT ATELIER</p><h2 id="atelier-title">A study in <em>good taste.</em></h2><p>Explore the colours, textures and flavours that give your ideas their character.</p></div>
+    <div className="atelier-intro reveal"><h2 id="atelier-title">A study in <em>good taste.</em></h2><p>Explore the colours, textures and flavours that give your ideas their character.</p></div>
     <div className="atelier-layout">
       <div className="atelier-menu" role="tablist" aria-label="Explore ingredient collections" aria-orientation="vertical">{atelierStories.map((category, i) => <button key={category.tag} id={`atelier-tab-${i}`} role="tab" type="button" aria-selected={active === i} aria-controls="atelier-panel" tabIndex={active === i ? 0 : -1} onClick={() => setActive(i)} onKeyDown={event => {
         let next = i

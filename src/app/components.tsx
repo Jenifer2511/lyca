@@ -21,11 +21,11 @@ export function ButtonLink({ to, children, variant = "primary", className = "" }
 }) {
   return <Link to={to} className={`button button--${variant} ${className}`}>{children}<ArrowUpRight size={18} strokeWidth={1.8} aria-hidden="true" /></Link>
 }
-export function SectionHeading({ eyebrow, title, copy, center = false }: {
-  eyebrow?: string; title: string; copy?: string; center?: boolean
+export function SectionHeading({ title, copy, center = false }: {
+  title: string; copy?: string; center?: boolean
 }) {
   return <div className={`section-heading ${center ? "section-heading--center" : ""} reveal`}>
-    {eyebrow && <p className="eyebrow">{eyebrow}</p>}<h2>{title}</h2>{copy && <p className="section-copy">{copy}</p>}
+    <h2>{title}</h2>{copy && <p className="section-copy">{copy}</p>}
   </div>
 }
 const links = [
@@ -72,7 +72,7 @@ export function Header() {
 export function Footer() {
   const families = useCatalogue().data?.categories.map(c=>({id:c.id,shortTitle:c.label})) || categories
   return <footer className="footer"><div className="footer-content wrap">
-    <div className="footer-head"><div><p className="eyebrow">GLOBAL INGREDIENTS. INDIVIDUAL POSSIBILITIES.</p><h2>Fine ingredients.<br/><em>Memorable creations.</em></h2></div><ButtonLink to="/enquiry" variant="light">Start an enquiry</ButtonLink></div>
+    <div className="footer-head"><div><h2>Fine ingredients.<br/><em>Memorable creations.</em></h2></div><ButtonLink to="/enquiry" variant="light">Start an enquiry</ButtonLink></div>
     <div className="footer-grid"><div className="footer-brand"><Link className="footer-wordmark" to="/">LYCA.</Link><span className="footer-brand__descriptor">Food ingredients and supplies</span><p>From fruit and cocoa to dairy and colour, we connect food and beverage makers with ingredients for their next creation.</p></div>
       <div><h3>Explore</h3>{[...links, ["Enquiries", "/enquiry"] as const].map(([name, path]) => <Link key={path} to={path}>{name}</Link>)}</div>
       <div><h3>Ingredient Portfolio</h3>{families.slice(0, 5).map(cat => <Link key={cat.id} to={`/products#${cat.id}`}>{cat.shortTitle}</Link>)}<Link to="/products">View all ingredients <ArrowRight size={13} /></Link></div>
@@ -109,14 +109,14 @@ function CustomerLayout() {
     <Footer />
   </>
 }
-export function PageHero({ eyebrow, title, copy, image, imageAlt = "", imageFit = "cover" }: {
-  eyebrow: string; title: string; copy: string; image: string; imageAlt?: string; imageFit?: "cover" | "contain"
+export function PageHero({ title, copy, image, imageAlt = "", imageFit = "cover" }: {
+  title: string; copy: string; image: string; imageAlt?: string; imageFit?: "cover" | "contain"
 }) {
-  return <section className="page-hero"><div className="wrap page-hero__inner"><div className="page-hero__copy"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p>{copy}</p><span className="page-hero__rule" /></div><div className={`page-hero__visual${imageFit === "contain" ? " page-hero__visual--contained" : ""}`}><IngredientPhoto src={image} alt={imageAlt} loading="eager" fetchPriority="high" /><span className="page-hero__visual-dot" /></div></div></section>
+  return <section className="page-hero"><div className="wrap page-hero__inner"><div className="page-hero__copy"><h1>{title}</h1><p>{copy}</p><span className="page-hero__rule" /></div><div className={`page-hero__visual${imageFit === "contain" ? " page-hero__visual--contained" : ""}`}><IngredientPhoto src={image} alt={imageAlt} loading="eager" fetchPriority="high" /><span className="page-hero__visual-dot" /></div></div></section>
 }
 export function OfficeCard({ office }: { office: typeof offices[number] }) {
-  return <article className="office-card reveal"><span className="office-card__icon"><MapPin size={21} /></span><p className="eyebrow">{office.country}</p><h3>{office.city}</h3><div className="office-card__details"><img className="office-card__flag" src={`https://flagcdn.com/w40/${office.flagCode}.png`} alt={`${office.country} flag`} width={40} height={27} loading="lazy" /></div><a className="office-card__map" target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.city)}`}>Find on map <ArrowUpRight size={17}/></a></article>
+  return <article className="office-card reveal"><span className="office-card__icon"><MapPin size={21} /></span><h3>{office.city}</h3><div className="office-card__details"><img className="office-card__flag" src={`https://flagcdn.com/w40/${office.flagCode}.png`} alt={`${office.country} flag`} width={40} height={27} loading="lazy" /></div><a className="office-card__map" target="_blank" rel="noopener noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.city)}`}>Find on map <ArrowUpRight size={17}/></a></article>
 }
 export function FinalCta({ title = "Your vision deserves the right ingredients.", copy = "Tell us what you're developing. We'll help direct your ingredient enquiry to the right team." }: { title?: string; copy?: string }) {
-  return <section className="cta-section wrap reveal"><div className="cta-section__glow"/><div><p className="eyebrow">YOUR NEXT STEP</p><h2>{title}</h2><p>{copy}</p></div><ButtonLink to="/enquiry" variant="light">Contact our team</ButtonLink></section>
+  return <section className="cta-section wrap reveal"><div className="cta-section__glow"/><div><h2>{title}</h2><p>{copy}</p></div><ButtonLink to="/enquiry" variant="light">Contact our team</ButtonLink></section>
 }

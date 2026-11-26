@@ -97,13 +97,13 @@ export function InwardHero() {
  return <section ref={ref} className={`lyca-hero ${reduce?'lyca-hero--static':''}`} aria-label="Ingredient inspiration journey">
   <div className="journey-stage">
    <div className="journey-kicker"><span><i/>LYCA / FOOD INGREDIENTS SUPPLIES</span><span>GLOBAL INGREDIENTS. INDIVIDUAL POSSIBILITIES.</span></div>
-   <div className="journey-heading"><p className="eyebrow">THE INGREDIENTS OF POSSIBILITY</p><h1>Great taste<br/>starts <em>within.</em></h1><p>From nature’s richness<br/>to your signature taste.</p></div>
+   <div className="journey-heading"><h1>Great taste<br/>starts <em>within.</em></h1><p>From nature’s richness<br/>to your signature taste.</p></div>
    <div className="journey-gallery">{landingStories.map((story,i)=><article className="journey-card" key={story.tag} aria-hidden={!reduce&&active!==i} inert={!reduce&&active!==i}>
     <IngredientPhoto src={story.image} alt={story.alt} loading={i<2?'eager':'lazy'} fetchPriority={i===0?'high':'low'} sizes="(max-width: 700px) 86vw, 40vw" />
     <span className="journey-image-shade"/>
     {reduce&&<div className="journey-caption"><Link className="liquid-control" to={story.to} aria-label={`Explore ${story.name}`}><ArrowUpRight size={22}/></Link></div>}
    </article>)}{!reduce&&<div className="journey-caption journey-caption--fixed"><Link className="liquid-control" to={landingStories[active].to} aria-label={`Explore ${landingStories[active].name}`}><ArrowUpRight size={22}/></Link></div>}</div>
-   <div className="journey-details">{landingStories.map((story,i)=><div className="journey-copy" key={story.tag} aria-hidden={!reduce&&active!==i}><p className="eyebrow">{story.tag}</p><p>{story.detail}</p></div>)}<Link className="button button--primary journey-cta" to="/products">Explore ingredients <ArrowUpRight size={17}/></Link></div>
+   <div className="journey-details">{landingStories.map((story,i)=><div className="journey-copy" key={story.tag} aria-hidden={!reduce&&active!==i}><p>{story.detail}</p></div>)}<Link className="button button--primary journey-cta" to="/products">Explore ingredients <ArrowUpRight size={17}/></Link></div>
   </div>
  </section>
 }
