@@ -8,18 +8,18 @@ type AtelierStory = { name: string; tag: string; image: string; alt: string; det
 // Each gallery photograph is separate from the hero, collections and interior pages.
 const atelierStories: AtelierStory[] = [
   { name: "Dairy ingredients", tag: "DAIRY", image: "/images/dairy.webp", alt: "Fresh milk being poured into a glass", detail: "From milk powders and whey proteins to butter and cheese powder. Explore ingredients that bring richness and texture to your next product.", to: "/products#dairy-ingredients" },
-  { name: "Colour ingredients", tag: "COLOUR", image: images.colors, alt: "Dried hibiscus petals, a botanical source of food colour", detail: "Discover botanical colour ingredients, from hibiscus and beetroot to spirulina and black carrot.", to: "/products#food-colours" },
+  { name: "Colour ingredients", tag: "COLOUR", image: "https://amoretti.com/cdn/shop/articles/colorful-powders-in-bowls-on-dark-background_1200x845.jpg?v=1793731187", alt: "Bowls of natural plant-based color powders", detail: "Discover botanical colour ingredients, from hibiscus and beetroot to spirulina and black carrot.", to: "/products#food-colours" },
   { name: "Beverage inspiration", tag: "BEVERAGES", image: "/images/editorial/atelier-beverage.jpg", alt: "An orange drink being finished with a fresh herb garnish", detail: "Fresh visual inspiration for your next beverage idea. Tell us the flavour, texture and application you have in mind.", to: "/applications" },
-  { name: "Fruit ingredients", tag: "FRUIT", image: "/images/editorial/atelier-fruit.jpg", alt: "Fresh limes growing among green leaves", detail: "Bright citrus notes. Explore fruit concentrates, purees and preparations for beverages and food applications.", to: "/products#juice-concentrates" },
+  { name: "Fruit ingredients", tag: "FRUIT", image: "https://i.pinimg.com/736x/76/e4/1d/76e41daef8b51acc0a9f8696b62a2499.jpg", alt: "A colorful assortment of tropical fruits with water splashing around them", detail: "Bright citrus notes. Explore fruit concentrates, purees and preparations for beverages and food applications.", to: "/products#juice-concentrates" },
   { name: "Dessert applications", tag: "DESSERTS", image: images.patisserie, alt: "A fruit tart topped with strawberries, blueberries and raspberries", detail: "Bring flavour, texture and colour together. Explore ingredient ideas for bakery, desserts and confectionery.", to: "/applications" },
-  { name: "Your next creation", tag: "YOUR NEXT CREATION", image: "/images/editorial/atelier-next-creation.jpg", alt: "A pink citrus drink with lemon and rosemary", detail: "From an early concept to a signature taste, the next conversation begins with your idea.", to: "/enquiry" },
+  { name: "Your next creation", tag: "YOUR NEXT CREATION", image: "https://cdn.builder.io/api/v1/image/assets%2F884d5fc485c54ebe866f566d5dc6bc5a%2F0fb99ca5131f4c2e9698027661697afa?format=webp&width=800&height=1200", alt: "Tomatoes, peppers, and other vegetables falling against a vibrant red background", detail: "From an early concept to a signature taste, the next conversation begins with your idea.", to: "/enquiry" },
 ]
 
 export function IngredientAtelier() {
   const [active, setActive] = useState(0)
   const current = atelierStories[active]
   return <section className="atelier section" aria-labelledby="atelier-title">
-    <div className="atelier-intro reveal"><p className="eyebrow">THE INGREDIENT ATELIER</p><h2 id="atelier-title">A study in <em>good taste.</em></h2><p>Explore the colours, textures and flavours that give your ideas their character.</p></div>
+    <div className="atelier-intro reveal"><h2 id="atelier-title">A study in <em>good taste.</em></h2><p>Explore the colours, textures and flavours that give your ideas their character.</p></div>
     <div className="atelier-layout">
       <div className="atelier-menu" role="tablist" aria-label="Explore ingredient collections" aria-orientation="vertical">{atelierStories.map((category, i) => <button key={category.tag} id={`atelier-tab-${i}`} role="tab" type="button" aria-selected={active === i} aria-controls="atelier-panel" tabIndex={active === i ? 0 : -1} onClick={() => setActive(i)} onKeyDown={event => {
         let next = i
