@@ -96,7 +96,7 @@ export function InwardHero() {
  },[reduce])
  return <section ref={ref} className={`lyca-hero ${reduce?'lyca-hero--static':''}`} aria-label="Ingredient inspiration journey">
   <div className="journey-stage">
-   <div className="journey-kicker"><span><i/>LYCA / FOOD INGREDIENTS SUPPLIES</span><span>GLOBAL INGREDIENTS. INDIVIDUAL POSSIBILITIES.</span></div>
+   <div className="journey-kicker"><span>GLOBAL INGREDIENTS. INDIVIDUAL POSSIBILITIES.</span></div>
    <div className="journey-heading"><h1>Great taste<br/>starts <em>within.</em></h1><p>From nature’s richness<br/>to your signature taste.</p></div>
    <div className="journey-gallery">{landingStories.map((story,i)=><article className="journey-card" key={story.tag} aria-hidden={!reduce&&active!==i} inert={!reduce&&active!==i}>
     <IngredientPhoto src={story.image} alt={story.alt} loading={i<2?'eager':'lazy'} fetchPriority={i===0?'high':'low'} sizes="(max-width: 700px) 86vw, 40vw" />
