@@ -12,7 +12,7 @@ const atelierStories: AtelierStory[] = [
   { name: "Beverage inspiration", tag: "BEVERAGES", image: "/images/editorial/atelier-beverage.jpg", alt: "An orange drink being finished with a fresh herb garnish", detail: "Fresh visual inspiration for your next beverage idea. Tell us the flavour, texture and application you have in mind.", to: "/applications" },
   { name: "Fruit ingredients", tag: "FRUIT", image: "https://i.pinimg.com/736x/76/e4/1d/76e41daef8b51acc0a9f8696b62a2499.jpg", alt: "A colorful assortment of tropical fruits with water splashing around them", detail: "Bright citrus notes. Explore fruit concentrates, purees and preparations for beverages and food applications.", to: "/products#juice-concentrates" },
   { name: "Dessert applications", tag: "DESSERTS", image: images.patisserie, alt: "A fruit tart topped with strawberries, blueberries and raspberries", detail: "Bring flavour, texture and colour together. Explore ingredient ideas for bakery, desserts and confectionery.", to: "/applications" },
-  { name: "Your next creation", tag: "YOUR NEXT CREATION", image: "https://i.pinimg.com/736x/76/e4/1d/76e41daef8b51acc0a9f8696b62a2499.jpg", alt: "A colorful assortment of tropical fruits with water splashing around them", detail: "From an early concept to a signature taste, the next conversation begins with your idea.", to: "/enquiry" },
+  { name: "Your next creation", tag: "YOUR NEXT CREATION", image: "https://i.pinimg.com/736x/c7/8a/90/c78a907b86abcff636ab5d4c122b0c13.jpg", alt: "Cinematic food videography for restaurant content", detail: "From an early concept to a signature taste, the next conversation begins with your idea.", to: "/enquiry" },
 ]
 
 export function IngredientAtelier() {
