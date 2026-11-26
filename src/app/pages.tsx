@@ -50,7 +50,7 @@ export function HomePage() {
       <div className="cinema-collections">{featured.map((category, index) =>
         <Link className={`collection-panel collection-panel--${index} reveal reveal--iris`} style={{ ["--d" as string]: index }} to={`/products#${category.id}`} key={category.id}>
           <div className="collection-image"><IngredientPhoto src={category.image} alt={category.imageAlt} loading="lazy" /></div>
-          <div className="collection-caption"><div><p>THE LYCA PORTFOLIO</p><h3>{category.title}</h3></div><span className="circle-arrow"><ArrowUpRight size={25} /></span></div>
+          <div className="collection-caption"><div><h3>{category.title}</h3></div><span className="circle-arrow"><ArrowUpRight size={25} /></span></div>
         </Link>)}
       </div>
       <div className="portfolio-bottom reveal"><span>A considered range of ingredients. Your next signature creation.</span><ButtonLink to="/products" variant="secondary">Discover the full portfolio</ButtonLink></div>
