@@ -6,7 +6,6 @@ import {
   useState,
   type ReactNode,
 } from 'react'
-import { useLocation } from 'react-router'
 
 export type Kind = 'categories' | 'products' | 'developments'
 export type Entry = {
@@ -43,7 +42,6 @@ const Context = createContext<State>({
   refresh: () => {},
 })
 export function CatalogueProvider({ children }: { children: ReactNode }) {
-  const { pathname } = useLocation()
   const [data, setData] = useState<Catalogue | null>(null)
   const [failed, setFailed] = useState(false)
   const [revision, setRevision] = useState(0)
@@ -57,11 +55,12 @@ export function CatalogueProvider({ children }: { children: ReactNode }) {
           setFailed(false)
         }
       })
-      .catch(() => {
-        if (!controller.signal.aborted) setFailed(true)
+      .catch((error: unknown) => {
+        if (controller.signal.aborted || (error instanceof DOMException && error.name === 'AbortError')) return
+        setFailed(true)
       })
     return () => controller.abort()
-  }, [pathname, revision])
+  }, [revision])
   useEffect(() => {
     const refreshVisible = () => { if (document.visibilityState === 'visible') refresh() }
     const timer = window.setInterval(refreshVisible, 30000)
