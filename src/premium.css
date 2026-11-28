@@ -115,7 +115,7 @@ body{background:#0b0a13;overflow-x:clip}
 .statement-photo,.application-cinema__image{position:relative;box-shadow:0 50px 140px #0b0a1399}
 .statement-photo::after,.application-cinema__image::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px #fefefc26;background:linear-gradient(160deg,transparent 50%,#0c0a1399)}
 .statement-photo img,.application-cinema__image img{transition:transform 2s var(--ease-film)}
-.statement-photo:hover img,.application-cinema__image:hover img{transform:scale(1.06)}
+.application-cinema__image:hover img{transform:scale(1.06)}
 
 /* ---------- Process ---------- */
 .process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:20px}
