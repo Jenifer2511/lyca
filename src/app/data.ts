@@ -23,7 +23,7 @@ const images = {
   homeFruit: "/images/berries.webp",
   homeConnection: "https://i.pinimg.com/736x/64/aa/f7/64aaf7de33a3795d4a82453b3a6bd0d0.jpg",
   homeApplications: "/images/editorial/home-applications.jpg",
-  foodColours: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLKfBds6cpAfEOS1uFn56aGOMO30QM2pSqnMxoEfpYMA&s",
+  foodColours: "https://i.pinimg.com/736x/7d/fd/c3/7dfdc361e861d992c282767b4a5462b4.jpg",
   fruitPreparations: "https://i.pinimg.com/736x/b2/e7/b1/b2e7b14b8ccc364acd9357c5d11db571.jpg",
   dairyIngredients: "/images/selected/dairy-ingredients.jpg",
   sprayDriedPowders: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF8WEtKoWPszVex-Tr9CnrJhayh-qnPvID0sFtoKs5pw&s=10",
