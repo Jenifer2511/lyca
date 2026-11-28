@@ -21,7 +21,7 @@ const images = {
   homeCoffee: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkV0ZAZm9ohC_h7_XaJat_aseHVf9Bt80W7yQNJI8pzqtXzaA2zt3TgJM&s=10",
   homeCoconut: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmFhDUkcoGSpgZwEttWvLCzOeeOX30aeOu84ABQjxgQQ&s=10",
   homeFruit: "/images/berries.webp",
-  homeConnection: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0lAUy6UYgiuJ-Ywd_i9APQw3cVCbTVs6agKR38k7bdA&s=10",
+  homeConnection: "https://images.pexels.com/photos/4871338/pexels-photo-4871338.jpeg?auto=compress&cs=tinysrgb&w=1600",
   homeApplications: "/images/editorial/home-applications.jpg",
   foodColours: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLKfBds6cpAfEOS1uFn56aGOMO30QM2pSqnMxoEfpYMA&s",
   fruitPreparations: "https://i.pinimg.com/736x/b2/e7/b1/b2e7b14b8ccc364acd9357c5d11db571.jpg",
